@@ -16,7 +16,9 @@ const determineTimeLeft = (campaignInfo) => {
   const isEnded = endDate => ((new Date(Date.parse(endDate))).getTime()
     <= (new Date()).getTime());
   const campaign = campaignInfo;
-  campaign.timeRemaining = ((new Date(Date.parse(campaign.endDate)) - Date.parse(new Date()))/1000/60/60/24);
+  campaign.timeRemaining = (
+    (new Date(Date.parse(campaign.endDate)) - Date.parse(new Date())) / 1000 / 60 / 60 / 24
+  );
 
   if (isEnded(campaignInfo.endDate)) {
     return 'This campaign has ended.';
@@ -33,48 +35,46 @@ const determineTimeLeft = (campaignInfo) => {
 const percentFunded = (fundingNeeded, donationsMade) =>
   Math.round((parseFloat(donationsMade, 2) / parseFloat(fundingNeeded)) * 100);
 
-const CampaignItem = styled(
-  ({ campaign, className }) => (
-    <article className={className}>
-      <Link to={`/campaign/${campaign.campaignId}`}>
-        <div className="campaign-heading">
-          <Heading type='h2' text={campaign.name} />
-          <p className="days">
-            <span className="details">
-              {determineTimeLeft(campaign)}
-            </span>
-          </p>
-        </div>
-        <p className="campaign-description">
-          {campaign.description}
+const CampaignItem = styled(({ campaign, className }) => (
+  <article className={className}>
+    <Link to={`/campaign/${campaign.campaignId}`}>
+      <div className="campaign-heading">
+        <Heading type='h2' text={campaign.name} />
+        <p className="days">
+          <span className="details">
+            {determineTimeLeft(campaign)}
+          </span>
         </p>
-        <div className="main-image">
-          <img src={campaign.image.src} alt={campaign.image.alt} />
-        </div>
-        <div className="progress">
-          <div className="line"><Line color={colors.graphite} /></div>
-          <div className="funded" style={{
-            width: `${percentFunded(campaign.fundingNeeded, campaign.donationsMade) < 100
-              ? percentFunded(campaign.fundingNeeded, campaign.donationsMade)
-              : 100}%`,
-          }}></div>
-        </div>
-        <div className="campaign-details">
-          <p className="funded">
-            <span className="details">
-              {percentFunded(campaign.fundingNeeded, campaign.donationsMade)}% Funded
-            </span>
-          </p>
-          <p className="funding">
-            <span className="details">
-              ${campaign.fundingNeeded} Needed
-            </span>
-          </p>
-        </div>
-      </Link>
-    </article>
-  ),
-)`
+      </div>
+      <p className="campaign-description">
+        {campaign.description}
+      </p>
+      <div className="main-image">
+        <img src={campaign.image.src} alt={campaign.image.alt} />
+      </div>
+      <div className="progress">
+        <div className="line"><Line color={colors.graphite} /></div>
+        <div className="funded" style={{
+          width: `${percentFunded(campaign.fundingNeeded, campaign.donationsMade) < 100
+            ? percentFunded(campaign.fundingNeeded, campaign.donationsMade)
+            : 100}%`,
+        }}></div>
+      </div>
+      <div className="campaign-details">
+        <p className="funded">
+          <span className="details">
+            {percentFunded(campaign.fundingNeeded, campaign.donationsMade)}% Funded
+          </span>
+        </p>
+        <p className="funding">
+          <span className="details">
+            ${campaign.fundingNeeded} Needed
+          </span>
+        </p>
+      </div>
+    </Link>
+  </article>
+))`
 padding-bottom: 0.9375rem;
 padding-top: 0.25rem;
 width: 100%;

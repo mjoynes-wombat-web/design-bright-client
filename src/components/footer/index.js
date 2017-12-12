@@ -10,20 +10,18 @@ import greyBrush from '../../assets/img/grey-brush.png';
 
 // FOOTER COMPONENT
 // Stateless site footer component.
-const Footer = styled(
-  ({ className }) => (
-    <footer className={`${className}${('ontouchstart' in document.documentElement) ? '' : ' no-touch'}`}>
-      <nav>
-        <p><Link to="/advisor">Become an Advisor</Link></p>
-        <p><Link to="/help">Need Help?</Link></p>
-      </nav>
-      <div>
-        <p><span>© 2017 by Simeon Smith</span></p>
-        <p><Link to="/references">Image and Content References</Link></p>
-      </div>
-    </footer>
-  ),
-) `
+const Footer = styled(({ className }) => (
+  <footer className={`${className}${('ontouchstart' in document.documentElement) ? '' : ' no-touch'}`}>
+    <nav>
+      <p><Link to="/advisor">Become an Advisor</Link></p>
+      <p><Link to="/help">Need Help?</Link></p>
+    </nav>
+    <div>
+      <p><span>© 2017 by Simeon Smith</span></p>
+      <p><Link to="/references">Image and Content References</Link></p>
+    </div>
+  </footer>
+))`
   background-image: url(${greyBrush});
   background-position-x: calc(100% - 50%);
   background-size: auto 120%;

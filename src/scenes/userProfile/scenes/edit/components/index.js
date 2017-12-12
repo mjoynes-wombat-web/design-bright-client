@@ -58,9 +58,9 @@ class EditProfile extends React.Component {
   }
 
   onChange(e) {
-    const target = e.target;
+    const { target } = e;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+    const { name } = target;
 
     this.setState(
       {
@@ -107,15 +107,16 @@ class EditProfile extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     if (this.state.valid) {
-      const User = (
-        { email,
-          password,
-          firstName,
-          lastName,
-          address,
-          city,
-          state,
-          zip }) =>
+      const User = ({
+        email,
+        password,
+        firstName,
+        lastName,
+        address,
+        city,
+        state,
+        zip,
+      }) =>
         ({
           userInfo: {
             email,
@@ -142,7 +143,8 @@ class EditProfile extends React.Component {
 
       axios.patch(
         `https://${window.location.hostname}:3000/api/users/edit`,
-        data)
+        data,
+      )
         .then((editUserResults) => {
           this.setState({
             password: '',
@@ -317,11 +319,10 @@ class EditProfile extends React.Component {
                         id="state"
                         required={this.state.userType === 'non-profit'} >
                         <option value="" disabled>Choose Your State</option>
-                        {states.map(
-                          (state, i) =>
-                            <option value={state.abbreviation} key={i}>
-                              {state.name}
-                            </option>)}
+                        {states.map((state, i) =>
+                          <option value={state.abbreviation} key={i}>
+                            {state.name}
+                          </option>)}
                       </select>
                       <label htmlFor="zip" className={`row ${(isNumber(this.state.zip) && numLength(this.state.zip, 5)) ? '' : 'invalid'}${numLength(this.state.zip, 0) ? ' empty' : ''}`}>
                         <div className="small-12 columns">

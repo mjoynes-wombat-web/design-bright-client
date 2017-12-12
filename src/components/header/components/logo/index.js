@@ -11,25 +11,23 @@ import logoSmall from './assets/img/logo-small.png';
 
 import { screenBreaks } from '../../../styleConsts';
 
-const Logo = styled(
-  ({ className }) => (
-    <div className={className}>
-      <Link to="/">
-        <img
-          srcSet={`${logoRetina} 580w,
-                        ${logoLarge} 435w,
-                        ${logoMedium} 290w,
-                        ${logoSmall} 145w`}
-          sizes={`(min-width: ${screenBreaks.large}) 290px,
-                        (min-width: ${screenBreaks.large}) 290px,
-                        (min-with: ${screenBreaks.medium}) 90vw,
-                        (min-with: ${screenBreaks.medium}) 90vw,`}
-          src={logoRetina}
-          alt="Design Bright Logo" />
-      </Link>
-    </div>
-  ),
-)`
+const Logo = styled(({ className }) => (
+  <div className={className}>
+    <Link to="/">
+      <img
+        srcSet={`${logoRetina} 580w,
+                      ${logoLarge} 435w,
+                      ${logoMedium} 290w,
+                      ${logoSmall} 145w`}
+        sizes={`(min-width: ${screenBreaks.large}) 290px,
+                      (min-width: ${screenBreaks.large}) 290px,
+                      (min-with: ${screenBreaks.medium}) 90vw,
+                      (min-with: ${screenBreaks.medium}) 90vw,`}
+        src={logoRetina}
+        alt="Design Bright Logo" />
+    </Link>
+  </div>
+))`
 
 align-self: flex-end;
 max-width: 80%;

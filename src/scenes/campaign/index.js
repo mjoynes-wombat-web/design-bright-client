@@ -16,9 +16,7 @@ const mapStateToProps = state => ({
 // Maps requireAuth action to component props.
 const mapDispatchToProps = dispatch => ({
   onRequireAuth() {
-    return dispatch(
-      requireAuth(),
-    );
+    return dispatch(requireAuth());
   },
 });
 

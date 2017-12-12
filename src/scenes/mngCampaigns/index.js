@@ -10,9 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onRequireAuth() {
-    return dispatch(
-      requireAuth(),
-    );
+    return dispatch(requireAuth());
   },
 });
 

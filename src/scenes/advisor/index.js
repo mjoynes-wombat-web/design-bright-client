@@ -47,14 +47,12 @@ class Advisor extends React.Component {
 
   // Makes changes to state when inputs change.
   onChangeInputs(e) {
-    const target = e.target;
+    const { target } = e;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    const inputs = this.state.inputs;
+    const { name } = target;
+    const { inputs } = this.state;
     inputs[name] = value;
-    this.setState(
-      { inputs, valid: this.validate() },
-    );
+    this.setState({ inputs, valid: this.validate() });
   }
 
   // Checks if the input passed is valid based on the name.
@@ -94,12 +92,13 @@ class Advisor extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     if (this.state.valid) {
-      const newAdvisor = (
-        { email,
-          firstName,
-          lastName,
-          position,
-          yearsExperience }) =>
+      const newAdvisor = ({
+        email,
+        firstName,
+        lastName,
+        position,
+        yearsExperience,
+      }) =>
         (
           {
             email,
@@ -112,7 +111,8 @@ class Advisor extends React.Component {
 
       axios.post(
         `https://${window.location.hostname}:3000/api/advisor/create`,
-        newAdvisor(this.state.inputs))
+        newAdvisor(this.state.inputs),
+      )
         .then((results) => {
           this.setState({
             message: {
@@ -149,7 +149,7 @@ class Advisor extends React.Component {
           });
 
           if (createAdvisorError.statusCode === 409) {
-            const inputs = this.state.inputs;
+            const { inputs } = this.state;
             inputs.email = '';
             this.setState({ inputs });
           }

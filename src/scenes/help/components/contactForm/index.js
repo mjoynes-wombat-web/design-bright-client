@@ -31,14 +31,12 @@ class ContactForm extends React.Component {
   }
 
   onChange(e) {
-    const target = e.target;
+    const { target } = e;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    const inputs = this.state.inputs;
+    const { name } = target;
+    const { inputs } = this.state;
     inputs[name] = value;
-    this.setState(
-      { inputs, valid: this.validate() },
-    );
+    this.setState({ inputs, valid: this.validate() });
   }
 
   currentInputValid(name) {
@@ -71,12 +69,13 @@ class ContactForm extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     if (this.state.valid) {
-      const Message = (
-        { email,
-          firstName,
-          lastName,
-          subject,
-          message }) =>
+      const Message = ({
+        email,
+        firstName,
+        lastName,
+        subject,
+        message,
+      }) =>
         (
           {
             email,
@@ -89,7 +88,8 @@ class ContactForm extends React.Component {
 
       axios.post(
         `https://${window.location.hostname}:3000/api/help`,
-        Message(this.state.inputs))
+        Message(this.state.inputs),
+      )
         .then((results) => {
           this.props.onNewMessage(results.data.message);
           const inputs = {

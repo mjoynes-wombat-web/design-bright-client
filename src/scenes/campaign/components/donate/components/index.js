@@ -106,7 +106,7 @@ class DonateComponent extends React.Component {
       // If it's the donation input format the input.
       if (name === 'donation') {
         value = target.value.replace(/\.|,|[^0-9.]/g, '');
-        if (isNaN(value)) {
+        if (Number.isNaN(value)) {
           value = '000';
         } else if (value.indexOf(0) === 0 && value.length > 3) {
           value = value.slice(1);
@@ -119,7 +119,7 @@ class DonateComponent extends React.Component {
         value = target.type === 'checkbox' ? target.checked : target.value;
       }
 
-      const inputs = this.state.inputs;
+      const { inputs } = this.state;
       inputs[name] = value;
 
       this.setState({ inputs });
@@ -227,15 +227,17 @@ class DonateComponent extends React.Component {
 
   // If the user cancels the confirmation clear the token and inputs.
   cancelConfirmation() {
-    this.setState({
-      token: null,
-      inputs: {
-        donation: '',
-        cardHolder: '',
-        billingZip: '',
+    this.setState(
+      {
+        token: null,
+        inputs: {
+          donation: '',
+          cardHolder: '',
+          billingZip: '',
+        },
       },
-    },
-    this.props.cancelDonation());
+      this.props.cancelDonation(),
+    );
   }
 
   render() {

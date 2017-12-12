@@ -44,14 +44,12 @@ export const logout = () => (dispatch) => {
 };
 
 // REQUIRE AUTHORIZATION
-// Check to confirm that authorization is a valid key and is still valid. 
+// Check to confirm that authorization is a valid key and is still valid.
 export const requireAuth = () => (dispatch, getState) => {
   const currentState = getState();
   const { userAuth } = currentState;
   const authDate = new Date(Date.parse(userAuth.date));
-  const expireDate = new Date(authDate.setSeconds(
-    authDate.getSeconds() + userAuth.expiresIn,
-  ));
+  const expireDate = new Date(authDate.setSeconds(authDate.getSeconds() + userAuth.expiresIn));
   const currentDate = new Date();
   if (Object.keys(userAuth).length > 0) {
     if (userAuth.accessToken) {
@@ -134,7 +132,7 @@ export const getUserInfo = () =>
   };
 
 // LOGIN
-// Uses the email and password to get an access token from Auth0. 
+// Uses the email and password to get an access token from Auth0.
 export const login = (loginInfo, callback) => (dispatch) => {
   const webAuth = new auth0.WebAuth({
     domain: 'designbright.auth0.com',

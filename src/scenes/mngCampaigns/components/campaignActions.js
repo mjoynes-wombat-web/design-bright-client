@@ -2,7 +2,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CampaignActions = ({ name, id, launch, stop, startDate, endDate }) => (
+const CampaignActions = ({
+  name,
+  id,
+  launch,
+  stop,
+  startDate,
+  endDate,
+}) => (
   <article className="small-10 medium-6 columns">
     <div className="row">
       <h2 className="columns small-12">

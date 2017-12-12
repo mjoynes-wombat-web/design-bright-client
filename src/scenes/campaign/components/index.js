@@ -95,7 +95,7 @@ class Campaign extends React.Component {
 
   // Update the campaign donations. This happens when a user donates.
   updateCampaignDonations(newAmount) {
-    const campaignInfo = this.state.campaignInfo;
+    const { campaignInfo } = this.state;
     campaignInfo.donationsMade = newAmount;
     campaignInfo.donationPercentage = (
       (parseFloat(campaignInfo.donationsMade)
@@ -180,30 +180,27 @@ class Campaign extends React.Component {
               <div className="small-12 columns">
                 <section className="campaign-content row">
                   <div className="small-12 medium-6 columns">
-                    {this.state.campaignContent.map(
-                      (content, i) => (
-                        (i < ((this.state.campaignContent.length / 2) - 1))
-                          ? <CampaignBlocks
-                            campaignInfo={this.state.campaignInfo}
-                            buttonAction={this.showDonationModal}
-                            content={content}
-                            isEnded={this.isEnded}
-                            key={i} />
-                          : null
-                      ),
-                    )}
-                  </div>
-                  <div className="small-12 medium-6 columns">
-                    {this.state.campaignContent.map(
-                      (content, i) => ((i > ((this.state.campaignContent.length / 2) - 2))
+                    {this.state.campaignContent.map((content, i) => (
+                      (i < ((this.state.campaignContent.length / 2) - 1))
                         ? <CampaignBlocks
                           campaignInfo={this.state.campaignInfo}
                           buttonAction={this.showDonationModal}
                           content={content}
+                          isEnded={this.isEnded}
                           key={i} />
                         : null
-                      ),
-                    )}
+                    ))}
+                  </div>
+                  <div className="small-12 medium-6 columns">
+                    {this.state.campaignContent.map((content, i) =>
+                      ((i > ((this.state.campaignContent.length / 2) - 2))
+                          ? <CampaignBlocks
+                            campaignInfo={this.state.campaignInfo}
+                            buttonAction={this.showDonationModal}
+                            content={content}
+                            key={i} />
+                          : null
+                        ))}
                   </div>
                   <div className="small-12 columns">
                     <div className="row align-center">

@@ -35,11 +35,7 @@ class ViewProfile extends React.Component {
     document.title = this.props.userInfo.userType === 'non-profit'
       ? `${this.props.userInfo.nonProfitName}'s Profile - Design Bright`
       : `${this.props.userInfo.firstName} ${this.props.userInfo.lastName}'s Profile - Design Bright`;
-    this.props.onGetUserInfo(
-      () => {
-        this.setState({ fetched: true });
-      },
-    );
+    this.props.onGetUserInfo(() => this.setState({ fetched: true }));
   }
 
   componentDidMount() {
@@ -87,7 +83,7 @@ class ViewProfile extends React.Component {
   }
 
   changeProfilePhoto(e) {
-    const target = e.target;
+    const { target } = e;
     const value = target.files[0];
 
     this.setState(

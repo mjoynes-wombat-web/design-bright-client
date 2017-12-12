@@ -16,7 +16,10 @@ const Toolbar = (props) => {
   return (
     <div className="toolbar">
       <div className="row align-justify">
-        <select className="small-12 medium-5 columns" onChange={props.onChangeFormat} value={selectValue}>
+        <select
+          className="small-12 medium-5 columns"
+          onChange={props.onChangeFormat}
+          value={selectValue}>
           <option value="paragraph">Normal</option>
           <option value="header">Header</option>
         </select>

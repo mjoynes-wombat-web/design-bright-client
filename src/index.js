@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import smartlookClient from 'smartlook-client';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 
 import store from './store';
 import App from './App';
@@ -26,11 +26,13 @@ const runSmartLook = () => {
 
 runSmartLook();
 
-render((
-  <Provider store={store}>
-    <BrowserRouter>
-      <App onComponentDidMount={() => { routeRefresh(); }}/>
-    </BrowserRouter>
-  </Provider>
-), document.getElementById('root'));
-registerServiceWorker();
+render(
+  (
+    <Provider store={store}>
+      <BrowserRouter>
+        <App onComponentDidMount={() => { routeRefresh(); }}/>
+      </BrowserRouter>
+    </Provider>
+  ), document.getElementById('root'),
+);
+// registerServiceWorker();

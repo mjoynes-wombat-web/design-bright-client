@@ -55,7 +55,7 @@ class MngCampaigns extends React.Component {
   }
 
   launchCampaign(campaignId) {
-    const accessToken = this.props.userAuth.accessToken;
+    const { accessToken } = this.props.userAuth;
     axios.patch(
       `https://${window.location.hostname}:3000/api/nonprofits/campaigns/launch/${campaignId}`,
       { accessToken },
@@ -73,7 +73,7 @@ class MngCampaigns extends React.Component {
           },
         });
         if (startCampaignResults.status === 200) {
-          const campaigns = this.state.campaigns;
+          const { campaigns } = this.state;
           const campaignPosition = campaigns
             .map(campaign => campaign.campaignId)
             .indexOf(campaignId);
@@ -98,7 +98,7 @@ class MngCampaigns extends React.Component {
   }
 
   stopConfirm(campaignId) {
-    const accessToken = this.props.userAuth.accessToken;
+    const { accessToken } = this.props.userAuth;
     axios.patch(
       `https://${window.location.hostname}:3000/api/nonprofits/campaigns/stop/${campaignId}`,
       { accessToken },
@@ -116,7 +116,7 @@ class MngCampaigns extends React.Component {
           },
         });
         if (stopCampaignResults.status === 200) {
-          const campaigns = this.state.campaigns;
+          const { campaigns } = this.state;
           const campaignPosition = campaigns
             .map(campaign => campaign.campaignId)
             .indexOf(campaignId);
@@ -148,7 +148,7 @@ class MngCampaigns extends React.Component {
 
   stopCampaign(campaignId) {
     document.body.style.overflow = 'hidden';
-    const campaigns = this.state.campaigns;
+    const { campaigns } = this.state;
     const campaignPosition = campaigns
       .map(campaign => campaign.campaignId)
       .indexOf(campaignId);
@@ -219,19 +219,18 @@ class MngCampaigns extends React.Component {
                     </div>
                   </div>
                 </div>
-                {this.state.campaigns.map(
-                  (campaign, i) => <CampaignActions
+                {this.state.campaigns.map((campaign, i) => <CampaignActions
                     name={campaign.name}
                     id={campaign.campaignId}
                     key={i}
                     launch={this.launchCampaign}
                     stop={this.stopCampaign}
                     startDate={campaign.startDate}
-                    endDate={campaign.endDate} />,
-                )}
+                    endDate={campaign.endDate} />)}
                 <div className="small-12 columns">
                   <div className="row  align-center">
-                    <div className=" small-11 medium-10 large-8 hide-for-large columns button primary">
+                    <div
+                      className="small-11 medium-10 large-8 hide-for-large columns button primary">
                       <Link to="/campaign/create">
                         <span className="icon"></span>
                         <span className="text">Create Campaign</span>

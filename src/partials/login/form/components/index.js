@@ -38,9 +38,8 @@ class LoginForm extends React.Component {
   // ON INPUTS CHANGE
   // Change the state when the inputs change.
   onChangeInputs(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
+    const { target } = event;
+    const { value, name } = target;
 
     this.setState({ [name]: value });
   }

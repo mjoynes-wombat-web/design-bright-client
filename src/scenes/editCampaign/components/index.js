@@ -79,15 +79,14 @@ class EditCampaign extends React.Component {
 
           this.setState({ campaignId: editCampaignId });
 
-          if (this.state.campaigns.find(
-            campaign => campaign.campaignId === parseInt(editCampaignId, 10))
+          if (this.state.campaigns.find(campaign =>
+            campaign.campaignId === parseInt(editCampaignId, 10))
           ) {
             this.setState({ hasCampaign: true });
 
             axios.get(`https://${window.location.hostname}:3000/api/campaigns/${editCampaignId}?accessToken=${this.props.userAuth.accessToken}`)
               .then((campaignResults) => {
-                const { campaignContent } = campaignResults.data.data;
-                const campaignInfo = campaignResults.data.data.campaignInfo;
+                const { campaignInfo, campaignContent } = campaignResults.data.data;
                 campaignInfo.fundingNeeded = parseFloat(campaignInfo.fundingNeeded);
 
                 document.title = `Edit ${campaignInfo.name} Campaign - Design Bright`;
@@ -120,8 +119,8 @@ class EditCampaign extends React.Component {
   }
 
   onChange(e) {
-    const target = e.target;
-    const name = target.name;
+    const { target } = e;
+    const { name } = target;
     let value;
 
     if (name === 'fundingNeeded') {
@@ -133,7 +132,7 @@ class EditCampaign extends React.Component {
       value = target.type === 'checkbox' ? target.checked : target.value;
     }
 
-    const campaignInfo = this.state.campaignInfo;
+    const { campaignInfo } = this.state;
     campaignInfo[name] = value;
     this.setState(
       {
@@ -152,7 +151,7 @@ class EditCampaign extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const accessToken = this.props.userAuth.accessToken;
+    const { accessToken } = this.props.userAuth;
     if (this.state.campaignContent.length > 0) {
       axios.patch(
         `https://${window.location.hostname}:3000/api/campaigns/edit/${this.state.campaignInfo.campaignId}`,
@@ -208,7 +207,7 @@ class EditCampaign extends React.Component {
         .catch((createCampaignErr) => {
           window.scrollTo(0, 0);
           if (createCampaignErr.response.data.statusCode === 409) {
-            const campaignInfo = this.state.campaignInfo;
+            const { campaignInfo } = this.state;
             campaignInfo.name = '';
             this.setState({
               campaignInfo,
@@ -313,9 +312,7 @@ class EditCampaign extends React.Component {
                             <p className="info">${this.state.campaignInfo.fundingNeeded}</p>
                             <p className="title">Start Date:</p>
                             <p className="info">
-                              {(new Date(
-                                Date.parse(this.state.campaignInfo.startDate),
-                              ))
+                              {(new Date(Date.parse(this.state.campaignInfo.startDate)))
                                 .toLocaleDateString()}
                             </p>
                             {this.state.campaignInfo.endDate
@@ -323,9 +320,7 @@ class EditCampaign extends React.Component {
                                 <div>
                                   <p className="title">End Date:</p>
                                   <p className="info">
-                                    {(new Date(
-                                      Date.parse(this.state.campaignInfo.endDate),
-                                    ))
+                                    {(new Date(Date.parse(this.state.campaignInfo.endDate)))
                                       .toLocaleDateString()}
                                   </p>
                                 </div>

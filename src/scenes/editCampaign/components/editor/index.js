@@ -251,7 +251,7 @@ class CampaignEditor extends React.Component {
   }
 
   onChangeInput(e) {
-    const target = e.target;
+    const { target } = e;
     const value = () => {
       if (target.type === 'checkbox') {
         return target.checked;
@@ -261,7 +261,7 @@ class CampaignEditor extends React.Component {
       return target.value;
     };
 
-    const name = target.name;
+    const { name } = target;
 
     this.setState({ [name]: value() });
   }
@@ -339,19 +339,21 @@ class CampaignEditor extends React.Component {
       })
       .apply();
 
-    this.setState({
-      heldEditorState: {},
-      showAddImage: false,
-      newSrc: '',
-      newAlt: '',
-      newImageType: 'main',
-    },
-      this.onChangeEditor(newEditorState));
+    this.setState(
+      {
+        heldEditorState: {},
+        showAddImage: false,
+        newSrc: '',
+        newAlt: '',
+        newImageType: 'main',
+      },
+      this.onChangeEditor(newEditorState),
+    );
   }
 
   onChangeFormat(e) {
     const type = e.target.value;
-    const editorState = this.state.editorState;
+    const { editorState } = this.state;
     const transform = editorState.transform();
 
     if (this.state.editorState.focusBlock.type !== 'image') {
@@ -472,9 +474,7 @@ class CampaignEditor extends React.Component {
     const { editorState } = this.state;
 
     const transform = editorState.transform();
-    const isHeader = editorState.blocks.some(
-      block => block.type === 'header',
-    );
+    const isHeader = editorState.blocks.some(block => block.type === 'header');
     editorState.marks.forEach(
       mark => (mark.type !== type ? transform.removeMark(mark) : null),
       this,
@@ -495,9 +495,8 @@ class CampaignEditor extends React.Component {
 
     // Handle the extra wrapping required for list buttons.
     const isList = this.isBlock('listItem');
-    const isType = editorState.blocks.some(
-      block => !!newEditorState.document.getClosest(block.key, parent => parent.type === type),
-    );
+    const isType = editorState.blocks.some(block =>
+      !!newEditorState.document.getClosest(block.key, parent => parent.type === type));
 
     if (isList && isType) {
       newEditorState = newEditorState.transform()

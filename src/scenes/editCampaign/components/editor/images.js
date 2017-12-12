@@ -21,7 +21,13 @@ const RightImg = props =>
   (<img src={props.src} alt={props.alt} className={`right ${props.className}`} { ...props.attributes }/>);
 
 const Images = (props) => {
-  const { src, className, imageType, attributes, alt } = props;
+  const {
+    src,
+    className,
+    imageType,
+    attributes,
+    alt,
+  } = props;
 
   if (imageType === 'main') {
     return <MainImg src={src} alt={alt} className={className} attributes={attributes} />;

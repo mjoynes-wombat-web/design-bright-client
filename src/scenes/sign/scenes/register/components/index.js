@@ -59,22 +59,20 @@ class Register extends React.Component {
   }
 
   onChange(e) {
-    const target = e.target;
+    const { target } = e;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    const inputs = this.state.inputs;
+    const { name } = target;
+    const { inputs } = this.state;
     inputs[name] = value;
 
-    this.setState(
-      {
-        inputs,
-        error: {
-          type: '',
-          message: '',
-        },
-        valid: this.validate(),
+    this.setState({
+      inputs,
+      error: {
+        type: '',
+        message: '',
       },
-    );
+      valid: this.validate(),
+    });
   }
 
   currentInputValid(name) {
@@ -126,19 +124,20 @@ class Register extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     if (this.state.valid) {
-      const User = (
-        { email,
-          password,
-          firstName,
-          lastName,
-          userType,
-          position,
-          nonProfitName,
-          ein,
-          address,
-          city,
-          state,
-          zip }) => ({
+      const User = ({
+        email,
+        password,
+        firstName,
+        lastName,
+        userType,
+        position,
+        nonProfitName,
+        ein,
+        address,
+        city,
+        state,
+        zip,
+      }) => ({
         userInfo: {
           email,
           password,
@@ -164,7 +163,8 @@ class Register extends React.Component {
 
       axios.post(
         `https://${window.location.hostname}:3000/api/users/create`,
-        User(this.state.inputs))
+        User(this.state.inputs),
+      )
         .then((results) => {
           const createUserResults = results.data;
           this.setState({
@@ -186,7 +186,7 @@ class Register extends React.Component {
           if (createUserError.message === 'The user already exists.') {
             createUserError.message = `${createUserError.data.email.charAt(0).toUpperCase()}${createUserError.data.email.slice(1)} is already in use.`;
           }
-          const inputs = this.state.inputs;
+          const { inputs } = this.state;
           inputs.email = '';
           this.setState({
             inputs,
@@ -409,11 +409,10 @@ class Register extends React.Component {
                     id="state"
                     required={this.state.inputs.userType === 'non-profit'} >
                     <option value="" disabled>Choose Your State</option>
-                    {states.map(
-                      (state, i) =>
-                        <option value={state.abbreviation} key={i}>
-                          {state.name}
-                        </option>)}
+                    {states.map((state, i) =>
+                      <option value={state.abbreviation} key={i}>
+                        {state.name}
+                      </option>)}
                   </select>
                   <label htmlFor="zip" className={`row ${(this.currentInputValid('zip') || this.state.inputs.zip.length === 0) ? '' : 'invalid'}${numLength(this.state.inputs.zip, 0) ? ' empty' : ''}`}>
                     <div className="small-12 columns">

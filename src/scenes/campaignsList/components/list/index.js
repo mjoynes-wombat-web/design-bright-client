@@ -28,45 +28,35 @@ class List extends React.Component {
         const pageLinks = () => {
           const links = [];
           if (page > 1) {
-            links.push(
-              {
-                link: `/campaigns/${this.props.view}/${parseInt(page, 10) - 1}${window.location.search}`,
-                type: 'prev',
-              },
-            );
+            links.push({
+              link: `/campaigns/${this.props.view}/${parseInt(page, 10) - 1}${window.location.search}`,
+              type: 'prev',
+            });
           } else {
-            links.push(
-              {
-                link: '',
-                type: 'prev',
-              },
-            );
+            links.push({
+              link: '',
+              type: 'prev',
+            });
           }
 
           for (let i = 0; i < pages; i += 1) {
-            links.push(
-              {
-                link: `/campaigns/${this.props.view}/${i + 1}${window.location.search}`,
-                type: 'page',
-                page: i + 1,
-              },
-            );
+            links.push({
+              link: `/campaigns/${this.props.view}/${i + 1}${window.location.search}`,
+              type: 'page',
+              page: i + 1,
+            });
           }
 
           if (page < pages) {
-            links.push(
-              {
-                link: `/campaigns/${this.props.view}/${parseInt(page, 10) + 1}${window.location.search}`,
-                type: 'next',
-              },
-            );
+            links.push({
+              link: `/campaigns/${this.props.view}/${parseInt(page, 10) + 1}${window.location.search}`,
+              type: 'next',
+            });
           } else {
-            links.push(
-              {
-                link: '',
-                type: 'next',
-              },
-            );
+            links.push({
+              link: '',
+              type: 'next',
+            });
           }
           return links;
         };
@@ -94,10 +84,8 @@ class List extends React.Component {
       }
       return (
         <section id="campaignsList">
-          {this.state.campaigns.map(
-            (campaign, i) => <CampaignItem
-              campaign={campaign} key={i} />,
-          )}
+          {this.state.campaigns.map((campaign, i) => <CampaignItem
+              campaign={campaign} key={i} />)}
           <Pagination
             pages={this.state.pages}
             page={this.state.page} />

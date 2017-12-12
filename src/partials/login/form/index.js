@@ -18,9 +18,7 @@ const mapStateToProps = state => ({
 // Maps the redux action for login to props.
 const mapDispatchToProps = dispatch => ({
   onLogin(loginInfo, callback) {
-    dispatch(
-      login(loginInfo, callback),
-    );
+    dispatch(login(loginInfo, callback));
   },
 });
 

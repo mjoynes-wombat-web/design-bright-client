@@ -10,14 +10,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onGetUserInfo(callback) {
-    dispatch(
-      getUserInfo(callback),
-    );
+    dispatch(getUserInfo(callback));
   },
   onRequireAuth() {
-    return dispatch(
-      requireAuth(),
-    );
+    return dispatch(requireAuth());
   },
 });
 

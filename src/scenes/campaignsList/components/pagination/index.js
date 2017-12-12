@@ -6,7 +6,7 @@ import './scss/style.scss';
 
 import colors from '../../../../consts/colors.scss';
 
-import { Angle } from '../../../../components/svgs/icons';
+import { AngleIcon } from '../../../../components/svgs/icons';
 
 const Pagination = ({ pages, page }) => (
   <nav id="campaignsPgs">
@@ -25,7 +25,10 @@ const Pagination = ({ pages, page }) => (
                 to={pageLink.link}
                 rel={pageLink.type}
                 key={i}>
-                <Angle color={colors.lightHydrangea} colorHover={colors.blueHydrangea}rotate='left' />
+                <AngleIcon
+                  color={colors.lightHydrangea}
+                  colorHover={colors.blueHydrangea}
+                  rotate='left' />
               </Link>
             );
           case 'next':
@@ -41,7 +44,10 @@ const Pagination = ({ pages, page }) => (
                 to={pageLink.link}
                 rel={pageLink.type}
                 key={i}>
-                <Angle color={colors.lightHydrangea} colorHover={colors.blueHydrangea}rotate='right' />
+                <AngleIcon
+                  color={colors.lightHydrangea}
+                  colorHover={colors.blueHydrangea}
+                  rotate='right' />
               </Link>
             );
           case 'page':

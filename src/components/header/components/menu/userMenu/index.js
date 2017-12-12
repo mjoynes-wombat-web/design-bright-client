@@ -18,14 +18,10 @@ const mapStateToProps = state => ({
 // Map the logout and require auth Redux store action to the component props.
 const mapDispatchToProps = dispatch => ({
   onLogout() {
-    dispatch(
-      logout(),
-    );
+    dispatch(logout());
   },
   onRequireAuth() {
-    return dispatch(
-      requireAuth(),
-    );
+    return dispatch(requireAuth());
   },
 });
 
