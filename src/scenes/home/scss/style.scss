@@ -37,6 +37,10 @@
         background-size: cover;
         z-index:200;
         transform: rotate(180deg);
+
+        svg {
+          height: 0.40625rem;
+        }
       }
 
       div.white-block {

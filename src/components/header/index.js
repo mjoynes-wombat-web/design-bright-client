@@ -17,7 +17,7 @@ const Header = styled(({ className }) => (
     <Logo />
     <Menu />
     <div className="orange-line">
-      <Line color={colors.mauiOrange} scale={4} />
+      <Line color={colors.mauiOrange} scale={3} />
     </div>
   </header>
 ))`
@@ -35,15 +35,20 @@ justify-content: space-between;
 .orange-line {
   background-position-x: 50%;
   height: 1.125rem;
+  overflow: hidden;
   position: absolute;
   width: 100%;
-  bottom: -0.45rem;
+  bottom: -0.6rem;
   background-repeat: no-repeat;
   background-size: cover;
   left: 0;
   pointer-events: none;
   display: flex;
   align-items: center;
+
+  svg {
+    height: 0.40625rem;
+  }
 }
 `;
 

@@ -17,7 +17,7 @@ const Home = () => {
       <section id='mainImage'>
         <img src={sunsetMarsh} alt='Sunset over the marsh.' />
         <div className='orange-line'>
-          <Line color={colors.mauiOrange} scale={4} />
+          <Line color={colors.mauiOrange} scale={3} />
         </div>
         <div className='white-block'></div>
       </section>

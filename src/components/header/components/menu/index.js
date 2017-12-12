@@ -46,10 +46,10 @@ const onClickMenu = (e, id) => {
 const Menu = styled(({ className }) => (
   <nav id='mainMenu' className={className}>
     <ul
-      onMouseLeave={() => mouseLeaveMenu('mainMenu')}
-      onClick={e => onClickMenu(e, 'mainMenu')}
-    >
-      <MenuIcon mouseOverMenu={mouseOverMenu} />
+      onMouseLeave={() => mouseLeaveMenu('mainMenu')}>
+      <MenuIcon
+        onMouseOver={e => mouseOverMenu(e, 'mainMenu')}
+        onClick={e => onClickMenu(e, 'mainMenu')} />
       <div>
         <li><MenuItem linkURL="/campaigns/browse" linkName="Explore" /></li>
         <li><Search /></li>

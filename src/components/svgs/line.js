@@ -11,7 +11,7 @@ const Line = styled(({ className, id }) => (
     viewBox="0 0 797.6 4.61"
     preserveAspectRatio="none"
     width="100%"
-    height="4.61">
+    height="3">
     <title>Line</title>
     <g id="Assets">
       <polygon className="elements" points="797.6 1.41 797.22 1.31 796.25 1.58 797.6 1.41" />
