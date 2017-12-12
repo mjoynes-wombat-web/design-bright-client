@@ -1,0 +1,3 @@
+Profile:
+  ✔ Fix deleted user logout error. @done (8/22/2017, 8:06:48 PM)
+  ✔ Fix the profile image not loading on initial login. @critical @done (2017-9-9 21:12:14)

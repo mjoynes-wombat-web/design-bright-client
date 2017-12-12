@@ -1,0 +1,15 @@
+Optimzation:
+  ☐ Optimize images. @high
+  ☐ Optimize page speed with google page speed. @high
+  ☐ Use Gatsby for prerendering and auth-caching. @low
+
+Usability:
+  ☐ Link underline and heading underline aren't different enough. @low
+  ☐ Work on color and background contrast. @low
+
+Maintainabilty:
+  ☐ Comment code. Continue at campaign list. @low
+  ☐ Componetize better. @critical
+
+  Forms: 
+    ☐ Componetize the forms. @low 

@@ -1,0 +1,11 @@
+Data Integrity:
+  ☐ Create a delete non-profit fallback. Check creation date. @low
+
+Usability:
+  ☐ Move form to single column. @high
+  ☐ Add additional content to entice user to register. @high
+  ☐ Limit width of inputs. Possibly based on length of expected input. @high
+  ☐ Redirect after register. @low
+
+Security:
+  ☐ Require stronger passwords. @low

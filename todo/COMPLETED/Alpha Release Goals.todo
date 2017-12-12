@@ -1,0 +1,22 @@
+Edit Campaigns:
+  ✔ Create edit campaigns functionality. @critical @done (2017-9-9 09:46:35)
+  ✔ Create server feedback handling. @high @done (2017-9-9 12:10:17)
+  ✔ Only allow content to change on campaigns that have started. @high @done (2017-9-9 10:31:41)
+  ✔ Disable save button after save and re-enabled after changes. @low @done (2017-12-11 21:13:31)
+
+Campagins:
+  ✔ Create preview page. @critical @done (2017-9-8 21:59:36)
+  ✔ Create functionality that allows links. @critical @done (2017-9-8 15:49:44)
+
+Profile:
+  ✔ Create profile photo upload. @high @done (2017-9-9 14:17:08)
+
+Manage Campaigns: 
+  ✔ Create stop campaign warning. @high @done (2017-9-9 17:23:11)
+  ✔ Create create campaign button. @high @done (2017-9-9 11:56:32)
+
+Messages:
+  ✔ Refactor messages. @high @done (2017-12-11 21:13:33)
+
+Menu:
+  ✔ Put profile photo in the user icon. @high @done (2017-9-9 18:18:44)

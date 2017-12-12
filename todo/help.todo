@@ -1,0 +1,5 @@
+Administration:
+  ☐ Put support request into database once site scales. @low
+
+Security:
+  ☐ Use secure email and turn off less secure apps on https://myaccount.google.com/lesssecureapps?rfn=27&rfnc=1&eid=-4111340286317511965&et=0&asae=2&pli=1 @low

@@ -1,0 +1,95 @@
+Donation:
+  ✔ Create Donation functionality. @critical @done (2017-9-10 22:26:21)
+Browse:
+  ✔ Create Browse campaigns page. @critical @done (2017-9-15 11:31:53)
+
+Search:
+  ✔ Create Search campaigns page. @high @done (2017-9-15 11:31:54)
+  ☐ Add ascending and descending. @low
+
+Advisor:
+  ✔ Create Become Advisor page. @high @done (2017-9-15 13:26:31)
+
+Help:
+  ✔ Create Help page. @high @done (2017-9-15 17:11:34)
+  ☐ Put support request into database once site scales. @low
+  ☐ Use secure email and turn off less secure apps on https://myaccount.google.com/lesssecureapps?rfn=27&rfnc=1&eid=-4111340286317511965&et=0&asae=2&pli=1 @low
+
+Message:
+  ✔ Refactor Message Component @high @done (2017-9-16 13:36:07)
+  ✔ Create more robust messaging @high @done (2017-9-16 13:36:10)
+  ✔ Determine which error type should show in redux and be global. @high @done (2017-9-16 13:36:15)
+
+Campaign:
+  ✔ Require login for donation. @high @done (2017-9-17 19:31:32)
+
+Images:
+  ☐ Optimize images. @high
+
+General:
+  ☐ Optimize page speed with google page speed. @high
+  ☐ Link underline and heading underline aren't different enough. @low
+  ☐ Use Gatsby for prerendering and auth-caching. @low
+  ☐ Work on color and background contrast. @low
+  ✔ Setup modal for advisor, and login. @high @done (2017-9-17 19:32:27)
+  ✔ Reorganize folder structure. @high @done (2017-9-19 22:03:23)
+  ☐ Optimize code. @low 
+  ☐ Comment code. Continue at campaign list. @high
+  ✔ Add references for images. @critical @done (2017-9-20 19:35:45)
+
+Edit Campaigns:
+  ✔ Fix campaign image edit issue. @critical @done (2017-9-10 23:56:08)
+  ✔ Fix image select radial issue. @critical @done (2017-9-15 14:42:36)
+  ✔ FIx campaign edit page display nothing issue when not logged in. @critical @done (2017-9-15 14:33:16)
+  ✔ Disable save button after save and re-enabled after changes. @low @done (2017-9-16 13:37:10)
+  ✔ Add Bold, Italic, Underlined, and Lists to the edit campaign functionality. @high @done (2017-9-18 22:24:55)
+  ☐ Add Movies to edit campaign functionality. @low
+  ✔ Fix no connection campaign successfully saved message. @critical @done (2017-9-18 22:32:17)
+  ☐ Create delete campaign fallback if error. @low
+  ☐ Require one paragraph and one main image. @low
+
+Manage Campaigns:
+  ☐ Create search and pagination. @low
+
+Login:
+  ☐ Create forgotten password functionality. @low
+  ☐ Require email verification. @low
+
+Register:
+  ☐ Create a delete non-profit fallback. Check creation date. @low
+  ☐ Move form to single column. @low
+  ☐ Add additional content to entice user to register. @low
+  ☐ Limit width of inputs. Possibly based on length of expected input. @low
+  ☐ Redirect after register. @low
+  ☐ Require stronger passwords. @low
+
+Profile:
+  View:
+    ☐ Allow more than one image to uploaded without a refresh. @high
+  Edit:
+    ✔ Create more robust error handling for the edit functionality. @high @done (2017-9-17 15:27:24)
+  
+Home:
+  ✔ Change the width of the text to 45 to 75 chars. @low @done (2017-12-11 21:22:09)
+  ☐ Create slide show for campaigns. @high
+
+Header:
+  ✔ Animate the search box transition.@low @done (2017-12-11 21:22:07)
+
+Footer:
+  ✔ Fix vh issue with sticky footer on mobile. @low @done (2017-9-10 11:28:31)
+
+Forms: 
+  ☐ Componetize the forms. @low 
+
+CSS:
+  ✔ Switch CSS loader. Autoprefixer-loader is depreciated.@low @done (2017-12-11 21:22:27)
+
+Campaign Page:
+  ☐ Look into implementing symantic urls. @low
+
+References:
+  ☐ Clean up references page design. @low
+
+Terms and Conditions:
+  ☐ Create terms and conditions page. @low

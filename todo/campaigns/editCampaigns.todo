@@ -1,0 +1,9 @@
+Added Features:
+  ☐ Add Movies to edit campaign functionality. @low
+
+Data Integrity:
+  ☐ Create delete campaign fallback if error. @high
+  ☐ Require one paragraph and one main image. @high
+
+Usability:
+  ☐ Make more robust errors from the database actions. @high

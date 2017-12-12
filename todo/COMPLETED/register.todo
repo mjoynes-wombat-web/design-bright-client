@@ -1,0 +1,7 @@
+Register:
+  ☐ Create a delete non-profit fallback. Check creation date. @high 
+  ☐ Move form to single column. @high
+  ☐ Add additional content to entice user to register. @high
+  ☐ Limit width of inputs. Possibly based on length of expected input. @high
+  ✔ Change user type to radio instead of checkbox to follow convention. @high @done (9/7/2017, 9:08:35 PM)
+  ✔ Email validation messes up input change when trying to input in the middle. Fix and check other validated fields. @critical @done (2017-9-9 23:17:31)

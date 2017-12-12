@@ -1,0 +1,6 @@
+Campaign Fetch:
+  ✔ Require auth to fetch campaign that hasn't started. @high @done (2017-9-8 22:02:21)
+
+Campaigns:
+  ✔ Handle various status code error messages. @high @done (2017-9-8 22:02:28)
+  ☐ Make more robust errors from the database actions. @high
