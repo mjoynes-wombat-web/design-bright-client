@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import smartlookClient from 'smartlook-client';
-// import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 import store from './store';
 import App from './App';
@@ -35,4 +35,4 @@ render(
     </Provider>
   ), document.getElementById('root'),
 );
-// registerServiceWorker();
+registerServiceWorker();
