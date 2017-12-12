@@ -1,0 +1,228 @@
+$light-graphite: #999999;
+$bright-graphite: lighten($light-graphite, 20);
+$action-green: #75CC00;
+$error-red: #ff5800;
+$blue-hydrangea: #4097ff;
+$light-hydrangea: lighten($blue-hydrangea,14.9%);;
+
+$medium-break: 40em;
+$large-break: 64em;
+$xlarge-break: 90em;
+$xxlarge-break: 120em;
+
+#mngCampaigns {
+  .main-heading {
+    .button {
+      &.primary {
+        margin: 0;
+      }
+    }
+  }
+
+  .button {
+    &.primary {
+      padding: 0;
+      text-align: center;
+
+      a {
+        width: 100%;
+        display: inline-block;
+        color: white;
+        font-weight: normal;
+        padding: 0.875rem 1.25rem 1.125rem 1.25rem;
+        border: none;
+
+        span {
+          &.icon {
+            padding: 0rem 0.375rem 0 0;
+            font-family: 'font-awesome-light';
+            font-size: 1.375rem;
+            text-shadow: 0 0 0.5rem #4097ff;
+            display: inline-block;
+            line-height: 1.625rem;
+            vertical-align: middle;
+
+            @media screen and (min-width: $medium-break) {
+              font-size: 1.625rem;
+            }
+          }
+          &.text{
+            display: inline-block;
+            line-height: 1.625rem;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+  article {
+    position: relative;
+
+    &:not(:last-of-type) {
+      padding-bottom: 1.5rem;
+    }
+
+    h1 {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      margin-top: 1.25rem;
+      @media screen and (min-width: $medium-break) {
+        font-size: 1.3rem;
+        margin-top: 1.75rem;
+      }
+
+      @media screen and (min-width: $large-break) {
+        font-size: 1.375rem;
+      }
+    }
+
+    .preview {
+      margin-bottom: 0.5rem;
+      a {
+        border: none;
+        display: inline-block;
+        span {
+          display: inline-block;
+          line-height: initial;
+          vertical-align: middle;
+          &.icon{
+            font-size: 1.125rem;
+            padding: 0.2rem 0.275rem 0 0.1rem;
+            font-family: 'font-awesome-light';
+          }
+
+          &.text {
+            border-bottom: 0.0625rem solid #8cc0ff;
+          }
+        }
+      }
+    }
+
+    hr {
+      position: absolute;
+      bottom: 0;
+      width: calc(100% - 1.875rem);
+      
+      @media screen and (min-width: $medium-break) {
+        margin-top: 1.875rem;
+      }
+    }
+
+    &:last-of-type {
+      hr {
+        display: none;
+      }
+    }
+    @media screen and (min-width: $medium-break) {
+      &:nth-last-of-type(2):not(:nth-child(odd)), &:nth-last-of-type(2):nth-child(2) {
+        hr {
+          display: none;
+        }
+      }
+    }
+
+    .campaign-action{
+      a, button {
+        text-align: left;
+        margin: 0.375rem 0 0 0;
+        border: none;
+        display: inline-block;
+        padding: 0.125rem 0.125rem 0.25rem 0.125rem;
+        width: auto;
+
+        span {
+          vertical-align: middle;
+
+          &.icon {
+            font-family: 'font-awesome-light';
+            font-size: 1.25rem;
+            display: inline-block;
+            padding: 0.2rem 0.375rem 0 0;
+            line-height: initial;
+
+            @media screen and (min-width: $medium-break) {
+              font-size: 1.5rem;
+            }
+          }
+    
+          &.text {
+            font-size: 1rem;
+            line-height: initial;
+
+            @media screen and (min-width: $medium-break) {
+              font-size: 1.125rem;
+            }
+          }
+        }
+      }
+
+      &.disabled {
+        display: none;
+      }
+
+      &.launch button {
+        color: $action-green;
+
+        span.text {
+          border-bottom: 0.0625rem solid $action-green;
+        }
+
+        &:hover {
+          color: darken($action-green, 8%);
+
+          span.text {
+            border-color: darken($action-green, 8%);
+          }
+        }
+      }
+
+      &.stop button {
+        color: $error-red;
+
+        span.text {
+          border-bottom: 0.0625rem solid $error-red;
+        }
+
+        &:hover {
+          color: darken(saturate($error-red, 10%), 10%);
+
+          span.text {
+            border-color: darken(saturate($error-red, 10%), 10%);
+          }
+        }
+
+        &:disabled {
+          span {
+            &.icon, &.text {
+              color: $bright-graphite;
+              border-color: $bright-graphite;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+
+      &.edit a {
+        color: $light-hydrangea;
+
+        span.text {
+          border-bottom: 0.0625rem solid $light-hydrangea;
+        }
+
+        span.icon {
+          padding: 0.2rem 0.275rem 0 0.1rem;
+        }
+
+        &:hover {
+          color: $blue-hydrangea;
+
+          span.text {
+            border-color: $blue-hydrangea;
+          }
+        }
+      }
+    }
+  }
+}

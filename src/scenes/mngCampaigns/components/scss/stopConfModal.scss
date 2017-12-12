@@ -1,0 +1,19 @@
+@import '../../../../consts/colors.scss';
+@import '../../../../consts/screen-breaks.scss';
+
+#stopConf {
+  padding-top: 0.75rem;
+  p {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+
+    @media screen and (min-width: $medium-break){
+      font-size: 1.25rem;
+      line-height: 1.625rem;
+    }
+  }
+
+  button.primary {
+    margin-top: 1.75rem;
+  }
+}

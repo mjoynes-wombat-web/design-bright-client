@@ -1,0 +1,13 @@
+$small-break: 26em;
+$medium-break: 40em;
+$large-break: 64em;
+$xlarge-break: 90em;
+$xxlarge-break: 120em;
+
+:export {
+  small: $small-break;
+  medium: $medium-break;
+  large: $large-break;
+  xlarge: $xlarge-break;
+  xxlarge: $xxlarge-break;
+}

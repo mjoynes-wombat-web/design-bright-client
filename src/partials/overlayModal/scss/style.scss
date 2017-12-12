@@ -1,0 +1,43 @@
+@import '../../../consts/colors.scss';
+@import '../../../consts/screen-breaks.scss';
+
+#overlayModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  margin: 0 auto;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  div.background {
+    padding: 1rem 1rem 1.625rem 1rem;
+    width: 100%;
+    position: relative;
+    background-color: white;
+    max-height: 100%;
+    overflow: scroll;
+
+    @media screen and (min-width: $medium-break) {
+      padding: 3rem;
+    }
+    div.close {
+      text-align: right;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      line-height: initial;
+      font-size: 1.625rem;
+      font-family: 'font-awesome-light';
+      color: $error-red;
+      cursor: pointer;
+
+      span:hover {
+        color: darken(saturate($error-red, 10%), 10%);
+      }
+    }
+  }
+}

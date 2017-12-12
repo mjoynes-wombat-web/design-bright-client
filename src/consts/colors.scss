@@ -1,0 +1,21 @@
+$light-graphite: #808080;
+$maui-orange: #ffab20;
+$graphite: #404040;
+$dark-graphite: #101010;
+$bright-graphite: #999999;
+$error-red: #ff5800;
+$blue-hydrangea: #3694ff;
+$dark-blue-hydrangea: #0063db;
+$light-hydrangea: #57a8ff;
+
+:export {
+  lightGraphite: $light-graphite;
+  mauiOrange: $maui-orange;
+  graphite: $graphite;
+  darkGraphite: $dark-graphite;
+  brightGraphite: $bright-graphite;
+  errorRed: $error-red;
+  blueHydrangea: $blue-hydrangea;
+  darkBlueHydrangea: $dark-blue-hydrangea;
+  lightHydrangea: $light-hydrangea;
+}

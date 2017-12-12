@@ -1,0 +1,37 @@
+@import '../../../../../consts/colors.scss';
+@import '../../../../../consts/screen-breaks.scss';
+
+#campaignsPage {
+  #searchCampaigns {
+    h1 {
+      margin-bottom: 0.5rem;
+
+      span.search {
+        color: $light-hydrangea;
+      }
+    }
+    h2.sort-method {
+      color: $blue-hydrangea;
+      margin: 0;
+  
+      span.icon {
+        width: 0.875rem;
+  
+        @media screen and (min-width: $medium-break) {
+          width: 1rem;
+        }
+      }
+    }
+  
+    .sortOptions {
+      ul {
+        li {
+          margin: 0.125rem 0;
+          a:link, button {
+            padding: 0.0625rem 0.375rem;
+          }
+        }
+      }
+    }
+  }
+}

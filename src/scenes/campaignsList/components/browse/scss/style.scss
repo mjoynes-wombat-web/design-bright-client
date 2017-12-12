@@ -1,0 +1,18 @@
+@import '../../../../../consts/colors.scss';
+@import '../../../../../consts/screen-breaks.scss';
+
+#campaignsPage {
+  #browseCampaigns {
+    h1 {
+      margin-bottom: 0.25rem;
+    }
+  
+    .sortOptions div {
+      font-size: 1.3125rem;
+  
+      @media screen and (min-width: $medium-break) {
+        font-size: 1.4375rem;
+      }
+    }
+  }
+}

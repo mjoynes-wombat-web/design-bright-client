@@ -1,0 +1,125 @@
+@import '../../../consts/colors.scss';
+@import '../../../consts/screen-breaks.scss';
+
+#campaignsPage {
+  > section {
+    margin: 0 auto;
+    padding-bottom: 2rem;
+
+    @media screen and (min-width: $medium-break) {
+      padding: 0 2rem 2rem 2rem;
+    }
+  }
+  > section:first-child {
+    padding: 0 2rem;
+
+    > h1:first-child {
+      margin-top: 0;
+    }
+  }
+  h1, h2 {
+    line-height: initial;
+    span {
+      line-height: initial;
+
+      &.sortWrapper {
+        cursor: pointer;
+
+        &:hover {
+          span.sort, span.icon {
+            color: $blue-hydrangea;
+            border-color: $blue-hydrangea;
+
+            svg {
+              > * {
+                fill: $blue-hydrangea;
+              }
+            }
+          }
+        }
+      }
+
+      &.sort {
+        color: $light-hydrangea;
+        border-bottom: 0.0625rem solid $light-hydrangea;
+        margin-top: 0.0625rem;
+        transition: color 0.5s, border-color 0.5s;
+      }
+      &.icon {
+        display: inline-block;
+        padding-left: 0.3125rem;
+        padding-top: 0.125rem;
+        width: 1rem;
+
+        @media screen and (min-width: $medium-break) {
+          width: 1.125rem;
+        }
+
+        svg {
+          > * {
+            fill: $light-hydrangea;
+            transition: fill 0.5s;
+          }
+        }
+      }
+    }
+  }
+
+  #headingBreak {
+    margin: 1rem 0;
+  }
+
+  .sortOptions {
+    position: relative;
+    overflow: visible;
+
+    > div {
+      background-color: white;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      font-size: 1.0625rem;
+      color: $light-hydrangea;
+      z-index: 200;
+
+      @media screen and (min-width: $medium-break) {
+        font-size: 1.25rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin:0;
+        li {
+          a:link {
+            border-bottom: none;
+            width: 100%;
+            display: inline-block;
+            padding: 0 0.375rem;
+
+            &:hover {
+              background-color: #F7F7F7;
+            }
+          }
+        }
+      }
+      button {
+        padding: 0 0.375rem;
+        margin-top: 0.5rem;
+        width: 100%;
+        text-align: left;
+        font-size: inherit;
+        line-height: 1.5;
+
+        &:hover {
+          background-color: #F7F7F7;
+          color: $error-red;
+        }
+      }
+
+      hr {
+        margin-top: 0.75rem;
+      }
+    }
+  }
+}

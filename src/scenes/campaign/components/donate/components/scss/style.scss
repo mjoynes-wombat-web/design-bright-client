@@ -1,0 +1,41 @@
+$medium-break: 40em;
+$large-break: 64em;
+$xlarge-break: 90em;
+$xxlarge-break: 120em;
+
+#overlayModal #donate {
+  text-align: left;
+
+  hr {
+    margin: 1.75rem 0 0.75rem 0;
+
+    @media screen and (min-width: $medium-break){
+      margin: 2.125rem 0 0.75rem 0;
+    }
+  }
+
+  h2 {
+    margin-bottom: 0.5rem;
+
+    @media screen and (min-width: $medium-break){
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .StripeElement {
+    border: 0.0625rem solid #999999;
+    height: 2.75rem;
+    border-radius: 0.1875rem;
+    padding: 0.5rem;
+    margin: 0 0 1rem;
+    
+    &.StripeElement--focus {
+      border: 1px solid #8a8a8a;
+      box-shadow: 0 0 5px #cacaca;
+      transition: box-shadow .5s,border-color .25s ease-in-out;
+    }
+  }
+  button.primary {
+    margin-top: 1.75rem;
+  }
+}
