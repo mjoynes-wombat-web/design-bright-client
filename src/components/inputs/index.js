@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { colors, screenBreaks, globalStyle } from '../styleConsts';
+import colors from '../../consts/colors.scss';
+import screenBreaks from '../../consts/screen-breaks.scss';
 
-globalStyle();
+import { RadioIcon } from '../svgs/icons';
 
 const formLabelStyle = props => `
   label, legend {
@@ -43,18 +44,22 @@ const formLabelStyle = props => `
     : null}
   `;
 
-export const Label = styled(
-  ({ className, id, inputLabel, required, error }) => (
-    <div className={className}>
-      <label htmlFor={id}>
-        {inputLabel}: {required
-          ? <span className='required'>*</span>
-          : null}
-      </label>
-      {error ? <p className='error'>{error}</p> : null}
-    </div>
-  ),
-) `
+export const Label = styled(({
+  className,
+  id,
+  inputLabel,
+  required,
+  error,
+}) => (
+  <div className={className}>
+    <label htmlFor={id}>
+      {inputLabel}: {required
+        ? <span className='required'>*</span>
+        : null}
+    </label>
+    {error ? <p className='error'>{error}</p> : null}
+  </div>
+))`
 ${props => formLabelStyle(props)}
 ${props => (
     props.error
@@ -106,36 +111,48 @@ input:not([type="radio"]):not([type="checkbox"]), select {
 }
 `;
 
-export const Input = styled(
-  ({ className, id, inputLabel, required, error, onChange }) => (
-    <div className={className}>
-      {inputLabel
-        ? <Label id={id} inputLabel={inputLabel} required={required} error={error} />
-        : null}
-      <input onChange={onChange} id={id} required={required} />
-    </div>
-  ),
-) `
+export const Input = styled(({
+  className,
+  id,
+  type,
+  inputLabel,
+  required,
+  error,
+  value,
+  onChange,
+}) => (
+  <div className={className}>
+    {inputLabel
+      ? <Label id={id} inputLabel={inputLabel} required={required} error={error} />
+      : null}
+    <input onChange={onChange} id={id} required={required} value={value} name={id} type={type} />
+  </div>
+))`
 ${generalInputStyling}
 `;
 
-export const Select = styled(
-  ({ className, id, inputLabel, required, error, onChange, options }) => (
-    <div className={className}>
-      {inputLabel
-        ? <Label id={id} inputLabel={inputLabel} required={required} error={error} />
-        : null}
-      <select defaultValue="" onChange={onChange} id={id} required={required}>
-        <option value="" disabled>Choose an Option</option>
-        {options.map(
-          (option, i) =>
-            <option value={option.value} key={i}>
-              {option.name}
-            </option>)}
-      </select>
-    </div>
-  ),
-) `
+export const Select = styled(({
+  className,
+  id,
+  inputLabel,
+  required,
+  error,
+  onChange,
+  options,
+}) => (
+  <div className={className}>
+    {inputLabel
+      ? <Label id={id} inputLabel={inputLabel} required={required} error={error} />
+      : null}
+    <select defaultValue="" onChange={onChange} id={id} required={required}>
+      <option value="" disabled>Choose an Option</option>
+      {options.map((option, i) =>
+          <option value={option.value} key={i}>
+            {option.name}
+          </option>)}
+    </select>
+  </div>
+))`
 ${generalInputStyling}
 
 select {
@@ -152,8 +169,16 @@ select {
 }
 `;
 
-export const RadioFieldset = styled(
-  ({ className, fieldsetName, fieldsetLegend, error, onChange, fields, required }) => (
+export const RadioFieldset = styled(({
+  className,
+  fieldsetName,
+  fieldsetLegend,
+  error,
+  checked,
+  onChange,
+  fields,
+  required,
+}) => (
     <fieldset className={className} id={fieldsetName}>
       <legend>
         {fieldsetLegend}: {required
@@ -161,29 +186,29 @@ export const RadioFieldset = styled(
           : null}
       </legend>
       {error ? <p className='error'>{error}</p> : null}
-      {fields.map(
-        (field, i) => (
+      {fields.map((field, i) => (
           <label htmlFor={field.id} key={i}>
             <input
               type='radio'
               name={fieldsetName}
               value={field.value}
               id={field.id}
-              checked={field.checked}
-              onChange={onChange} />
+              onChange={e => onChange(e)} />
             <span onClick={(e) => {
-              console.log('This ran');
               e.preventDefault();
-              const target = e.target;
-              target.previousSibling.checked = true;
-            }}></span>
+              const { target } = e;
+              target.previousSibling.click();
+            }}>
+              <RadioIcon
+                checked={checked === field.value}
+                circleColor={colors.lightGraphite}
+                dotColor={colors.mauiOrange} />
+            </span>
             {field.children || field.name}
           </label>
-        ),
-      )}
+        ))}
     </fieldset>
-  ),
-) `
+))`
 border: none;
 padding: 0;
 margin: 0;
@@ -228,26 +253,32 @@ ${props => (
   ${generalInputStyling}
 `;
 
-export const Checkbox = styled(
-  ({ className, id, onChange, text, required, checked, children }) => (
-    <div className={className}>
-      <label htmlFor={id}>
-        <input type="checkbox" id={id} onChange={onChange} required={required} checked={checked}/>
-        <span onClick={(e) => {
-          e.preventDefault();
-          const target = e.target;
-          const input = target.previousSibling;
-          if (input.checked) {
-            input.checked = false;
-          } else {
-            input.checked = true;
-          }
-        }}></span>
-        {text || children}
-      </label>
-    </div>
-  ),
-)`
+export const Checkbox = styled(({
+  className,
+  id,
+  onChange,
+  text,
+  required,
+  checked,
+  children,
+}) => (
+  <div className={className}>
+    <label htmlFor={id}>
+      <input type="checkbox" id={id} onChange={onChange} required={required} checked={checked}/>
+      <span onClick={(e) => {
+        e.preventDefault();
+        const { target } = e;
+        const input = target.previousSibling;
+        if (input.checked) {
+          input.checked = false;
+        } else {
+          input.checked = true;
+        }
+      }}></span>
+      {text || children}
+    </label>
+  </div>
+))`
 label span {
   display: inline-block;
   width: 1.125rem;

@@ -80,13 +80,11 @@ form {
     color: $graphite;
     font-family: 'Lato', sans-serif;
     font-size: 1.125rem;
-    height: 2.5rem;
     line-height: normal;
     box-shadow: none;
     border: 0.0625rem solid #999999;
 
         @media screen and (min-width: $medium-break) {
-          height: 2.75rem;
           font-size: 1.375rem;
         }
   }

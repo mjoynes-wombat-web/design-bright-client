@@ -118,3 +118,21 @@ transform: ${(props) => {
   }
 }
 `;
+
+export const RadioIcon = styled(({ className }) => (
+  <svg className={className} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path class="circle" d={'M256,8C119,8,8,119,8,256s111,248,248,248s248-111,248-248S393,8,256,8z M416,415.5c-42.7,42.8-99.5,66.4-160,66.4c-60.2,0-116.8-23.4-159.5-65.9c-42.8-42.7-66.4-99.5-66.4-160c0-60.2,23.4-116.8,65.9-159.5c42.7-42.8,99.5-66.4,160-66.4c60.2,0,116.8,23.4,159.5,65.9c42.8,42.7,66.4,99.5,66.4,160C481.9,316.2,458.5,372.8,416,415.5z'}/>
+    <path class="dot" d={'M256,379.2c-67.9,0-123.2-55.3-123.2-123.2S188.1,132.8,256,132.8S379.2,188.1,379.2,256S323.9,379.2,256,379.2z'}/>
+  </svg>
+))`
+pointer-events: none;
+
+.circle {
+  fill: ${props => props.circleColor};
+}
+
+.dot {
+  fill: ${props => (props.checked ? props.dotColor : 'transparent')};
+  transition: fill 0.5s;
+}
+`;

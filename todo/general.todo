@@ -13,3 +13,6 @@ Maintainabilty:
 
   Forms: 
     ☐ Componetize the forms. @low 
+
+  Header:
+    ☐ Make click not work on padding. @critical 

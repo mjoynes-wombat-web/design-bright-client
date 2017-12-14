@@ -38,7 +38,7 @@ justify-content: space-between;
   overflow: hidden;
   position: absolute;
   width: 100%;
-  bottom: -0.6rem;
+  bottom: -0.45rem;
   background-repeat: no-repeat;
   background-size: cover;
   left: 0;

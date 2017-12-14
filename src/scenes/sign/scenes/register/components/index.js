@@ -6,18 +6,16 @@ import axios from 'axios';
 import states from '../../../../../helpers/states';
 import validEmail from '../../../../../helpers/validEmail';
 import Message from '../../../../../partials/message';
+import isNumber from '../../../../../helpers/isNumber';
+import numLength from '../../../../../helpers/numLength';
+
+// import { Input, Select, RadioFieldset, Checkbox } from '../../../../../components/inputs';
+import { Input, RadioFieldset } from '../../../../../components/inputs';
+import Heading from '../../../../../components/heading';
 
 import './scss/style.scss';
 
 const doPasswordsMatch = (pass, confPass) => pass === confPass;
-const isNumber = (num) => {
-  const numbers = num.match('[0-9]+');
-  if (numbers) {
-    return numbers[0] === num;
-  }
-  return false;
-};
-const numLength = (num, length) => String(num).length === length;
 
 class Register extends React.Component {
   // Sets up state and props and binds this to the class methods.
@@ -236,106 +234,76 @@ class Register extends React.Component {
           onClearMessage={() => this.setState({ message: { type: '', message: '' } })}
           message={this.state.message}
           onClearError={() => this.setState({ error: { type: '', message: '' } })} />
-        <section className="row align-center">
-          <form className="small-12 columns" onSubmit={this.onSubmit}>
-            <div className="row">
-              <h1 className="small-12 columns"><span className="underlined">Register</span></h1>
-            </div>
-            <div className="row align-center">
-              <div className="small-12 large-4 columns">
-                <fieldset>
-                  <label htmlFor="firstName">
-                    First Name: <span className="required">*</span>
-                  </label>
-                  <input
-                    value={this.state.inputs.firstName}
-                    onChange={this.onChange}
-                    type="text"
-                    name="firstName"
-                    id="firstName"
-                    required />
-                  <label htmlFor="lastName">
-                    Last Name: <span className="required">*</span>
-                  </label>
-                  <input
-                    value={this.state.inputs.lastName}
-                    onChange={this.onChange}
-                    type="text"
-                    name="lastName"
-                    id="lastName"
-                    required />
-                  <label htmlFor="email" className={`row${this.state.error.type === 'register' ? ' invalid' : ''}${(this.currentInputValid('email') || this.state.inputs.email.length === 0) ? '' : ' invalid'}`}>
-                    <div className="small-12 columns">
-                      Email: <span className="required">*</span>
-                    </div>
-                    <div className=" small-12 columns">
-                      <span className='error'>{this.state.error.type === 'register' ? this.state.error.message : 'Please enter a valid email address.'}</span>
-                    </div>
-                  </label>
-                  <input
-                    value={this.state.inputs.email}
-                    onChange={this.onChange}
-                    type="email"
-                    name="email"
-                    required
-                    id="email" />
-                </fieldset>
-                <hr />
-                <label htmlFor="password">
-                  Password: <span className="required">*</span>
-                </label>
-                <input
+        <section>
+          <form onSubmit={this.onSubmit}>
+            <Heading type='h1' text='Register' />
+              <fieldset>
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='First Name'
+                  value={this.state.inputs.firstName}
+                  id='firstName'
+                  required/>
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='Last Name'
+                  value={this.state.inputs.lastName}
+                  id='lastName'
+                  required/>
+                <Input
+                  onChange={this.onChange}
+                  type='email'
+                  inputLabel='Email'
+                  value={this.state.inputs.email}
+                  id='email'
+                  error={!(this.currentInputValid('email') || this.state.inputs.email.length === 0) ? 'Please enter a valid email address.' : null}
+                  // TODO: Make this display error from Auth0 invalid/duplciate email.
+                  required/>
+                  <hr />
+              </fieldset>
+              <fieldset>
+                <Input
+                  onChange={this.onChange}
+                  type='password'
+                  inputLabel='Password'
                   value={this.state.inputs.password}
+                  id='password'
+                  required/>
+                <Input
                   onChange={this.onChange}
-                  type="password"
-                  name="password"
-                  id="password"
-                  required />
-                <label htmlFor="confirmPassword" className={`row${(this.currentInputValid('confirmPassword') || this.state.inputs.password.length === 0) ? '' : ' invalid'}`}>
-                  <div className="small-12 columns">
-                    Confirm Password: <span className="required">*</span>
-                  </div>
-                  <div className=" small-12 columns">
-                    <span className='error'>Your passwords don't match.</span>
-                  </div>
-                </label>
-                <input
+                  type='password'
+                  inputLabel='Confirm Password'
                   value={this.state.inputs.confirmPassword}
+                  id='confirmPassword'
+                  error={this.currentInputValid('confirmPassword') || this.state.inputs.password.length === 0 ? null : 'Your passwords don\'t match.'}
+                  required/>
+                <hr />
+              </fieldset>
+              <fieldset className="userType">
+                <RadioFieldset
+                  fieldsetName='userType'
+                  fieldsetLegend='Are you a donor or non-profit?'
+                  required
                   onChange={this.onChange}
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  required />
-                <hr className="hide-for-large" />
-              </div>
-              <div className="small-12 large-4 columns">
-                <fieldset className="userType">
-                  <legend>
-                    Are you a donor or non-profit? <span className="required">*</span>
-                  </legend>
-                  <label htmlFor="donor">
-                    <input
-                      onChange={this.onChange}
-                      type="radio"
-                      checked={this.state.inputs.userType === 'donor'}
-                      name="userType"
-                      value="donor"
-                      id="donor" />
-                    <span></span>
-                    Donor
-                  </label>
-                  <label htmlFor="non-profit">
-                    <input
-                      onChange={this.onChange}
-                      checked={this.state.inputs.userType === 'non-profit'}
-                      type="radio"
-                      name="userType"
-                      value="non-profit"
-                      id="non-profit" />
-                    <span></span>
-                    Non-Profit
-                  </label>
-                </fieldset>
+                  checked={this.state.inputs.userType}
+                  fields={
+                    [
+                      {
+                        id: 'donor',
+                        name: 'Donor',
+                        value: 'donor',
+                      },
+                      {
+                        id: 'non-profit',
+                        name: 'Non-Profit',
+                        value: 'non-profit',
+                      },
+                    ]
+                  }
+                />
+              </fieldset>
                 <div className={this.state.inputs.userType === 'non-profit' ? '' : 'hide'}>
                   <label htmlFor="position">
                     Position at Non-Profit: <span className="required">*</span>
@@ -376,7 +344,6 @@ class Register extends React.Component {
                     required={this.state.inputs.userType === 'non-profit'} />
                   <hr className="hide-for-large" />
                 </div>
-              </div>
               <div className='small-12 large-4 columns'>
                 <div className={this.state.inputs.userType === 'non-profit' ? '' : 'hide'}>
                   <label htmlFor="address">
@@ -431,7 +398,6 @@ class Register extends React.Component {
                     required={this.state.inputs.userType === 'non-profit'} />
                 </div>
               </div>
-            </div>
             <div className="row align-center">
               <label htmlFor="terms" className="small-12 columns terms">
                 <input
