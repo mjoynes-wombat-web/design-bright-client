@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import colors from '../../consts/colors.scss';
 import screenBreaks from '../../consts/screen-breaks.scss';
 
-import { RadioIcon } from '../svgs/icons';
+import { RadioIcon, CheckIcon } from '../svgs/icons';
+
+import selectChevron from '../../assets/img/select-chevron.svg';
 
 const formLabelStyle = props => `
   label, legend {
@@ -73,11 +75,12 @@ ${props => (
 `;
 
 const generalInputStyling = `
-input {
+input, select {
   color: ${colors.graphite};
   font-size: 1rem;
   font-weight: 300;
-  margin-top: 0.25rem;
+  margin-top: 0.125rem;
+  margin-bottom: 0.5rem;
 }
 input:not([type="radio"]):not([type="checkbox"]), select {
   min-width: 15rem;
@@ -100,9 +103,9 @@ input:not([type="radio"]):not([type="checkbox"]), select {
 }
 
 @media screen and (min-width: ${screenBreaks.medium}) {
-  input {
+  input, select {
     font-size: 1.125rem;
-    margin-top: 0.375rem;
+    margin-bottom: 1rem;
   }
   input:not(:[type="radio"], :[type="checkbox"]), select {
     min-width: 20rem;
@@ -139,12 +142,13 @@ export const Select = styled(({
   error,
   onChange,
   options,
+  value,
 }) => (
   <div className={className}>
     {inputLabel
       ? <Label id={id} inputLabel={inputLabel} required={required} error={error} />
       : null}
-    <select defaultValue="" onChange={onChange} id={id} required={required}>
+    <select onChange={onChange} id={id} required={required} value={value} name={id}>
       <option value="" disabled>Choose an Option</option>
       {options.map((option, i) =>
           <option value={option.value} key={i}>
@@ -157,7 +161,7 @@ ${generalInputStyling}
 
 select {
   background-color: white;
-  background-image: url(/assets/img/chevron-square-sprite.svg);
+  background-image: url(${selectChevron});
   background-position: right 0.625rem top;
   background-repeat: no-repeat;
   background-size: auto 200%;
@@ -221,17 +225,9 @@ label span {
   display: inline-block;
   width: 1.125rem;
   height: 1.125rem;
-  background-repeat: no-repeat;
   position: relative;
   top: .15rem;
   margin-right: .375rem;
-  background: url(/assets/img/radio.svg);
-  background-size: 100% 200%;
-}
-
-label input[type='radio']:checked + span{
-  background-size: 100% 200%;
-  background-position-y: 100%;
 }
 
 input[type='radio'] {
@@ -264,36 +260,42 @@ export const Checkbox = styled(({
 }) => (
   <div className={className}>
     <label htmlFor={id}>
-      <input type="checkbox" id={id} onChange={onChange} required={required} checked={checked}/>
+      <input
+        type="checkbox"
+        id={id}
+        onChange={onChange}
+        required={required}
+        checked={checked}
+        name={id}/>
       <span onClick={(e) => {
+        console.log(e);
         e.preventDefault();
         const { target } = e;
-        const input = target.previousSibling;
-        if (input.checked) {
-          input.checked = false;
-        } else {
-          input.checked = true;
-        }
-      }}></span>
-      {text || children}
+        console.log(target.previousSibling);
+        target.previousSibling.click();
+      }}>
+        <CheckIcon
+          boxColor={colors.graphite}
+          checkColor={colors.mauiOrange}
+          checked={checked}/>
+      </span>
+      {text || children} {required
+        ? <span className='required'>*</span>
+        : null}
     </label>
   </div>
 ))`
+> label {
+  font-size: 1.125rem;
+}
+
 label span {
   display: inline-block;
   width: 1.125rem;
   height: 1.125rem;
-  background-repeat: no-repeat;
   position: relative;
   top: .15rem;
   margin-right: .375rem;
-  background: url(/assets/img/checkbox.svg);
-  background-size: 100% 200%;
-}
-
-label input[type='checkbox']:checked + span{
-  background-size: 100% 200%;
-  background-position-y: 100%;
 }
 
 input[type='checkbox'] {

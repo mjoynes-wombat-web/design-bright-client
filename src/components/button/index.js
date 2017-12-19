@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 import { colors, screenBreaks } from '../styleConsts';
 
+import blueButton from '../../assets/img/blue-brush-btn.png';
+import orangeButton from '../../assets/img/orange-brush-btn.png';
+
 const buttonType = (props) => {
   if (props.primary) {
     return `
@@ -14,7 +17,7 @@ const buttonType = (props) => {
 
     ::after {
       content: "";
-      background: url(/assets/img/blue-brush-btn.png);
+      background: url(${blueButton});
       top: 0;
       left: 0;
       bottom: 0;
@@ -47,7 +50,7 @@ const buttonType = (props) => {
 
     ::after {
       content: "";
-      background: url(/assets/img/orange-brush-btn.png);
+      background: url(${orangeButton});
       top: 0;
       left: 0;
       bottom: 0;
@@ -85,7 +88,7 @@ const buttonType = (props) => {
   return null;
 };
 
-export const Button = styled.button`
+export const ButtonOnly = styled.button`
   background-size: 100% 200%;
   font-weight: 400;
   cursor: pointer;
@@ -111,6 +114,44 @@ export const Button = styled.button`
       opacity: 0.8;
     }
   }
+`;
+
+export const ButtonError = styled(({ className, error }) => (
+<span className={className}>
+  {error}
+</span>
+))`
+display: none;
+font-size: .75rem;
+margin-top: .25rem;
+color: #ff5800;
+font-weight: 400;
+text-align: center;
+`;
+
+export const Button = styled(props => (
+<div className={props.className}>
+  <ButtonOnly {...props}>{props.children}</ButtonOnly>
+  <span className='error'>
+    {props.error}
+  </span>
+</div>
+))`
+
+span.error {
+  opacity: 0;
+  display: block;
+  font-size: .75rem;
+  margin-top: .25rem;
+  color: #ff5800;
+  font-weight: 400;
+  text-align: center;
+  transition: opacity 0.5s ease-in-out;
+}
+
+button:disabled + span.error {
+  opacity: 1;
+}
 `;
 
 export default Button;

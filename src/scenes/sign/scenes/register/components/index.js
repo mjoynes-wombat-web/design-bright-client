@@ -9,8 +9,11 @@ import Message from '../../../../../partials/message';
 import isNumber from '../../../../../helpers/isNumber';
 import numLength from '../../../../../helpers/numLength';
 
-// import { Input, Select, RadioFieldset, Checkbox } from '../../../../../components/inputs';
-import { Input, RadioFieldset } from '../../../../../components/inputs';
+import colors from '../../../../../consts/colors.scss';
+
+import { Input, RadioFieldset, Select, Checkbox } from '../../../../../components/inputs';
+import { Button } from '../../../../../components/button';
+import Line from '../../../../../components/svgs/line';
 import Heading from '../../../../../components/heading';
 
 import './scss/style.scss';
@@ -261,7 +264,7 @@ class Register extends React.Component {
                   error={!(this.currentInputValid('email') || this.state.inputs.email.length === 0) ? 'Please enter a valid email address.' : null}
                   // TODO: Make this display error from Auth0 invalid/duplciate email.
                   required/>
-                  <hr />
+                  <Line color={colors.graphite} id='headingBreak' />
               </fieldset>
               <fieldset>
                 <Input
@@ -279,7 +282,7 @@ class Register extends React.Component {
                   id='confirmPassword'
                   error={this.currentInputValid('confirmPassword') || this.state.inputs.password.length === 0 ? null : 'Your passwords don\'t match.'}
                   required/>
-                <hr />
+                <Line color={colors.graphite} id='headingBreak' />
               </fieldset>
               <fieldset className="userType">
                 <RadioFieldset
@@ -304,122 +307,76 @@ class Register extends React.Component {
                   }
                 />
               </fieldset>
-                <div className={this.state.inputs.userType === 'non-profit' ? '' : 'hide'}>
-                  <label htmlFor="position">
-                    Position at Non-Profit: <span className="required">*</span>
-                  </label>
-                  <input
-                    value={this.state.inputs.position}
-                    onChange={this.onChange}
-                    type="text"
-                    name="position"
-                    id="position"
-                    required={this.state.inputs.userType === 'non-profit'} />
-                  <label htmlFor="nonProfitName">
-                    Non-Profit Name: <span className="required">*</span>
-                  </label>
-                  <input
-                    value={this.state.inputs.nonProfitName}
-                    onChange={this.onChange}
-                    type="text"
-                    name="nonProfitName"
-                    id="nonProfitName"
-                    required={this.state.inputs.userType === 'non-profit'} />
-                  <label
-                    htmlFor="ein"
-                    className={`row align-bottom${(this.currentInputValid('ein') || this.state.inputs.ein.length === 0) ? '' : ' invalid'}${numLength(this.state.inputs.ein, 0) ? ' empty' : ''}`}>
-                    <div className="small-12 columns">
-                      Employer Identification Number (EIN): <span className="required">*</span>
-                    </div>
-                    <div className="small-12 columns">
-                      <span className='error'>You entered an invalid EIN.</span>
-                    </div>
-                  </label>
-                  <input
-                    value={this.state.inputs.ein}
-                    onChange={this.onChange}
-                    type="text"
-                    name="ein"
-                    id="ein"
-                    required={this.state.inputs.userType === 'non-profit'} />
-                  <hr className="hide-for-large" />
-                </div>
-              <div className='small-12 large-4 columns'>
-                <div className={this.state.inputs.userType === 'non-profit' ? '' : 'hide'}>
-                  <label htmlFor="address">
-                    Address: <span className="required">*</span>
-                  </label>
-                  <input
-                    value={this.state.inputs.address}
-                    onChange={this.onChange}
-                    type="text"
-                    name="address"
-                    id="address"
-                    required={this.state.inputs.userType === 'non-profit'} />
-                  <label htmlFor="city">
-                    City: <span className="required">*</span>
-                  </label>
-                  <input
-                    value={this.state.inputs.city}
-                    onChange={this.onChange}
-                    type="text"
-                    name="city"
-                    id="city"
-                    required={this.state.inputs.userType === 'non-profit'} />
-                  <label htmlFor="state">
-                    State: <span className="required">*</span>
-                  </label>
-                  <select
-                    value={this.state.inputs.state}
-                    onChange={this.onChange}
-                    name="state"
-                    id="state"
-                    required={this.state.inputs.userType === 'non-profit'} >
-                    <option value="" disabled>Choose Your State</option>
-                    {states.map((state, i) =>
-                      <option value={state.abbreviation} key={i}>
-                        {state.name}
-                      </option>)}
-                  </select>
-                  <label htmlFor="zip" className={`row ${(this.currentInputValid('zip') || this.state.inputs.zip.length === 0) ? '' : 'invalid'}${numLength(this.state.inputs.zip, 0) ? ' empty' : ''}`}>
-                    <div className="small-12 columns">
-                      Zip: <span className="required">*</span>
-                    </div>
-                    <div className="small-12 columns">
-                      <span className='error'>You entered an invalid Zip Code.</span>
-                    </div>
-                  </label>
-                  <input
-                    value={this.state.inputs.zip}
-                    onChange={this.onChange}
-                    type="text"
-                    name="zip"
-                    id="zip"
-                    required={this.state.inputs.userType === 'non-profit'} />
-                </div>
-              </div>
-            <div className="row align-center">
-              <label htmlFor="terms" className="small-12 columns terms">
-                <input
-                  checked={this.state.inputs.agreed}
+              <fieldset className={`non-profit-info ${this.state.inputs.userType === 'non-profit' ? '' : 'hide'}`}>
+                <Input
                   onChange={this.onChange}
-                  type="checkbox"
-                  name="agreed"
-                  id="terms"
-                  required />
-                <span></span> {this.state.inputs.userType === 'non-profit' ? 'I am authorized to represent the non-profit listed above and' : 'I '} agree to the Design Bright <Link to="/help/terms">terms of
-            service.</Link> <span className='required'>*</span>
-              </label>
-              <button
-                className={`primary small-11 medium-10 large-8 columns${this.state.valid ? '' : ' disabled'}`}
-                disabled={!this.state.valid}
-                type="submit">
-                Submit Request
-              </button>
-              <span className='error small-12'>
-                Please make sure you've entered all your information.
-              </span>
-            </div>
+                  type='text'
+                  inputLabel='Position at Non-Profit'
+                  value={this.state.inputs.position}
+                  id='position'
+                  required={this.state.inputs.userType === 'non-profit'}/>
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='Non-Profit Name'
+                  value={this.state.inputs.nonProfitName}
+                  id='nonProfitName'
+                  required={this.state.inputs.userType === 'non-profit'}/>
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='Employer Identification Number (EIN)'
+                  value={this.state.inputs.ein}
+                  id='ein'
+                  error={(this.currentInputValid('ein') || this.state.inputs.ein.length === 0) ? null : 'You entered an invalid EIN.'}
+                  required={this.state.inputs.userType === 'non-profit'}/>
+                  <Line color={colors.graphite} id='headingBreak' />
+                  <Input
+                    onChange={this.onChange}
+                    type='text'
+                    inputLabel='Address'
+                    value={this.state.inputs.address}
+                    id='address'
+                    required={this.state.inputs.userType === 'non-profit'}/>
+                  <Input
+                    onChange={this.onChange}
+                    type='text'
+                    inputLabel='City'
+                    value={this.state.inputs.city}
+                    id='city'
+                    required={this.state.inputs.userType === 'non-profit'}/>
+                <Select
+                      onChange={this.onChange}
+                      type='text'
+                      inputLabel='State'
+                      value={this.state.inputs.state}
+                      id='state'
+                      required={this.state.inputs.userType === 'non-profit'}
+                      options={states.map(state =>
+                        ({
+                          name: state.name,
+                          value: state.abbreviation,
+                        }))
+                      }
+                    />
+                  <Input
+                    onChange={this.onChange}
+                    type='text'
+                    inputLabel='Zip'
+                    value={this.state.inputs.zip}
+                    id='zip'
+                    error={(this.currentInputValid('zip') || this.state.inputs.zip.length === 0) ? null : 'You entered an invalid Zip Code.'}
+                    required={this.state.inputs.userType === 'non-profit'}/>
+            </fieldset>
+            <Checkbox
+              id={'agreed'}
+              onChange={this.onChange}
+              checked={this.state.inputs.agreed}
+              required>
+                {this.state.inputs.userType === 'non-profit' ? 'I am authorized to represent the non-profit listed above and' : 'I '} agree to the Design Bright <Link to="/help/terms">terms of
+          service.</Link>
+            </Checkbox>
+            <Button primary type="submit" disabled={!this.state.valid} error={'Please make sure you\'ve entered all your information.'}>Register User</Button>
           </form>
         </section>
       </main>

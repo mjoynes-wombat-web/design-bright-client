@@ -94,7 +94,7 @@ ${pulseText('pulse-text', 0.9)}
   justify-content: center;
   align-items: center;
   visibility: hidden;
-  animation-name:fade-in;
+  animation-name: fade-in;
   animation-duration: 1s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;

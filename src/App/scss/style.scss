@@ -120,85 +120,6 @@ main {
       }
     }
   }
-
-  button, button[type='submit'], .button {
-    font-family: 'Lato', sans-serif;
-    color: #fff;
-    padding: 1rem 1.25rem 1.25rem 1.25rem;
-    width: 100%;
-    margin-top: 2rem;
-    cursor: pointer;
-
-    @media screen and (min-width: $medium-break) {
-      padding: 1.25rem 1.5rem 1.5rem 1.5rem;
-    }
-
-    &.primary {
-      font-size: 1.25rem;
-      background-image: url('/assets/img/blue-brush-btn.png');
-      background-size: 100% 100%;
-
-      @media screen and (min-width: $medium-break) {
-        font-size: 1.5rem;
-      }
-
-      &:hover {
-        background-image: url('/assets/img/blue-brush-drk.png');
-        background-size: 100% 100%;
-      }
-    }
-
-    &.secondary {
-      font-size: 1.125rem;
-      background-image: url('../../assets/img/orange-brush1.png');
-      background-size: 100% 100%;
-
-      @media screen and (min-width: $medium-break) {
-        font-size: 1.25rem;
-      }
-
-      &:hover {
-        background-image: url('/assets/img/orange-brush2.png');
-        background-size: 100% 100%;
-      }
-    }
-
-    + span.error {
-      display:none;
-    }
-
-    &.disabled, &.disabled:hover {
-      background-image: url('/assets/img/grey-brush.png');
-      background-size: 100% 100%;
-      cursor: not-allowed;
-      opacity: 0.5;
-
-      + span.error {
-        display:block;
-        font-size: 0.75rem;
-        margin-top: 0.25rem;
-        color: $error-red;
-        font-weight: normal;
-        text-align:center;
-      }
-    }
-
-    &.cancel {
-      margin: 1.5rem 0 0 0;
-      padding: 0.25rem;
-      width: auto;
-      color: $error-red;
-      font-size: 1rem;
-      font-weight: 300;
-
-      @media screen and (min-width: $medium-break) {
-        margin: 0;
-      }
-      &:hover {
-        color: darken(saturate($error-red, 10%), 10%);
-      }
-    }
-  }
 }
 
 a {
@@ -207,15 +128,14 @@ a {
   }
 }
 
-hr {
-    margin: 0 auto;
-    height: 0.2rem;
-    border-bottom: none;
-    background: url('/assets/img/grey-line.svg');
-    background-size: 100% 100%;
-    border: none;
-  }
+:focus {
+  outline: none;
+}
 
-  :focus {
-    outline: none;
+form {
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
   }
+}

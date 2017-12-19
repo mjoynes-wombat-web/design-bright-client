@@ -35,7 +35,6 @@ const Browse = ({ state, showSortOpt, cancelSort }) => (
         state={state}
         cancelSort={cancelSort} />
       : null}
-    <hr />
     <Line color={colors.graphite} id='headingBreak' />
   </section>
 );

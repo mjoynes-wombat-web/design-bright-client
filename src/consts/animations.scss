@@ -1,0 +1,9 @@
+@keyframes fade-out {
+  0% { opacity: 1; }
+  99% { opacity: 0; }
+  100% { display: none; }
+}
+
+:export {
+  fadeOut: fade-out; 
+}

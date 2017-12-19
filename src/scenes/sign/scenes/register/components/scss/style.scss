@@ -1,1 +1,43 @@
-@import '../../../../../../app/scss/forms';
+// @import '../../../../../../app/scss/forms';
+
+@import '../../../../../../consts/animations.scss';
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  99% { opacity: 0; }
+  100% { display: none; }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; display: block; }
+  100% { opacity: 1; }
+}
+
+.non-profit-info {
+  opacity: 1;
+  max-height: 37.5rem;
+  transition: max-height 1s 0.05s, padding 0.05s, margin 1s 0.5s, opacity 1s 0.05s;
+  transition-timing-function: ease-in-out;
+
+  > * {
+    max-height: 5rem;
+    transition: max-height 0s;
+  }
+}
+
+.hide {
+  opacity: 0;
+  max-height: 0;
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  transition: max-height 1s, padding 0.25s 0.75s, margin 0.25s 0.75s, opacity 1s;
+  transition-timing-function: ease-in-out;
+
+  > * {
+    max-height: 0;
+    transition: max-height 0s 1s;
+    pointer-events: none;
+  }
+}
