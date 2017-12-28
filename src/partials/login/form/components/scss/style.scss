@@ -1,9 +1,4 @@
-@import '../../../../../app/scss/forms';
-
-$medium-break: 40em;
-$large-break: 64em;
-$xlarge-break: 90em;
-$xxlarge-break: 120em;
+@import '../../../../../consts/screen-breaks.scss';
 
 #loginForm {
   h1 {

@@ -12,7 +12,7 @@ import numLength from '../../../../../helpers/numLength';
 import colors from '../../../../../consts/colors.scss';
 
 import { Input, RadioFieldset, Select, Checkbox } from '../../../../../components/inputs';
-import { Button } from '../../../../../components/button';
+import Button from '../../../../../components/button';
 import Line from '../../../../../components/svgs/line';
 import Heading from '../../../../../components/heading';
 
@@ -240,51 +240,67 @@ class Register extends React.Component {
         <section>
           <form onSubmit={this.onSubmit}>
             <Heading type='h1' text='Register' />
-              <fieldset>
-                <Input
-                  onChange={this.onChange}
-                  type='text'
-                  inputLabel='First Name'
-                  value={this.state.inputs.firstName}
-                  id='firstName'
-                  required/>
-                <Input
-                  onChange={this.onChange}
-                  type='text'
-                  inputLabel='Last Name'
-                  value={this.state.inputs.lastName}
-                  id='lastName'
-                  required/>
-                <Input
-                  onChange={this.onChange}
-                  type='email'
-                  inputLabel='Email'
-                  value={this.state.inputs.email}
-                  id='email'
-                  error={!(this.currentInputValid('email') || this.state.inputs.email.length === 0) ? 'Please enter a valid email address.' : null}
-                  // TODO: Make this display error from Auth0 invalid/duplciate email.
-                  required/>
-                  <Line color={colors.graphite} id='headingBreak' />
-              </fieldset>
-              <fieldset>
-                <Input
-                  onChange={this.onChange}
-                  type='password'
-                  inputLabel='Password'
-                  value={this.state.inputs.password}
-                  id='password'
-                  required/>
-                <Input
-                  onChange={this.onChange}
-                  type='password'
-                  inputLabel='Confirm Password'
-                  value={this.state.inputs.confirmPassword}
-                  id='confirmPassword'
-                  error={this.currentInputValid('confirmPassword') || this.state.inputs.password.length === 0 ? null : 'Your passwords don\'t match.'}
-                  required/>
-                <Line color={colors.graphite} id='headingBreak' />
-              </fieldset>
-              <fieldset className="userType">
+            <section className="main-info">
+            <div className="cta-text">
+                <Heading
+                  type='h2'
+                  text={this.state.inputs.userType === 'donor' ? 'Help a Cause' : 'Get Support'}/>
+                <p>
+                  {this.state.inputs.userType === 'donor'
+                    ? 'There are many non-profits that need your help supporting their cause. The beauty of crowd funding is that every little bit helps. No matter the donation you can be a part of creating a brighter future.'
+                    : 'Do you have a vision for a brighter future? Sign up today to get support for your cause. With us you will find people all across the country that are passionate like you and want to help out.'}
+                </p>
+              </div>
+              <div className="form-inputs">
+                <fieldset>
+                  <Input
+                    onChange={this.onChange}
+                    type='text'
+                    inputLabel='First Name'
+                    value={this.state.inputs.firstName}
+                    width='16rem'
+                    id='firstName'
+                    required />
+                  <Input
+                    onChange={this.onChange}
+                    type='text'
+                    inputLabel='Last Name'
+                    value={this.state.inputs.lastName}
+                    width='16rem'
+                    id='lastName'
+                    required />
+                  <Input
+                    onChange={this.onChange}
+                    type='email'
+                    inputLabel='Email'
+                    value={this.state.inputs.email}
+                    width='20rem'
+                    id='email'
+                    error={!(this.currentInputValid('email') || this.state.inputs.email.length === 0) ? 'Please enter a valid email address.' : null}
+                    // TODO: Make this display error from Auth0 invalid/duplciate email.
+                    required />
+                </fieldset>
+                <Line color={colors.graphite} type='hr' />
+                <fieldset>
+                  <Input
+                    onChange={this.onChange}
+                    type='password'
+                    inputLabel='Password'
+                    value={this.state.inputs.password}
+                    width='16rem'
+                    id='password'
+                    required />
+                  <Input
+                    onChange={this.onChange}
+                    type='password'
+                    inputLabel='Confirm Password'
+                    value={this.state.inputs.confirmPassword}
+                    width='16rem'
+                    id='confirmPassword'
+                    error={this.currentInputValid('confirmPassword') || this.state.inputs.password.length === 0 ? null : 'Your passwords don\'t match.'}
+                    required />
+                </fieldset>
+                <Line color={colors.graphite} type='hr' />
                 <RadioFieldset
                   fieldsetName='userType'
                   fieldsetLegend='Are you a donor or non-profit?'
@@ -306,59 +322,69 @@ class Register extends React.Component {
                     ]
                   }
                 />
-              </fieldset>
-              <fieldset className={`non-profit-info ${this.state.inputs.userType === 'non-profit' ? '' : 'hide'}`}>
-                <Input
-                  onChange={this.onChange}
-                  type='text'
-                  inputLabel='Position at Non-Profit'
-                  value={this.state.inputs.position}
-                  id='position'
-                  required={this.state.inputs.userType === 'non-profit'}/>
-                <Input
-                  onChange={this.onChange}
-                  type='text'
-                  inputLabel='Non-Profit Name'
-                  value={this.state.inputs.nonProfitName}
-                  id='nonProfitName'
-                  required={this.state.inputs.userType === 'non-profit'}/>
-                <Input
-                  onChange={this.onChange}
-                  type='text'
-                  inputLabel='Employer Identification Number (EIN)'
-                  value={this.state.inputs.ein}
-                  id='ein'
-                  error={(this.currentInputValid('ein') || this.state.inputs.ein.length === 0) ? null : 'You entered an invalid EIN.'}
-                  required={this.state.inputs.userType === 'non-profit'}/>
-                  <Line color={colors.graphite} id='headingBreak' />
+              </div>
+            </section>
+            <section className={`non-profit-info ${this.state.inputs.userType === 'non-profit' ? '' : 'hide'}`}>
+              <div className="form-inputs">
+                <fieldset>
+                  <Input
+                    onChange={this.onChange}
+                    type='text'
+                    inputLabel='Position at Non-Profit'
+                    value={this.state.inputs.position}
+                    width='20rem'
+                    id='position'
+                    required={this.state.inputs.userType === 'non-profit'} />
+                  <Input
+                    onChange={this.onChange}
+                    type='text'
+                    inputLabel='Non-Profit Name'
+                    value={this.state.inputs.nonProfitName}
+                    width='20rem'
+                    id='nonProfitName'
+                    required={this.state.inputs.userType === 'non-profit'} />
+                  <Input
+                    onChange={this.onChange}
+                    type='text'
+                    inputLabel='Employer Identification Number (EIN)'
+                    value={this.state.inputs.ein}
+                    id='ein'
+                    error={(this.currentInputValid('ein') || this.state.inputs.ein.length === 0) ? null : 'You entered an invalid EIN.'}
+                    required={this.state.inputs.userType === 'non-profit'} />
+                </fieldset>
+                <Line color={colors.graphite} type='hr' />
+                <fieldset>
                   <Input
                     onChange={this.onChange}
                     type='text'
                     inputLabel='Address'
                     value={this.state.inputs.address}
+                    width='20rem'
                     id='address'
-                    required={this.state.inputs.userType === 'non-profit'}/>
+                    required={this.state.inputs.userType === 'non-profit'} />
                   <Input
                     onChange={this.onChange}
                     type='text'
                     inputLabel='City'
                     value={this.state.inputs.city}
+                    width='16rem'
                     id='city'
-                    required={this.state.inputs.userType === 'non-profit'}/>
-                <Select
-                      onChange={this.onChange}
-                      type='text'
-                      inputLabel='State'
-                      value={this.state.inputs.state}
-                      id='state'
-                      required={this.state.inputs.userType === 'non-profit'}
-                      options={states.map(state =>
-                        ({
-                          name: state.name,
-                          value: state.abbreviation,
-                        }))
-                      }
-                    />
+                    required={this.state.inputs.userType === 'non-profit'} />
+                  <Select
+                    onChange={this.onChange}
+                    type='text'
+                    inputLabel='State'
+                    value={this.state.inputs.state}
+                    width='14rem'
+                    id='state'
+                    required={this.state.inputs.userType === 'non-profit'}
+                    options={states.map(state =>
+                      ({
+                        name: state.name,
+                        value: state.abbreviation,
+                      }))
+                    }
+                  />
                   <Input
                     onChange={this.onChange}
                     type='text'
@@ -366,14 +392,19 @@ class Register extends React.Component {
                     value={this.state.inputs.zip}
                     id='zip'
                     error={(this.currentInputValid('zip') || this.state.inputs.zip.length === 0) ? null : 'You entered an invalid Zip Code.'}
-                    required={this.state.inputs.userType === 'non-profit'}/>
-            </fieldset>
+                    required={this.state.inputs.userType === 'non-profit'} />
+                </fieldset>
+              </div>
+              <div className="cta-text">
+              </div>
+            </section>
             <Checkbox
               id={'agreed'}
               onChange={this.onChange}
+              className='agreed'
               checked={this.state.inputs.agreed}
               required>
-                {this.state.inputs.userType === 'non-profit' ? 'I am authorized to represent the non-profit listed above and' : 'I '} agree to the Design Bright <Link to="/help/terms">terms of
+              {this.state.inputs.userType === 'non-profit' ? 'I am authorized to represent the non-profit listed above and' : 'I '} agree to the Design Bright <Link to="/help/terms">terms of
           service.</Link>
             </Checkbox>
             <Button primary type="submit" disabled={!this.state.valid} error={'Please make sure you\'ve entered all your information.'}>Register User</Button>

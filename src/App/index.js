@@ -8,7 +8,8 @@ import Routes from './routes';
 import Footer from '../components/footer';
 
 // IMPORT CSS STYLING
-import './scss/style.scss';
+import './scss/main.scss';
+import '../assets/style/normalize.css';
 
 // MAIN REACT COMPONENT
 // The main stateless react component which returns the header, footer and component

@@ -33,13 +33,13 @@ const formLabelStyle = props => `
       .error {
         color: ${colors.errorRed};
         font-size: 0.625rem;
-        margin: 0.125rem 0 0 0;
+        margin: -0.0625rem 0 0.125rem 0;
       }
   
       @media screen and (min-width: ${screenBreaks.medium}) {
         .error {
           font-size: 0.75rem;
-          margin:  0.25rem 0 0 0;
+          margin:  -0.125rem 0 0.25rem 0;
         }
       }
     `
@@ -75,15 +75,22 @@ ${props => (
 `;
 
 const generalInputStyling = `
+margin: 0.5rem 0;
+
+@media screen and (min-width: ${screenBreaks.medium}) {
+  margin: 0.75rem 0;
+}
+
 input, select {
   color: ${colors.graphite};
   font-size: 1rem;
   font-weight: 300;
   margin-top: 0.125rem;
-  margin-bottom: 0.5rem;
+  box-sizing: border-box;
 }
 input:not([type="radio"]):not([type="checkbox"]), select {
-  min-width: 15rem;
+  width: 12rem;
+  max-width: 100%;
   border: 0.0625rem solid ${colors.lightGraphite};
   border-radius: 0.1875rem;
   color: ${colors.lightGraphite};
@@ -105,7 +112,6 @@ input:not([type="radio"]):not([type="checkbox"]), select {
 @media screen and (min-width: ${screenBreaks.medium}) {
   input, select {
     font-size: 1.125rem;
-    margin-bottom: 1rem;
   }
   input:not(:[type="radio"], :[type="checkbox"]), select {
     min-width: 20rem;
@@ -132,6 +138,13 @@ export const Input = styled(({
   </div>
 ))`
 ${generalInputStyling}
+
+${props => (props.width ? `
+  input:not([type="radio"]):not([type="checkbox"]) {
+    width: ${props.width};
+    max-width: 100%;
+  }
+` : null)}
 `;
 
 export const Select = styled(({
@@ -167,10 +180,17 @@ select {
   background-size: auto 200%;
   cursor: pointer;
 
+  ${props => (props.width ? `
+  width: ${props.width};
+  max-width: 100%;
+  ` : null)}
+
   &:hover {
     background-position: right 0.625rem bottom;
   }
 }
+
+
 `;
 
 export const RadioFieldset = styled(({
@@ -285,6 +305,8 @@ export const Checkbox = styled(({
     </label>
   </div>
 ))`
+margin: 0.5rem 0;
+
 > label {
   font-size: 1.125rem;
 }

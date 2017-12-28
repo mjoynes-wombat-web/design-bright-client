@@ -44,7 +44,7 @@ const Search = ({ state, showSortOpt, cancelSort }) => {
             state={state}
             cancelSort={cancelSort} />
           : null}
-        <Line color={colors.graphite} id='headingBreak' />
+        <Line color={colors.graphite} type='hr' />
       </section>
     );
   }

@@ -3,10 +3,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Line = styled(({ className, id }) => (
+const Line = styled(({ className, id, type }) => (
   <svg
     id={id}
-    className={className}
+    className={`${className} ${type}`}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 797.6 4.61"
     preserveAspectRatio="none"
@@ -32,6 +32,10 @@ transform: scale(${props.scale});
 
 .elements {
   fill: ${props => props.color};
+}
+
+&.hr {
+  margin: 1rem 0;
 }
 `;
 

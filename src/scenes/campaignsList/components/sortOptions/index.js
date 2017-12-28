@@ -1,7 +1,7 @@
 /* eslint-env browser */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../../../../components/button';
+import Button from '../../../../components/button';
 
 import colors from '../../../../consts/colors.scss';
 
@@ -57,7 +57,7 @@ const SortOptions = ({ state, cancelSort }) => {
             </Button>
           </li>
         </ul>
-        <Line color={colors.graphite} id='headingBreak' />
+        <Line color={colors.graphite} type='hr' />
       </div>
     </div>
   );
