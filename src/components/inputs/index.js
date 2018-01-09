@@ -287,13 +287,15 @@ export const Checkbox = styled(({
         required={required}
         checked={checked}
         name={id}/>
-      <span onClick={(e) => {
-        console.log(e);
-        e.preventDefault();
-        const { target } = e;
-        console.log(target.previousSibling);
-        target.previousSibling.click();
-      }}>
+      <span
+        className='checkbox'
+        onClick={(e) => {
+          console.log(e);
+          e.preventDefault();
+          const { target } = e;
+          console.log(target.previousSibling);
+          target.previousSibling.click();
+        }}>
         <CheckIcon
           boxColor={colors.graphite}
           checkColor={colors.mauiOrange}
@@ -311,7 +313,7 @@ margin: 0.5rem 0;
   font-size: 1.125rem;
 }
 
-label span {
+label span.checkbox {
   display: inline-block;
   width: 1.125rem;
   height: 1.125rem;

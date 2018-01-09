@@ -1,8 +1,9 @@
 @import '../../../../../../consts/screen-breaks.scss';
+@import '../../../../../../consts/colors.scss';
 
 .non-profit-info {
   opacity: 1;
-  max-height: 37.5rem;
+  max-height: 47rem;
   transition: max-height 1s 0.05s, padding 0.05s, margin 1s 0.5s, opacity 1s 0.05s;
   transition-timing-function: ease-in-out;
   overflow: hidden;
@@ -39,25 +40,6 @@
 
         @media screen and (min-width: $medium-break){
           order: 1;
-        }
-      }
-
-      .cta-text {
-        width: 100%;
-        order: 1;
-        margin: 1.75rem 0 1.5rem 0;
-        box-sizing: border-box;
-        max-width: 36rem;
-
-        @media screen and (min-width: $medium-break){
-          order: 2;
-          width: 50%;
-          margin: 0 2rem;
-        }
-    
-        @media screen and (min-width: $large-break){
-          width: 66.66%;
-          margin: 0 4rem;
         }
       }
     }

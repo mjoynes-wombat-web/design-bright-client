@@ -8,14 +8,19 @@ import screenBreaks from '../../consts/screen-breaks.scss';
 
 import Line from '../../components/svgs/line';
 
-const Heading = styled(({ className, type, text }) => {
+const Heading = styled(({
+  className,
+  type,
+  text,
+  color,
+}) => {
   switch (type) {
     case 'h2':
       return (
         <h2 className={className}>
           <span className="underlined">
             {text}
-            <Line color={colors.mauiOrange} />
+            <Line color={color || colors.mauiOrange} />
           </span>
         </h2>
       );
@@ -25,7 +30,7 @@ const Heading = styled(({ className, type, text }) => {
         <h1 className={className}>
           <span className="underlined">
             {text}
-            <Line color={colors.blueHydrangea} />
+            <Line color={color || colors.blueHydrangea} />
           </span>
         </h1>
       );
@@ -35,13 +40,13 @@ font-size: 1.125rem;
 font-family: 'Lato', sans-serif;
 font-weight: normal;
 
-${({ type }) => {
+${({ type, color }) => {
     switch (type) {
       case 'h2':
         return `
         font-size: 1.125rem;
         margin: 0.875rem 0 0.25rem 0;
-        color: ${colors.mauiOrange};
+        color: ${color || colors.mauiOrange};
 
         @media screen and (min-width: ${screenBreaks.medium}) {
           margin: 1.126rem 0 0.375rem 0;
@@ -58,7 +63,7 @@ ${({ type }) => {
       default:
         return `
         font-size: 1.125rem;
-        color: ${colors.blueHydrangea};
+        color: ${color || colors.blueHydrangea};
         margin:1rem 0;
 
         @media screen and (min-width: ${screenBreaks.small}) {

@@ -16,6 +16,11 @@ import Button from '../../../../../components/button';
 import Line from '../../../../../components/svgs/line';
 import Heading from '../../../../../components/heading';
 
+import birdImage from '../../../../../assets/img/bird.jpg';
+import stalksImage from '../../../../../assets/img/stalks.jpg';
+
+import CTAText from './cta-text';
+
 import './scss/style.scss';
 
 const doPasswordsMatch = (pass, confPass) => pass === confPass;
@@ -241,16 +246,16 @@ class Register extends React.Component {
           <form onSubmit={this.onSubmit}>
             <Heading type='h1' text='Register' />
             <section className="main-info">
-            <div className="cta-text">
-                <Heading
-                  type='h2'
-                  text={this.state.inputs.userType === 'donor' ? 'Help a Cause' : 'Get Support'}/>
-                <p>
-                  {this.state.inputs.userType === 'donor'
-                    ? 'There are many non-profits that need your help supporting their cause. The beauty of crowd funding is that every little bit helps. No matter the donation you can be a part of creating a brighter future.'
-                    : 'Do you have a vision for a brighter future? Sign up today to get support for your cause. With us you will find people all across the country that are passionate like you and want to help out.'}
-                </p>
-              </div>
+              <CTAText
+                fgColor='rgba(245, 232, 211, 0.8)'
+                bgColor='#f5e8d3'
+                image={birdImage}
+                textColor={colors.darkGraphite}
+                heading={this.state.inputs.userType === 'donor' ? 'Help a Cause' : 'Get Support'}
+                text={this.state.inputs.userType === 'donor'
+                ? 'There are many non-profits that need your help supporting their cause. The beauty of crowd funding is that every little bit helps. No matter the donation you can be a part of creating a brighter future.'
+                : 'Do you have a vision for a brighter future? Sign up today to get support for your cause. With us you will find people all across the country that are passionate like you and want to help out.'}
+                 />
               <div className="form-inputs">
                 <fieldset>
                   <Input
@@ -322,95 +327,102 @@ class Register extends React.Component {
                     ]
                   }
                 />
-              </div>
-            </section>
-            <section className={`non-profit-info ${this.state.inputs.userType === 'non-profit' ? '' : 'hide'}`}>
-              <div className="form-inputs">
-                <fieldset>
-                  <Input
-                    onChange={this.onChange}
-                    type='text'
-                    inputLabel='Position at Non-Profit'
-                    value={this.state.inputs.position}
-                    width='20rem'
-                    id='position'
-                    required={this.state.inputs.userType === 'non-profit'} />
-                  <Input
-                    onChange={this.onChange}
-                    type='text'
-                    inputLabel='Non-Profit Name'
-                    value={this.state.inputs.nonProfitName}
-                    width='20rem'
-                    id='nonProfitName'
-                    required={this.state.inputs.userType === 'non-profit'} />
-                  <Input
-                    onChange={this.onChange}
-                    type='text'
-                    inputLabel='Employer Identification Number (EIN)'
-                    value={this.state.inputs.ein}
-                    id='ein'
-                    error={(this.currentInputValid('ein') || this.state.inputs.ein.length === 0) ? null : 'You entered an invalid EIN.'}
-                    required={this.state.inputs.userType === 'non-profit'} />
-                </fieldset>
-                <Line color={colors.graphite} type='hr' />
-                <fieldset>
-                  <Input
-                    onChange={this.onChange}
-                    type='text'
-                    inputLabel='Address'
-                    value={this.state.inputs.address}
-                    width='20rem'
-                    id='address'
-                    required={this.state.inputs.userType === 'non-profit'} />
-                  <Input
-                    onChange={this.onChange}
-                    type='text'
-                    inputLabel='City'
-                    value={this.state.inputs.city}
-                    width='16rem'
-                    id='city'
-                    required={this.state.inputs.userType === 'non-profit'} />
-                  <Select
-                    onChange={this.onChange}
-                    type='text'
-                    inputLabel='State'
-                    value={this.state.inputs.state}
-                    width='14rem'
-                    id='state'
-                    required={this.state.inputs.userType === 'non-profit'}
-                    options={states.map(state =>
-                      ({
-                        name: state.name,
-                        value: state.abbreviation,
-                      }))
-                    }
-                  />
-                  <Input
-                    onChange={this.onChange}
-                    type='text'
-                    inputLabel='Zip'
-                    value={this.state.inputs.zip}
-                    id='zip'
-                    error={(this.currentInputValid('zip') || this.state.inputs.zip.length === 0) ? null : 'You entered an invalid Zip Code.'}
-                    required={this.state.inputs.userType === 'non-profit'} />
-                </fieldset>
-              </div>
-              <div className="cta-text">
-              </div>
-            </section>
-            <Checkbox
-              id={'agreed'}
-              onChange={this.onChange}
-              className='agreed'
-              checked={this.state.inputs.agreed}
-              required>
-              {this.state.inputs.userType === 'non-profit' ? 'I am authorized to represent the non-profit listed above and' : 'I '} agree to the Design Bright <Link to="/help/terms">terms of
-          service.</Link>
-            </Checkbox>
-            <Button primary type="submit" disabled={!this.state.valid} error={'Please make sure you\'ve entered all your information.'}>Register User</Button>
-          </form>
-        </section>
-      </main>
+            </div>
+          </section>
+          <section className={`non-profit-info ${this.state.inputs.userType === 'non-profit' ? '' : 'hide'}`}>
+          <CTAText
+                fgColor='rgba(185, 215, 248, 0.8)'
+                bgColor='rgb(152, 195, 245)'
+                textColor='white'
+                image={stalksImage}
+                heading='Fund Your Cause'
+                text={'Do you have a cause you need help getting off the ground? We can help you find donors who are as passionate as you are. Sign up and get your campaign up today!'}
+                 />
+            <div className="form-inputs">
+              <fieldset>
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='Position at Non-Profit'
+                  value={this.state.inputs.position}
+                  width='20rem'
+                  id='position'
+                  required={this.state.inputs.userType === 'non-profit'} />
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='Non-Profit Name'
+                  value={this.state.inputs.nonProfitName}
+                  width='20rem'
+                  id='nonProfitName'
+                  required={this.state.inputs.userType === 'non-profit'} />
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='Employer Identification Number (EIN)'
+                  value={this.state.inputs.ein}
+                  id='ein'
+                  error={(this.currentInputValid('ein') || this.state.inputs.ein.length === 0) ? null : 'You entered an invalid EIN.'}
+                  required={this.state.inputs.userType === 'non-profit'} />
+              </fieldset>
+              <Line color={colors.graphite} type='hr' />
+              <fieldset>
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='Address'
+                  value={this.state.inputs.address}
+                  width='20rem'
+                  id='address'
+                  required={this.state.inputs.userType === 'non-profit'} />
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='City'
+                  value={this.state.inputs.city}
+                  width='16rem'
+                  id='city'
+                  required={this.state.inputs.userType === 'non-profit'} />
+                <Select
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='State'
+                  value={this.state.inputs.state}
+                  width='14rem'
+                  id='state'
+                  required={this.state.inputs.userType === 'non-profit'}
+                  options={states.map(state =>
+                    ({
+                      name: state.name,
+                      value: state.abbreviation,
+                    }))
+                  }
+                />
+                <Input
+                  onChange={this.onChange}
+                  type='text'
+                  inputLabel='Zip'
+                  value={this.state.inputs.zip}
+                  id='zip'
+                  error={(this.currentInputValid('zip') || this.state.inputs.zip.length === 0) ? null : 'You entered an invalid Zip Code.'}
+                  required={this.state.inputs.userType === 'non-profit'} />
+              </fieldset>
+            </div>
+            <div className="cta-text">
+            </div>
+          </section>
+          <Checkbox
+            id={'agreed'}
+            onChange={this.onChange}
+            className='agreed'
+            checked={this.state.inputs.agreed}
+            required>
+            {this.state.inputs.userType === 'non-profit' ? 'I am authorized to represent the non-profit listed above and' : 'I '} agree to the Design Bright <Link to="/help/terms">terms of service.</Link>
+          </Checkbox>
+          <Button primary type="submit" disabled={!this.state.valid} error={'Please make sure you\'ve entered all your information.'}>Register User</Button>
+        </form>
+      </section>
+    </main>
     );
   }
 }
