@@ -242,7 +242,7 @@ class Register extends React.Component {
           onClearMessage={() => this.setState({ message: { type: '', message: '' } })}
           message={this.state.message}
           onClearError={() => this.setState({ error: { type: '', message: '' } })} />
-        <section>
+        <section className='main-content'>
           <form onSubmit={this.onSubmit}>
             <Heading type='h1' text='Register' />
             <section className="main-info">

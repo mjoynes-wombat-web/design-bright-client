@@ -8,11 +8,7 @@ import orangeButton from '../../assets/img/orange-brush-btn.png';
 const buttonType = (props) => {
   if (props.primary) {
     return `
-    margin: 2rem 0 1.5rem 0;
-
-    @media screen and (min-width: ${screenBreaks.medium}) {
-      margin: 2rem 0;
-    }
+    margin-top: 2rem;
 
     button {
       text-shadow: ${colors.blueHydrangea} 0 0 0.25rem;

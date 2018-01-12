@@ -2,19 +2,12 @@
 @import '../../../consts/screen-breaks.scss';
 
 #campaignsPage {
-  > section {
-    margin: 0 auto;
-    padding-bottom: 2rem;
-
-    @media screen and (min-width: $medium-break) {
-      padding: 0 2rem 2rem 2rem;
-    }
-  }
-  > section:first-child {
-    padding: 0 2rem;
-
-    > h1:first-child {
-      margin-top: 0;
+  .main-content {
+    > section:first-child {
+      padding-bottom: 0;
+      > h1:first-child {
+        margin-top: 0;
+      }
     }
   }
   h1, h2 {

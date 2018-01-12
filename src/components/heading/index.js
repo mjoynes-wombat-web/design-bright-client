@@ -62,7 +62,7 @@ ${({ type, color }) => {
       case 'h1':
       default:
         return `
-        font-size: 1.125rem;
+        font-size: 1.375rem;
         color: ${color || colors.blueHydrangea};
         margin:1rem 0;
 

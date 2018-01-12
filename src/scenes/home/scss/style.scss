@@ -54,20 +54,12 @@
   }
 
 
-  #pageContent {
+  .main-content {
     display: flex;
     flex-wrap: wrap;
 
     @media screen and (min-width: $medium-break) {
       flex-wrap: nowrap;
-    }
-
-    > * {
-      padding: 0 1.5rem 1.5rem 1.5rem;
-
-      @media screen and (min-width: $medium-break) {
-        padding: 0 2rem 2rem 2rem;
-      }
     }
 
     #intro {

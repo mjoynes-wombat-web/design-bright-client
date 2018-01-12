@@ -78,13 +78,15 @@ const CampaignItem = styled(({ campaign, className }) => (
 padding-bottom: 0.9375rem;
 padding-top: 0.25rem;
 width: 100%;
+margin: 0 0.25rem;
+box-sizing: border-box;
 transition: background-color 0.5s;
 transition-timing-function: ease-in-out;
 
 a:link {
   border-bottom: none;
   display: block;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.25rem 0.5rem 1.25rem;
 
   &:hover {
     border-bottom: 0;
@@ -92,15 +94,15 @@ a:link {
 }
 
 @media screen and (min-width: ${screenBreaks.medium}) {
-  width: 50%;
+  width: calc(50% - 0.5rem);
 
   a:link {
-    padding: 0.75rem 1.25rem;
+    padding: 1rem 1.5rem 0.75rem 1.5rem;
   }
 }
 
 @media screen and (min-width: ${screenBreaks.large}) {
-  width: 33.33%;
+  width: calc(33.33% - 0.5rem);
 }
 
 &:hover {

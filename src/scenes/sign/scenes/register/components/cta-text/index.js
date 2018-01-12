@@ -56,7 +56,7 @@ box-sizing: border-box;
     background-color: ${props => props.fgColor};
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       color: ${props => (props.textColor || colors.darkGraphite)};
 
       @media screen and (min-width: ${screenBreaks.medium}) {

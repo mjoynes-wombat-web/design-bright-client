@@ -21,7 +21,7 @@ const Home = () => {
         </div>
         <div className='white-block'></div>
       </section>
-      <section id='pageContent'>
+      <section className='main-content'>
         <section id='intro'>
           <Heading type='h1' text='Who are We?' />
           <p>

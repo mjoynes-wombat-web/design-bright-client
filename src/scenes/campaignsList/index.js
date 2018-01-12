@@ -90,6 +90,7 @@ class CampaignsList extends React.Component {
     }
     return (
       <main id="campaignsPage">
+      <section className="main-content">
         {this.state.view === 'browse'
           ? <Browse
             state={this.state}
@@ -105,6 +106,7 @@ class CampaignsList extends React.Component {
         <List
           getUrl={this.state.getUrl}
           view={this.state.view} />
+        </section>
       </main>
     );
   }

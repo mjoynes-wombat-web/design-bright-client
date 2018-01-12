@@ -23,7 +23,7 @@ body {
   font-size: 0.875rem;
   position: relative;
   min-height: 100%;
-  padding-bottom:6rem;
+  padding-bottom:4rem;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,14 +31,27 @@ body {
 
   @media screen and (min-width: $medium-break) {
     font-size: 1rem;
+    padding-bottom:6rem;
   }
 }
 
-main:not(#index) {
-  padding-top:  2rem;;
-}
-
 main {
+  section.main-content {
+    margin: 2rem 1rem 1rem 1rem;
+
+    @media screen and (min-width: $medium-break) {
+      margin-top: 3rem;
+    }
+
+    > * {
+      padding: 0 0.5rem 2rem 0.5rem;
+
+      @media screen and (min-width: $medium-break) {
+        padding: 0 2rem 2rem 2rem;
+      }
+    }
+  }
+
   h1 {
     font-size: 1.125rem;
     font-family: 'Lato', sans-serif;
