@@ -1,0 +1,19 @@
+@import '../../../../../consts/screen-breaks.scss';
+
+#loginForm {
+  max-width: 45rem;
+  margin: 0 auto;
+  
+  h1 {
+    margin-bottom: 0.125rem;
+  }
+
+  p.register-link {
+    margin-bottom: 1.25rem;
+
+    @media screen and (min-width: $medium-break) {
+      margin-top: 0.5rem;
+      font-size: 1.25rem;
+    }
+  }
+}

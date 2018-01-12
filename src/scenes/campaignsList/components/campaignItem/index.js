@@ -68,7 +68,7 @@ const CampaignItem = styled(({ campaign, className }) => (
         </p>
         <p className="funding">
           <span className="details">
-            ${campaign.fundingNeeded} Needed
+            ${campaign.fundingNeeded} Goal
           </span>
         </p>
       </div>
@@ -78,10 +78,13 @@ const CampaignItem = styled(({ campaign, className }) => (
 padding-bottom: 0.9375rem;
 padding-top: 0.25rem;
 width: 100%;
-margin: 0 0.25rem;
 box-sizing: border-box;
 transition: background-color 0.5s;
 transition-timing-function: ease-in-out;
+
+@media screen and (min-width: ${screenBreaks.medium}) {
+  margin: 0 0.25rem;
+}
 
 a:link {
   border-bottom: none;

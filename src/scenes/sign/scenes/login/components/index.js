@@ -3,7 +3,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import queryString from 'query-string';
 
-import { LoginForm, Message } from '../../../../../partials';
+import LoginForm from '../../../../../components/login/form';
+import Message from '../../../../../components/message';
 
 class Login extends React.Component {
   // Sets up state and props and binds this to the class methods.
@@ -72,8 +73,10 @@ class Login extends React.Component {
           onClearMessage={() => this.setState({ message: { type: '', message: '' } })}
           message={this.state.message}
           onClearError={() => this.setState({ error: { type: '', message: '' } })} />
-        <LoginForm
-          actionName={'Login'} />
+          <section className="main-content">
+            <LoginForm
+              actionName={'Login'} />
+          </section>
       </main>
     );
   }
