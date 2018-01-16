@@ -3,7 +3,7 @@
 import React from 'react';
 
 // IMPORT COMPONENTS
-import { OverlayModal } from '../../';
+import OverlayModal from '../../overlayModal';
 import LoginForm from '../form';
 
 // LOGIN MODAL

@@ -118,9 +118,9 @@ class LoginForm extends React.Component {
         <section>
           <form onSubmit={this.onLogin}>
             <Heading type='h1' text={this.props.actionName} />
-            <p className="small-12 columns register-link">
+            <p className='register-link'>
               <Link onClick={() => { document.body.style.overflow = ''; }} to="/register">
-                Need an Account?
+                Create an Account
               </Link>
             </p>
             <Input

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import { states, validEmail } from '../../../../../helpers';
-import { Message } from '../../../../../partials';
+import Message from '../../../../../components/message';
 
 import './scss/style.scss';
 

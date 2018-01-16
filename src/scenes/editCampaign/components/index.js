@@ -5,7 +5,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 import CampaignEditor from './editor';
-import Message from '../../../partials/message';
+import Message from '../../../components/message';
 
 import './scss/style.scss';
 

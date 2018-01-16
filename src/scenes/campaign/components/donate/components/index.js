@@ -5,7 +5,7 @@ import { injectStripe } from 'react-stripe-elements';
 import axios from 'axios';
 
 // IMPORT PARTIALS
-import { OverlayModal } from '../../../../../partials';
+import OverlayModal from '../../../../../components/overlayModal';
 
 // IMPORT HELPERS
 import { validEmail } from '../../../../../helpers';

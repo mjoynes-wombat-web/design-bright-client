@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import states from '../../../../../helpers/states';
 import validEmail from '../../../../../helpers/validEmail';
-import Message from '../../../../../partials/message';
+import Message from '../../../../../components/message';
 import isNumber from '../../../../../helpers/isNumber';
 import numLength from '../../../../../helpers/numLength';
 

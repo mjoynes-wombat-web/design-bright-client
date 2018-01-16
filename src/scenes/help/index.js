@@ -3,7 +3,7 @@ import React from 'react';
 
 import ContactForm from './components/contactForm';
 import FAQ from './components/faq';
-import { Message } from '../../partials';
+import Message from '../../components/message';
 
 import './scss/style.scss';
 

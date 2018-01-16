@@ -8,7 +8,7 @@ import axios from 'axios';
 import { validEmail } from '../../helpers';
 
 // IMPORT PARTIAL COMPONENTS
-import { Message } from '../../partials';
+import Message from '../../components/message';
 
 // IMPORT STYLING
 import './scss/style.scss';

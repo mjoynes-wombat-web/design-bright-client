@@ -16,12 +16,16 @@
 @import '../../consts/colors.scss';
 @import '../../consts/screen-breaks.scss';
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   color: $graphite;
   font-size: 0.875rem;
-  position: relative;
   min-height: 100%;
   padding-bottom:4rem;
   margin: 0;

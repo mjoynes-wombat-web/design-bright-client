@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import CampaignActions from './campaignActions';
 import StopConfModal from './stopConfirmation';
-import Message from '../../../partials/message';
+import Message from '../../../components/message';
 
 import './scss/style.scss';
 

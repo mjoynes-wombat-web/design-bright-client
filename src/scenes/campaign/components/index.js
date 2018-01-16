@@ -5,7 +5,8 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 // IMPORT PARTIALS
-import { LoginModal, Message } from '../../../partials';
+import LoginModal from '../../../components/login/modal';
+import Message from '../../../components/message';
 
 // IMPORT COMPONENTS
 import CampaignBlocks from './campaignBlocks';

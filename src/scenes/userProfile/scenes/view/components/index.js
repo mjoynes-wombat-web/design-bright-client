@@ -4,7 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 import queryString from 'query-string';
 import axios from 'axios';
 
-import { Message } from '../../../../../partials';
+import Message from '../../../../../components/message';
 
 import './scss/style.scss';
 
