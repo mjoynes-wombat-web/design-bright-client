@@ -57,7 +57,7 @@ const SortOptions = ({ state, cancelSort }) => {
             </Button>
           </li>
         </ul>
-        <Line color={colors.graphite} type='hr' />
+        <Line color={colors.graphite} type='hr' height={0.25}/>
       </div>
     </div>
   );

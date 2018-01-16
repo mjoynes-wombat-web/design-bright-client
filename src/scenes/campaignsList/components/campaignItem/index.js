@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import yellowBrush2 from '../../../../assets/img/yellow-brush2.png';
-import orangeBrush1 from '../../../../assets/img/orange-brush1.png';
 
 import colors from '../../../../consts/colors.scss';
 import screenBreaks from '../../../../consts/screen-breaks.scss';
 
-import Line from '../../../../components/svgs/line';
 import Heading from '../../../../components/heading';
+import CampaignProgress from '../../../../components/campaignProgress';
 
 const determineTimeLeft = (campaignInfo) => {
   const isEnded = endDate => ((new Date(Date.parse(endDate))).getTime()
@@ -52,14 +51,9 @@ const CampaignItem = styled(({ campaign, className }) => (
       <div className="main-image">
         <img src={campaign.image.src} alt={campaign.image.alt} />
       </div>
-      <div className="progress">
-        <div className="line"><Line color={colors.graphite} /></div>
-        <div className="funded" style={{
-          width: `${percentFunded(campaign.fundingNeeded, campaign.donationsMade) < 100
-            ? percentFunded(campaign.fundingNeeded, campaign.donationsMade)
-            : 100}%`,
-        }}></div>
-      </div>
+      <CampaignProgress
+        percentFunded={percentFunded(campaign.fundingNeeded, campaign.donationsMade)}
+        height={1} />
       <div className="campaign-details">
         <p className="funded">
           <span className="details">
@@ -179,34 +173,6 @@ a:link {
     }
   }
 }
-
-.progress {
-  height: 1rem;
-  position: relative;
-  margin: 0.625rem 0;
-
-  @media screen and (min-width: ${screenBreaks.medium}) {
-    height: 1.25rem;
-    margin: 0.75rem 0;
-  }
-
-  .line {
-    height: 100%;
-    align-items: center;
-    display: flex;
-  }
-
-  .funded {
-    background-image: url(${orangeBrush1});
-    height: 100%;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    z-index: 20;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    margin: 0;
-  }
 `;
 
 export default CampaignItem;

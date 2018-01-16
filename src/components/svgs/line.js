@@ -3,6 +3,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import screenBreaks from '../../consts/screen-breaks.scss';
+
 const Line = styled(({ className, id, type }) => (
   <svg
     id={id}
@@ -24,6 +26,11 @@ const Line = styled(({ className, id, type }) => (
     </g>
   </svg>
 ))`
+height: ${props => props.height}rem;
+
+@media screen and (min-width: ${screenBreaks.medium}) {
+  height: ${props => (props.height * 1.25)}rem;
+}
 
 ${props => (props.scale ? `
 transform: scale(${props.scale});

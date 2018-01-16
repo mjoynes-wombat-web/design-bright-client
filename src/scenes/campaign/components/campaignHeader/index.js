@@ -5,45 +5,27 @@ import React from 'react';
 // IMPORT HELPERS
 import { campaignTimeLeft } from '../../../../helpers';
 
+import Heading from '../../../../components/heading';
+import CampaignProgress from '../../../../components/campaignProgress';
+
 // CAMPAIGN HEADER COMPONENT
 // The header for the campaign page.
 const CampaignHeader = ({ campaignInfo, isEnded }) => (
-  <div className="columns small-12">
-    <section className="row">
-      <div className="small-12 columns">
-        <h1>
-          <span className="underlined">
-            {campaignInfo.name}
-          </span>
-        </h1>
+  <section>
+    <Heading type='h1' text={campaignInfo.name} />
+    <CampaignProgress
+        percentFunded={campaignInfo.donationPercentage}
+        height={1} />
+      <div className="campaign-details">
+          <p className="details">{Math.round(campaignInfo.donationPercentage)}% Funded</p>
+          <p className="details">
+            {campaignTimeLeft(isEnded, campaignInfo)}
+          </p>
+          <p className="details">
+            ${parseInt(campaignInfo.fundingNeeded, 10).toLocaleString()} Needed
+          </p>
       </div>
-      <div className="small-12 columns">
-        <div className="progress">
-          <div className="line small-12 columns"></div>
-          <div className="funded columns" style={{
-            width: `${campaignInfo.donationPercentage < 100 ? campaignInfo.donationPercentage : 100}%`,
-          }}></div>
-        </div>
-      </div>
-      <div className="small-12 columns">
-        <div className="row align-justify campaign-details">
-          <div className="shrink columns">
-            <p className="details">{Math.round(campaignInfo.donationPercentage)}% Funded</p>
-          </div>
-          <div className="shrink columns">
-            <p className="details">
-              {campaignTimeLeft(isEnded, campaignInfo)}
-            </p>
-          </div>
-          <div className="shrink columns">
-            <p className="details">
-              ${parseInt(campaignInfo.fundingNeeded, 10).toLocaleString()} Needed
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+  </section>
 );
 
 export default CampaignHeader;

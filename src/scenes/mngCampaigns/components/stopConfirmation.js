@@ -1,7 +1,7 @@
 /* eslint-env browser */
 import React from 'react';
 
-import OverlayModal from '../../../partials/overlayModal';
+import OverlayModal from '../../../components/overlayModal';
 
 import './scss/stopConfModal.scss';
 

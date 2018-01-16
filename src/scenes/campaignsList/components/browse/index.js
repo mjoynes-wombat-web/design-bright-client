@@ -35,7 +35,7 @@ const Browse = ({ state, showSortOpt, cancelSort }) => (
         state={state}
         cancelSort={cancelSort} />
       : null}
-    <Line color={colors.graphite} type='hr' />
+    <Line color={colors.graphite} type='hr' height={0.25}/>
   </section>
 );
 
