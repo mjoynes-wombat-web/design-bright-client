@@ -87,7 +87,7 @@ class LoginForm extends React.Component {
   onLogin(e) {
     e.preventDefault();
     // Grab the email and password from state.
-    const { email, password } = this.state;
+    const { email, password } = this.state.inputs;
     // Runs the Redux function to login, passing it the email and password.
     this.props.onLogin(
       {
@@ -97,7 +97,7 @@ class LoginForm extends React.Component {
       // Callback function that runs if there is an error.
       () => {
         // Clear the password.
-        this.setState({ password: '' });
+        this.setState({ inputs: { email, password: '' } });
         // Set the error message which the Message component displays.
         this.setState({ error: this.props.error });
         // Scroll to the top of the page.
