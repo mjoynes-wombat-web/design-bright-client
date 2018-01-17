@@ -59,7 +59,9 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build-create-react-app": "node scripts/build.js",
+    "build-server": "NODE_ENV=production BABEL_ENV=production babel -o build/server.js src/server.js -s",
+    "build": "npm run build-create-react-app && npm run build-server",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
