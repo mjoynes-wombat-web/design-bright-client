@@ -16,3 +16,6 @@ Maintainabilty:
 
   Header:
     ☐ Make click not work on padding. @critical 
+
+  Messages: 
+    ☐ Fix messages component. @critical 
