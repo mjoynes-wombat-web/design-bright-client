@@ -52,14 +52,14 @@ if (STATUS !== undefined) {
 }
 
 app.use((0, _compression2.default)());
-app.use(_express2.default.static(_path2.default.join(__dirname, '../build/dist')));
+app.use(_express2.default.static(_path2.default.join(__dirname, '../build')));
 
 app.get('/', function (req, res) {
-  res.sendFile(_path2.default.join(__dirname, '../build/dist', 'index.html'));
+  res.sendFile(_path2.default.join(__dirname, '../build', 'index.html'));
 });
 
 app.get('/*', function (req, res) {
-  res.sendFile(_path2.default.join(__dirname, '../build/dist', 'index.html'));
+  res.sendFile(_path2.default.join(__dirname, '../build', 'index.html'));
 });
 
 _http2.default.createServer(function (req, res) {

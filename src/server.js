@@ -16,14 +16,14 @@ if (STATUS !== undefined) {
 }
 
 app.use(compression());
-app.use(express.static(path.join(__dirname, '../build/dist')));
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
 http.createServer((req, res) => {
