@@ -7,7 +7,7 @@ import http from 'http';
 import https from 'https';
 import compression from 'compression';
 
-const { HTTP_PORT = 80, HTTPS_PORT = 437, STATUS, HOST = '0.0.0.0', PRIVATE_KEY_FILE, CERTIFICATE_FILE } = dotenv.config().parsed;
+const { HTTP_PORT = 80, HTTPS_PORT = 443, STATUS, HOST = '0.0.0.0', PRIVATE_KEY_FILE, CERTIFICATE_FILE } = dotenv.config().parsed;
 
 const app = express();
 
