@@ -16,6 +16,7 @@ Maintainabilty:
 
   Header:
     ☐ Make click not work on padding. @critical 
+    ☐ Remove user image on timed out logout. @critical 
 
   Messages: 
     ☐ Fix messages component. @critical 

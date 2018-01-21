@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import queryString from 'query-string';
 
 import LoginForm from '../../../../../components/login/form';
-import Message from '../../../../../components/message';
 
 class Login extends React.Component {
   // Sets up state and props and binds this to the class methods.
@@ -68,11 +67,6 @@ class Login extends React.Component {
     }
     return (
       <main id="login">
-        <Message
-          error={this.state.error}
-          onClearMessage={() => this.setState({ message: { type: '', message: '' } })}
-          message={this.state.message}
-          onClearError={() => this.setState({ error: { type: '', message: '' } })} />
           <section className="main-content">
             <LoginForm
               actionName={'Login'} />
