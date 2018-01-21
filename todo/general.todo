@@ -19,4 +19,4 @@ Maintainabilty:
     ☐ Remove user image on timed out logout. @critical 
 
   Messages: 
-    ☐ Fix messages component. @critical 
+    ✔ Fix messages component. @critical @done (2018-1-20 17:17:24)

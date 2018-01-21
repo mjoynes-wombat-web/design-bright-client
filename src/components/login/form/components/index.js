@@ -97,9 +97,14 @@ class LoginForm extends React.Component {
       // Callback function that runs if there is an error.
       () => {
         // Clear the password.
-        this.setState({ inputs: { email, password: '' } });
-        // Set the error message which the Message component displays.
-        this.setState({ error: this.props.error });
+        this.setState({
+          inputs: {
+            email,
+            password: '',
+          },
+          valid: false,
+          error: this.props.error,
+        });
         // Scroll to the top of the page.
         window.scroll(0, 0);
       },
