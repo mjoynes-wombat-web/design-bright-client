@@ -2,6 +2,8 @@
 // IMPORT DEPENDENCIES
 import React from 'react';
 
+import Button from '../../../../components/button';
+
 // Returns the inline content of a block based on it's marks attributes.
 const formatInline = (range, i) => {
   if (range.marks.length > 0) {
@@ -109,14 +111,16 @@ const CampaignBlocks = ({ buttonAction, content, isEnded }) => {
                 </div>
                 {isEnded()
                   ? null
-                  : <button className="secondary" onClick={buttonAction}>Make a Donation</button>}
+                  : <Button secondary onClick={buttonAction}>Make a Donation</Button>}
               </div>
               {isEnded()
                 ? null
                 : (
-                  <button className="primary mobile" onClick={buttonAction}>
+                  <Button
+                  primary
+                  onClick={buttonAction}>
                     Make a Donation
-                  </button>
+                  </Button>
                 )}
             </div>
           );

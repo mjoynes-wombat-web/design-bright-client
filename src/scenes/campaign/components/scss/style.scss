@@ -1,167 +1,166 @@
 @import '../../../../consts/colors.scss';
 @import '../../../../consts/screen-breaks.scss';
-
 #campaign {
-
-  &.no-touch {
-   .main-image-wrapper {
-    &:hover {
-      div.overlay, button.secondary {
-        display: initial;
-      }
-    }
-   }
-
-   .campaign-content {
-     button.primary.mobile {
-       display: none;
-     }
-   }
-  }
-
-  .campaign-details {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  h2 {
-    margin-bottom: -0.125rem;
-
     @media screen and (min-width: $medium-break) {
-      margin-bottom: -0.25rem;
+        &.no-touch {
+            .campaign-content {
+                .main-image-wrapper {
+                    .button {
+                        display: initial;
+                    }
+                    &:hover {
+                        div.overlay,
+                        .button {
+                            opacity: 1;
+                            transition: opacity 0.5s ease-in-out;
+                            pointer-events: initial;
+                        }
+                    }
+                }
+                .button {
+                    display: none;
+                    pointer-events: none;
+                }
+            }
+        }
     }
-  }
-  
-  .progress {
-    height: 1rem;
-    position: relative;
-    margin: 0.25rem 0 0.5rem 0;
-
-    @media screen and (min-width: $medium-break) {
-      height: 1.25rem;
+    .campaign-content {
+        @media screen and (min-width: $medium-break) {
+            display: flex;
+            justify-content: space-between;
+            >div {
+                overflow: hidden;
+                max-width: 47%;
+            }
+        }
     }
-
-    .line {
-      background-image: url('/assets/img/grey-line.svg');
-      height:100%;
-      background-repeat: no-repeat;
-      background-size: 100% 35%;
-      background-position-y: 50%;
+    .campaign-details {
+        display: flex;
+        justify-content: space-between;
     }
-    .funded {
-      background-image: url('../../../../assets/img/orange-brush1.png');
-      height: 100%;
-      padding:0;
-      position: absolute;
-      top: 0;
-      z-index: 20;
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
+    h2 {
+        margin-bottom: -0.125rem;
+        @media screen and (min-width: $medium-break) {
+            margin-bottom: -0.25rem;
+        }
     }
-  }
-
-  .campaign-content {
-    p, ol, ul {
-      margin-top: 0.75rem;
-
-      @media screen and (min-width: $medium-break) {
-        font-size: 1.125rem;
-        margin-top: 1rem;
-        line-height: 1.375rem
-      }
-
-      span.underlined {
-        text-decoration: underline;
-      }
+    .progress {
+        height: 1rem;
+        position: relative;
+        margin: 0.25rem 0 0.5rem 0;
+        @media screen and (min-width: $medium-break) {
+            height: 1.25rem;
+        }
+        .line {
+            background-image: url('/assets/img/grey-line.svg');
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: 100% 35%;
+            background-position-y: 50%;
+        }
+        .funded {
+            background-image: url('../../../../assets/img/orange-brush1.png');
+            height: 100%;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            z-index: 20;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
     }
+    .campaign-content {
+        @media screen and (min-width: $medium-break) {
+            .button {
+                display: none;
+                pointer-events: none;
+            }
+        }
+        p,
+        ol,
+        ul {
+            margin-top: 0.75rem;
+            @media screen and (min-width: $medium-break) {
+                font-size: 1.125rem;
+                margin-top: 1rem;
+                line-height: 1.375rem
+            }
+            span.underlined {
+                text-decoration: underline;
+            }
+        }
+        li:not(:last-of-type) {
+            padding-bottom: 0.25rem;
+        }
+        ol {
+            margin: 1rem 0;
+            padding-left: 1.625rem;
+            li {
+                padding-left: 0.125rem;
+            }
+        }
+        ul {
+            margin: 1rem 0;
+            padding-left: 1.75rem;
+        }
+        .main-image-wrapper {
+            position: relative;
+            display: flex;
+            margin-top: 0.75rem;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
 
-    li:not(:last-of-type) {
-      padding-bottom: 0.25rem;
-    }
-
-    ol {
-      margin: 1rem 0;
-      padding-left: 1.625rem;
-
-      li {
-        padding-left: 0.125rem;
-      }
-    }
-    
-    ul {
-      margin: 1rem 0;
-      padding-left: 1.75rem;
-    }
-
-    .main-image-wrapper {
-      position: relative;
-      display: flex;
-      margin-top: 0.75rem;
-      align-items: center;
-      justify-content: center;
-
-      @media screen and (min-width: $medium-break) {
-        margin-top: 1rem;
-      }
-
-      div.main-image {
+            @media screen and (min-width: $medium-break) {
+                margin-top: 1rem;
+            }
+            div.main-image {
+                img {
+                    float: none;
+                    width: 100%;
+                    max-width: none;
+                    margin: 0;
+                }
+            }
+            div.overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: transparentize($light-graphite, 0.5);
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+                border-radius: 0.25rem;
+                pointer-events: none;
+            }
+            .button {
+                position: absolute;
+                margin: 0;
+                width: 80%;
+                z-index: 100;
+                opacity: 0;
+                display: initial;
+                pointer-events: none;
+            }
+        }
         img {
-          float: none;
-          width: 100%;
-          max-width: none;
-          margin:0;
+            width: 50%;
+            max-width: 300px;
+            border-radius: 0.25rem;
+            border: 0.0625rem solid $light-graphite;
+            &.left {
+                float: left;
+                margin: 0.75rem 1rem 0.625rem 0;
+                @media screen and (min-width: $medium-break) {
+                    margin: 1rem 1.125rem 0.75rem 0;
+                }
+            }
+            &.right {
+                float: right;
+                margin: 0.75rem 0 0.625rem 1rem;
+                @media screen and (min-width: $medium-break) {
+                    margin: 1rem 0 0.75rem 1.125rem;
+                }
+            }
         }
-      }
-      
-      div.overlay {
-        position:absolute;
-        width: 100%;
-        height: 100%;
-        background-color: transparentize($light-graphite, 0.5);
-        display: none;
-        border-radius: 0.25rem;
-      }
     }
-
-    button, button[type='submit'] {
-      &.primary {
-        &.mobile {
-          margin: 1rem 0;
-        }
-      }
-
-      &.secondary {
-        position: absolute;
-        margin: 0;
-        width: 80%;
-        z-index:100;
-        display: none;
-      }
-    }
-
-    img {
-      width: 50%;
-      max-width: 300px;
-      border-radius: 0.25rem;
-      border: 0.0625rem solid $light-graphite;
-
-      &.left {
-        float: left;
-        margin: 0.75rem 1rem 0.625rem 0;
-
-        @media screen and (min-width: $medium-break) {
-          margin: 1rem 1.125rem 0.75rem 0;
-        }
-      }
-
-      &.right {
-        float: right;
-        margin: 0.75rem 0 0.625rem 1rem;
-
-        @media screen and (min-width: $medium-break) {
-          margin: 1rem 0 0.75rem 1.125rem;
-        }
-      }
-    }
-  }
 }

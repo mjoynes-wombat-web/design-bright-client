@@ -130,7 +130,7 @@ const Button = styled.button`
 `;
 
 export default styled(props => (
-  <div className={props.className}>
+  <div className={`${props.className} button`}>
     <Button {...props} className=''>{props.children}</Button>
     <span className='error'>
     {console.log(props)}

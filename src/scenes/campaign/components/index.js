@@ -179,26 +179,31 @@ class Campaign extends React.Component {
                 isEnded={this.isEnded}
                 campaignInfo={this.state.campaignInfo} />
               <section className="campaign-content">
-                {this.state.campaignContent.map((content, i) => (
-                  (i < ((this.state.campaignContent.length / 2) - 1))
-                    ? <CampaignBlocks
-                      campaignInfo={this.state.campaignInfo}
-                      buttonAction={this.showDonationModal}
-                      content={content}
-                      isEnded={this.isEnded}
-                      key={i} />
-                    : null
-                ))}
-                {this.state.campaignContent.map((content, i) =>
-                  ((i > ((this.state.campaignContent.length / 2) - 2))
+                <div>
+                  {this.state.campaignContent.map((content, i) => (
+                    (i < ((this.state.campaignContent.length / 2) - 1))
                       ? <CampaignBlocks
                         campaignInfo={this.state.campaignInfo}
                         buttonAction={this.showDonationModal}
                         content={content}
+                        isEnded={this.isEnded}
                         key={i} />
                       : null
-                    ))}
-                <Button
+                  ))}
+                </div>
+                <div>
+                  {this.state.campaignContent.map((content, i) =>
+                    ((i > ((this.state.campaignContent.length / 2) - 2))
+                        ? <CampaignBlocks
+                          campaignInfo={this.state.campaignInfo}
+                          buttonAction={this.showDonationModal}
+                          content={content}
+                          key={i} />
+                        : null
+                      ))}
+                  </div>
+              </section>
+              <Button
                   primary
                   type="Button"
                   onClick={this.showDonationModal}
@@ -207,7 +212,6 @@ class Campaign extends React.Component {
                           ? 'This campaign has ended.'
                           : 'Make a Donation'}
                 </Button>
-              </section>
             </section>
           </main >
         );
