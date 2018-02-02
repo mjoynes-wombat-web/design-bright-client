@@ -1,6 +1,6 @@
 /* eslint-env browser */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'react-router-dom/Link';
 import Button from '../../../../components/button';
 
 import colors from '../../../../consts/colors.scss';

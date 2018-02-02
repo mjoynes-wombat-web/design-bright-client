@@ -1,11 +1,11 @@
 /* eslint-env browser */
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import BrowserRouter from 'react-router-dom/BrowserRouter';
 import { Provider } from 'react-redux';
 import smartlookClient from 'smartlook-client';
-import registerServiceWorker from './registerServiceWorker';
 
+import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 import App from './App';
 import routeRefresh from './helpers/routeRefresh';

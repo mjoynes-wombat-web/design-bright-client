@@ -10,6 +10,7 @@ import Footer from '../components/footer';
 // IMPORT CSS STYLING
 import './scss/main.scss';
 import '../assets/style/normalize.css';
+import '../assets/script/stripe';
 
 // MAIN REACT COMPONENT
 // The main stateless react component which returns the header, footer and component

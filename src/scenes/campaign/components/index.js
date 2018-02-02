@@ -1,12 +1,13 @@
 /* eslint-env browser */
 // IMPORT DEPENDENCIES
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import Redirect from 'react-router-dom/Redirect';
 import axios from 'axios';
 
 // IMPORT PARTIALS
 import LoginModal from '../../../components/login/modal';
 import Message from '../../../components/message';
+import Button from '../../../components/button';
 
 // IMPORT COMPONENTS
 import CampaignBlocks from './campaignBlocks';
@@ -83,7 +84,6 @@ class Campaign extends React.Component {
       })
       .catch((error) => {
         if (error) {
-          console.log(error);
           this.setState({
             fetched: {
               complete: true,
@@ -133,7 +133,7 @@ class Campaign extends React.Component {
     if (this.state.fetched.complete) {
       if (this.state.fetched.code === 200) {
         return (
-          <main id="campaign" className={`small-12 columns${('ontouchstart' in document.documentElement) ? '' : ' no-touch'}`}>
+          <main id="campaign" className={`${('ontouchstart' in document.documentElement) ? '' : ' no-touch'}`}>
             <Message
               error={this.state.error}
               onClearMessage={() => this.setState({ message: { type: '', message: '' } })}
@@ -174,51 +174,40 @@ class Campaign extends React.Component {
                   this.setState({ showDonationModal: false });
                 }} />
               : null}
-            <section className="row">
+            <section className="main-content">
               <CampaignHeader
                 isEnded={this.isEnded}
                 campaignInfo={this.state.campaignInfo} />
-              <div className="small-12 columns">
-                <section className="campaign-content row">
-                  <div className="small-12 medium-6 columns">
-                    {this.state.campaignContent.map((content, i) => (
-                      (i < ((this.state.campaignContent.length / 2) - 1))
-                        ? <CampaignBlocks
-                          campaignInfo={this.state.campaignInfo}
-                          buttonAction={this.showDonationModal}
-                          content={content}
-                          isEnded={this.isEnded}
-                          key={i} />
-                        : null
+              <section className="campaign-content">
+                {this.state.campaignContent.map((content, i) => (
+                  (i < ((this.state.campaignContent.length / 2) - 1))
+                    ? <CampaignBlocks
+                      campaignInfo={this.state.campaignInfo}
+                      buttonAction={this.showDonationModal}
+                      content={content}
+                      isEnded={this.isEnded}
+                      key={i} />
+                    : null
+                ))}
+                {this.state.campaignContent.map((content, i) =>
+                  ((i > ((this.state.campaignContent.length / 2) - 2))
+                      ? <CampaignBlocks
+                        campaignInfo={this.state.campaignInfo}
+                        buttonAction={this.showDonationModal}
+                        content={content}
+                        key={i} />
+                      : null
                     ))}
-                  </div>
-                  <div className="small-12 medium-6 columns">
-                    {this.state.campaignContent.map((content, i) =>
-                      ((i > ((this.state.campaignContent.length / 2) - 2))
-                          ? <CampaignBlocks
-                            campaignInfo={this.state.campaignInfo}
-                            buttonAction={this.showDonationModal}
-                            content={content}
-                            key={i} />
-                          : null
-                        ))}
-                  </div>
-                  <div className="small-12 columns">
-                    <div className="row align-center">
-                      <button
-                        className={`primary small-11 medium-10 large-10 columns${this.isEnded()
-                          ? ' disabled'
-                          : ''}`}
-                        onClick={this.showDonationModal}
-                        disabled={this.isEnded()}>
-                        {this.isEnded()
+                <Button
+                  primary
+                  type="Button"
+                  onClick={this.showDonationModal}
+                  disabled={this.isEnded()}>
+                  {this.isEnded()
                           ? 'This campaign has ended.'
                           : 'Make a Donation'}
-                      </button>
-                    </div>
-                  </div>
-                </section>
-              </div>
+                </Button>
+              </section>
             </section>
           </main >
         );

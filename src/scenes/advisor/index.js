@@ -1,7 +1,7 @@
 /* eslint-env browser */
 // IMPORT DEPENDENCIES
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'react-router-dom/Link';
 import axios from 'axios';
 
 // IMPORT HELPER FUNCTIONS

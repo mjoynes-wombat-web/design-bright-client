@@ -1,7 +1,7 @@
 /* eslint-env browser */
 // IMPORT DEPENDENCIES
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import Redirect from 'react-router-dom/Redirect';
 import queryString from 'query-string';
 
 import Browse from './components/browse';

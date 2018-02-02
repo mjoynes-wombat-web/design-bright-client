@@ -56,10 +56,10 @@ export const requireAuth = () => (dispatch, getState) => {
       if (expireDate > currentDate) {
         return true;
       }
-      // dispatch(logout());
+      dispatch(logout());
       return false;
     }
-    // dispatch(logout());
+    dispatch(logout());
     return false;
   }
   return false;

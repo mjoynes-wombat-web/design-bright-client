@@ -1,6 +1,6 @@
 /* eslint-env browser */
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import Redirect from 'react-router-dom/Redirect';
 import queryString from 'query-string';
 
 import LoginForm from '../../../../../components/login/form';

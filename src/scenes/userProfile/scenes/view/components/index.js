@@ -1,6 +1,7 @@
 /* eslint-env browser */
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import Redirect from 'react-router-dom/Redirect';
+import Link from 'react-router-dom/Link';
 import queryString from 'query-string';
 import axios from 'axios';
 
