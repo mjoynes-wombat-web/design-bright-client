@@ -69,7 +69,6 @@ export const requireAuth = () => (dispatch, getState) => {
 // Gets the user information from Auth0 and dispatches it to the store.
 export const getUserInfo = () =>
   (dispatch, getState) => {
-    console.log('This ran');
     const currentState = getState();
     if (dispatch(requireAuth())) {
       const webAuth = new auth0.WebAuth({

@@ -201,7 +201,6 @@ class Loading extends React.Component {
 
   componentDidMount() {
     if (!this.props.component) {
-      console.log(document.body);
       document.body.style.overflow = 'hidden';
     }
   }

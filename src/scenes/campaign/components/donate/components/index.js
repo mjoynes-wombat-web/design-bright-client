@@ -245,15 +245,10 @@ class DonateComponent extends React.Component {
       <OverlayModal closeAction={this.state.token
         ? this.cancelConfirmation
         : this.props.cancelDonation}>
-        <section className="row align-middle align-center" id="donate">
-          <div className="small-12 medium-10 large-8 columns">
-            <div className="row">
-              <CampaignHeader
-                campaignInfo={this.props.campaignInfo}
-                isEnded={this.props.isEnded} />
-            </div>
-            <hr />
-          </div>
+        <section id="donate">
+          <CampaignHeader
+            campaignInfo={this.props.campaignInfo}
+            isEnded={this.props.isEnded} />
           {this.state.token
             ? <DonationConfirmation
               inputs={this.state.inputs}

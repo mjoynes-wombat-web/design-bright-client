@@ -9,8 +9,6 @@ import colors from '../../consts/colors.scss';
 import screenBreaks from '../../consts/screen-breaks.scss';
 import orangeBrush1 from '../../assets/img/orange-brush1.png';
 
-console.log(orangeBrush1);
-
 const CampaignProgress = styled(({ percentFunded, className }) => (
   <div className={className}>
         <Line color={colors.graphite} height={0.25}/>

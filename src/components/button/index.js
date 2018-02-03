@@ -139,7 +139,6 @@ export default styled(props => (
   <div className={`${props.className} button`}>
     <Button {...props} className=''>{props.children}</Button>
     <span className='error'>
-    {console.log(props)}
       {props.error}
     </span>
   </div>

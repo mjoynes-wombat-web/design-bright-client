@@ -290,10 +290,8 @@ export const Checkbox = styled(({
       <span
         className='checkbox'
         onClick={(e) => {
-          console.log(e);
           e.preventDefault();
           const { target } = e;
-          console.log(target.previousSibling);
           target.previousSibling.click();
         }}>
         <CheckIcon

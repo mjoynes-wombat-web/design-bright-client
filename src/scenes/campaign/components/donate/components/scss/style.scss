@@ -3,25 +3,8 @@ $large-break: 64em;
 $xlarge-break: 90em;
 $xxlarge-break: 120em;
 
-#overlayModal #donate {
+#donate {
   text-align: left;
-
-  hr {
-    margin: 1.75rem 0 0.75rem 0;
-
-    @media screen and (min-width: $medium-break){
-      margin: 2.125rem 0 0.75rem 0;
-    }
-  }
-
-  h2 {
-    margin-bottom: 0.5rem;
-
-    @media screen and (min-width: $medium-break){
-      margin-bottom: 0.75rem;
-    }
-  }
-
   .StripeElement {
     border: 0.0625rem solid #999999;
     height: 2.75rem;
@@ -34,8 +17,5 @@ $xxlarge-break: 120em;
       box-shadow: 0 0 5px #cacaca;
       transition: box-shadow .5s,border-color .25s ease-in-out;
     }
-  }
-  button.primary {
-    margin-top: 1.75rem;
   }
 }
