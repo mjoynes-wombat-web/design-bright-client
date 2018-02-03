@@ -2,9 +2,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { colors, screenBreaks, globalStyle } from '../styleConsts';
-
-globalStyle();
+import screenBreaks from '../../consts/screen-breaks.scss';
+import colors from '../../consts/colors.scss';
 
 const fade = (animationName, opacityStart, opacityEnd) => `
 @keyframes ${animationName} {

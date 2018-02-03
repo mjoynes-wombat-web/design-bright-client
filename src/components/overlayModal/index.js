@@ -2,6 +2,8 @@
 // IMPORT DEPENDENCIES
 import React from 'react';
 
+import { CloseIcon } from '../svgs/icons';
+
 // IMPORT STYLING
 import './scss/style.scss';
 
@@ -10,9 +12,7 @@ import './scss/style.scss';
 const OverlayModal = ({ closeAction, children }) => (
   <div className="overlay" id="overlayModal">
     <div className="background">
-      <div className="close">
-        <span onClick={closeAction}></span>
-      </div>
+      <CloseIcon onClick={closeAction} />
       {children}
     </div>
   </div>

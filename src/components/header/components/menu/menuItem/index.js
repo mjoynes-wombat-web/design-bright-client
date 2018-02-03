@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { screenBreaks } from '../../../../styleConsts';
+import screenBreaks from '../../../../../consts/screen-breaks.scss';
 
 const MenuItem = styled(({ className, linkName, linkURL }) => (
   <Link to={linkURL} className={className}>{linkName}</Link>

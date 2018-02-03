@@ -2,6 +2,8 @@
 // IMPORT DEPENDENCIES
 import React from 'react';
 
+import Button from '../../button';
+
 // IMPORT COMPONENTS
 import OverlayModal from '../../overlayModal';
 import LoginForm from '../form';
@@ -11,14 +13,7 @@ import LoginForm from '../form';
 const LoginModal = ({ actionName, closeAction }) => (
   <OverlayModal closeAction={closeAction}>
     <LoginForm actionName={actionName} />
-    <div className="row align-center">
-      <button
-        className="cancel columns shrink"
-        onClick={closeAction}
-        type='button'>
-        Cancel
-      </button>
-    </div>
+    <Button cancel onClick={closeAction} type="button">Cancel</Button>
   </OverlayModal>
 );
 

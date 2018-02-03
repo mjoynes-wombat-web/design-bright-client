@@ -9,7 +9,7 @@ import logoLarge from './assets/img/logo-large.png';
 import logoMedium from './assets/img/logo-medium.png';
 import logoSmall from './assets/img/logo-small.png';
 
-import { screenBreaks } from '../../../styleConsts';
+import screenBreaks from '../../../../consts/screen-breaks.scss';
 
 const Logo = styled(({ className }) => (
   <div className={className}>

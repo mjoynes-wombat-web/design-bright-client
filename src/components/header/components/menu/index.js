@@ -3,7 +3,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { colors, screenBreaks } from '../../../styleConsts';
+import colors from '../../../../consts/colors.scss';
+import screenBreaks from '../../../../consts/screen-breaks.scss';
 import MenuItem from './menuItem';
 import Search from './search';
 import UserMenu from './userMenu';

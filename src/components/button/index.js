@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { colors, screenBreaks } from '../styleConsts';
+import colors from '../../consts/colors.scss';
+import screenBreaks from '../../consts/screen-breaks.scss';
 
 import blueButton from '../../assets/img/blue-brush-btn.png';
 import orangeButton from '../../assets/img/orange-brush-btn.png';
@@ -89,11 +90,17 @@ const buttonType = (props) => {
       margin-top: 1.25rem;
       padding: .5rem;
       color: ${colors.errorRed};
+      transition: color 0.5s ease-in-out;
       font-size: 1rem;
       font-weight: 300;
 
       @media screen and (min-width: ${screenBreaks.medium}) {
         margin-top: 0;
+      }
+
+      &:hover {
+        color: ${colors.darkErrorRed};
+        transition: color 0.5s ease-in-out;
       }
     }
     `;
@@ -102,7 +109,6 @@ const buttonType = (props) => {
 };
 
 const Button = styled.button`
-  background-size: 100% 200%;
   font-weight: 400;
   cursor: pointer;
   appearance: none;
@@ -113,11 +119,11 @@ const Button = styled.button`
   display: block;
   outline: none;
   position: relative;
+  z-index: 100;
 
   :disabled {
     text-shadow: ${colors.graphite} 0 0 0.25rem;
     cursor: not-allowed;
-    background-size: 100% 100%;
     filter: grayscale(100%);
     
     ::after {

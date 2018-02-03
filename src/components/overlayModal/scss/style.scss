@@ -20,23 +20,27 @@
     background-color: white;
     max-height: 100%;
     overflow: scroll;
+    box-sizing: border-box;
 
     @media screen and (min-width: $medium-break) {
       padding: 3rem;
     }
-    div.close {
-      text-align: right;
+    .closeIcon {
       position: absolute;
       right: 1rem;
       top: 1rem;
       line-height: initial;
-      font-size: 1.625rem;
-      font-family: 'font-awesome-light';
-      color: $error-red;
+      width: 2rem;
       cursor: pointer;
 
-      span:hover {
-        color: darken(saturate($error-red, 10%), 10%);
+      .close {
+        fill: $error-red;
+        transition: fill 0.5s ease-in-out;
+      }
+
+      &:hover .close {
+        fill: $dark-error-red;
+        transition: fill 0.5s ease-in-out;
       }
     }
   }

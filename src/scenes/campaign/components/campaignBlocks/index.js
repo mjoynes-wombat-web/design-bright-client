@@ -3,6 +3,7 @@
 import React from 'react';
 
 import Button from '../../../../components/button';
+import Heading from '../../../../components/heading';
 
 // Returns the inline content of a block based on it's marks attributes.
 const formatInline = (range, i) => {
@@ -78,9 +79,7 @@ const CampaignBlocks = ({ buttonAction, content, isEnded }) => {
       );
     case 'header':
       return (
-        <h2>
-          <span className="underlined">{content.nodes[0].ranges[0].text}</span>
-        </h2>
+        <Heading type='h2' text={content.nodes[0].ranges[0].text} />
       );
     case 'bulletedList':
       return (

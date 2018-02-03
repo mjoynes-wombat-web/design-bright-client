@@ -143,6 +143,7 @@ class LoginForm extends React.Component {
                 inputLabel='Password'
                 value={this.state.inputs.password}
                 width='16rem'
+                width='20rem'
                 id='password'
                 required />
             <Button primary type="submit" disabled={!this.state.valid} error={'Please make sure you\'ve entered all your information.'}>Login</Button>

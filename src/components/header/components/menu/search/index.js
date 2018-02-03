@@ -4,7 +4,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { colors, screenBreaks } from '../../../../styleConsts';
+import screenBreaks from '../../../../../consts/screen-breaks.scss';
+import colors from '../../../../../consts/colors.scss';
 import { SearchIcon } from '../../../../svgs/icons';
 
 class SearchForm extends React.Component {
