@@ -24,9 +24,9 @@ var _http = require('http');
 
 var _http2 = _interopRequireDefault(_http);
 
-var _https = require('https');
+var _spdy = require('spdy');
 
-var _https2 = _interopRequireDefault(_https);
+var _spdy2 = _interopRequireDefault(_spdy);
 
 var _compression = require('compression');
 
@@ -69,7 +69,7 @@ _http2.default.createServer(function (req, res) {
   res.end();
 }).listen(HTTP_PORT, HOST);
 
-_https2.default.createServer({
+_spdy2.default.createServer({
   key: _fs2.default.readFileSync(PRIVATE_KEY_FILE),
   cert: _fs2.default.readFileSync(CERTIFICATE_FILE)
 }, app).listen(HTTPS_PORT, HOST, function () {

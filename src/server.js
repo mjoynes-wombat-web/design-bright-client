@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import logger from 'morgan';
 import fs from 'fs';
 import http from 'http';
-import https from 'https';
+import spdy from 'spdy';
 import compression from 'compression';
 
 const {
@@ -39,7 +39,7 @@ http.createServer((req, res) => {
   res.end();
 }).listen(HTTP_PORT, HOST);
 
-https.createServer({
+spdy.createServer({
   key: fs.readFileSync(PRIVATE_KEY_FILE),
   cert: fs.readFileSync(CERTIFICATE_FILE),
 }, app).listen(HTTPS_PORT, HOST, () => {
