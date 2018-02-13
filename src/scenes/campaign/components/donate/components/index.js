@@ -72,6 +72,12 @@ class DonateComponent extends React.Component {
       stripeStyle: {},
       token: null,
       valid: false,
+      stripeError: {
+        paymentCard: '',
+        cardExpiration: '',
+        CVC: '',
+        billingZip: '',
+      },
     };
 
     this.makeDonation = this.makeDonation.bind(this);
@@ -95,7 +101,7 @@ class DonateComponent extends React.Component {
   }
 
   // When an input changes change it's state.
-  onChangeInputs(e) {
+  onChangeInputs(e, inputId) {
     if ('preventDefault' in e) {
       e.preventDefault();
 
@@ -126,7 +132,7 @@ class DonateComponent extends React.Component {
 
       // Delay on validation due to delay from Stripe's validation.
       setTimeout(() => {
-        if (this.validate()) {
+        if (this.validate(e, inputId)) {
           return this.setState({
             valid: true,
           });
@@ -138,7 +144,7 @@ class DonateComponent extends React.Component {
     }
     // Delay on validation due to delay from Stripe's validation.
     setTimeout(() => {
-      if (this.validate()) {
+      if (this.validate(e, inputId)) {
         return this.setState({
           valid: true,
         });
@@ -199,20 +205,24 @@ class DonateComponent extends React.Component {
   }
 
   // Validate the inputs.
-  validate() {
-    const stripeElements = document.getElementsByClassName('StripeElement');
-    let stripeValid = true;
-    for (let i = 0; i < stripeElements.length; i += 1) {
-      const label = stripeElements[i].previousSibling;
-      if (stripeElements[i].classList.contains('StripeElement--invalid')) {
-        label.classList.add('invalid');
-        stripeValid = false;
-      } else if (!stripeElements[i].classList.contains('StripeElement--complete')) {
-        stripeValid = false;
-      } else {
-        label.classList.remove('invalid');
-      }
+  validate(e, inputId) {
+    if (inputId) {
+      console.log(inputId);
     }
+    const stripeValid = true;
+    // const stripeElements = document.getElementsByClassName('StripeElement');
+    // let stripeValid = true;
+    // for (let i = 0; i < stripeElements.length; i += 1) {
+    //   const label = stripeElements[i].previousSibling;
+    //   if (stripeElements[i].classList.contains('StripeElement--invalid')) {
+    //     label.classList.add('invalid');
+    //     stripeValid = false;
+    //   } else if (!stripeElements[i].classList.contains('StripeElement--complete')) {
+    //     stripeValid = false;
+    //   } else {
+    //     label.classList.remove('invalid');
+    //   }
+    // }
 
     if (
       (validEmail(this.state.inputs.email)
@@ -262,6 +272,7 @@ class DonateComponent extends React.Component {
               onChangeInputs={this.onChangeInputs}
               stripeStyle={this.state.stripeStyle}
               cancelDonation={this.props.cancelDonation}
+              stripeValid={this.state.stripeValid}
               valid={this.state.valid} />}
         </section>
       </OverlayModal>

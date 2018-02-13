@@ -2,6 +2,7 @@
 // IMPORT DEPENDENCIES
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import 'babel-polyfill';
 
 // IMPORT SCENES
 // Import route scenes.
@@ -19,6 +20,7 @@ import {
   EditProfile,
   ViewProfile,
 } from '../../scenes';
+
 
 // Import Google Analytics tracker.
 import { gaTracker } from '../../helpers';

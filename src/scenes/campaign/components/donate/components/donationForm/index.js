@@ -1,13 +1,13 @@
 /* eslint-env browser */
 // IMPORT DEPENDENCIES
 import React from 'react';
-import { CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement } from 'react-stripe-elements';
 
 // IMPORT HELPERS
 import { validEmail } from '../../../../../../helpers';
 import Heading from '../../../../../../components/heading';
 import Button from '../../../../../../components/button';
 import { Input } from '../../../../../../components/inputs';
+import { CardNumberInput, CardExpiryInput, CardCVCInput, PostalCodeInput } from './components/stripeInputs';
 
 // DONATION FORM
 // Accepts the makeDonation function, inputs state, onChangeInptus function,
@@ -18,6 +18,7 @@ const DonationForm = ({
   onChangeInputs,
   stripeStyle,
   cancelDonation,
+  // stripeValid,
   valid,
 }) => (
   <div className="small-12 medium-10 large-8 columns">
@@ -42,62 +43,42 @@ const DonationForm = ({
               id='cardHolder'
               error={(inputs.cardHolder.split(' ').length >= 2 && inputs.cardHolder.split(' ')[1] !== '') || inputs.cardHolder.length === 0 ? null : 'You must enter a first and last name.'}
               required />
-        <label
-          className="row"
-          htmlFor="paymentCard">
-          <div className="small-12 columns">
-            Payment Card: <span className="required">*</span>
-          </div>
-          <div className=" small-12 columns">
-            <span className='error'>Please enter a valid card number.</span>
-          </div>
-        </label>
-        <CardNumberElement
-          onChange={onChangeInputs}
-          style={stripeStyle}
-          id="paymentCard" />
-        <label
-          className="row"
-          htmlFor="cardExpiration">
-          <div className="small-12 columns">
-            Card Expiration: <span className="required">*</span>
-          </div>
-          <div className=" small-12 columns">
-            <span className='error'>Please enter a valid expiration date.</span>
-          </div>
-        </label>
-        <CardExpiryElement
-          onChange={onChangeInputs}
-          style={stripeStyle}
-          id="cardExpiration" />
-        <label
-          className="row"
-          htmlFor="CVC">
-          <div className="small-12 columns">
-            Security Code (CVC): <span className="required">*</span>
-          </div>
-          <div className=" small-12 columns">
-            <span className='error'>Please enter a valid security code (CVC).</span>
-          </div>
-        </label>
-        <CardCVCElement
-          onChange={onChangeInputs}
-          style={stripeStyle}
-          id="CVC" />
-        <label
-          className="row"
-          htmlFor="billingZip">
-          <div className="small-12 columns">
-            Billing Zip: <span className="required">*</span>
-          </div>
-          <div className=" small-12 columns">
-            <span className='error'>Please enter a valid zip code.</span>
-          </div>
-        </label>
-        <PostalCodeElement
-          onChange={onChangeInputs}
-          style={stripeStyle}
-          id="billingZip" />
+        <CardNumberInput
+          id="paymentCard"
+          inputLabel="Payment Card"
+          required
+          // error={ !stripeValid.paymentCard
+          //   ? 'Please enter a valid card number.'
+          //   : null }
+          stripeStyle={stripeStyle}
+          onChange={onChangeInputs} />
+        <CardExpiryInput
+          id="cardExpiration"
+          inputLabel="Card Expiration"
+          required
+          // error={ !stripeValid.cardExpiration
+          //   ? 'Please enter a valid expiration'
+          //   : null }
+          stripeStyle={stripeStyle}
+          onChange={onChangeInputs} />
+        <CardCVCInput
+          id="CVC"
+          inputLabel="Security Code (CVC)"
+          required
+          // error={ !stripeValid.CVC
+          //   ? 'Please enter a valid security code (CVC).'
+          //   : null }
+          stripeStyle={stripeStyle}
+          onChange={onChangeInputs} />
+        <PostalCodeInput
+          id="billingZip"
+          inputLabel="Billing Zip"
+          required
+          // error={ !stripeValid.billingZip
+          //   ? 'Please enter a valid zip code.'
+          //   : null }
+          stripeStyle={stripeStyle}
+          onChange={onChangeInputs} />
         <Input
             onChange={onChangeInputs}
             type='email'
