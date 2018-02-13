@@ -47,9 +47,11 @@ var _dotenv$config$parsed = _dotenv2.default.config().parsed,
 
 var app = (0, _express2.default)();
 
-if (STATUS !== undefined) {
-  app.use((0, _morgan2.default)(STATUS));
-}
+// if (STATUS !== undefined) {
+//   app.use(logger(STATUS));
+// }
+
+app.use((0, _morgan2.default)(STATUS));
 
 app.use((0, _compression2.default)());
 app.use(_express2.default.static(_path2.default.join(__dirname, '../build')));

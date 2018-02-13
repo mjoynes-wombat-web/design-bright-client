@@ -17,9 +17,11 @@ const {
 
 const app = express();
 
-if (STATUS !== undefined) {
-  app.use(logger(STATUS));
-}
+// if (STATUS !== undefined) {
+//   app.use(logger(STATUS));
+// }
+
+app.use(logger(STATUS));
 
 app.use(compression());
 app.use(express.static(path.join(__dirname, '../build')));
