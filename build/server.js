@@ -64,7 +64,7 @@ app.get('/*', function (req, res) {
 
 _http2.default.createServer(function (req, res) {
   var hostname = req.headers.host.match(/:/g) ? req.headers.host.slice(0, req.headers.host.indexOf(':')) : req.headers.host;
-  var redirect = 'https://' + hostname + ':' + HTTPS_PORT + req.url;
+  var redirect = 'https://' + hostname + (STATUS !== 'PRODUCTION' ? ':' + HTTPS_PORT : '') + req.url;
   res.writeHead(301, { Location: redirect });
   res.end();
 }).listen(HTTP_PORT, HOST);

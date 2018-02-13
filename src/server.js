@@ -34,7 +34,7 @@ app.get('/*', (req, res) => {
 
 http.createServer((req, res) => {
   const hostname = (req.headers.host.match(/:/g)) ? req.headers.host.slice(0, req.headers.host.indexOf(':')) : req.headers.host;
-  const redirect = `https://${hostname}:${HTTPS_PORT}${req.url}`;
+  const redirect = `https://${hostname}${STATUS !== 'PRODUCTION' ? `:${HTTPS_PORT}` : ''}${req.url}`;
   res.writeHead(301, { Location: redirect });
   res.end();
 }).listen(HTTP_PORT, HOST);
