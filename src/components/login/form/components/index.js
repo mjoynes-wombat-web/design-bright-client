@@ -142,7 +142,6 @@ class LoginForm extends React.Component {
                 type='password'
                 inputLabel='Password'
                 value={this.state.inputs.password}
-                width='16rem'
                 width='20rem'
                 id='password'
                 required />

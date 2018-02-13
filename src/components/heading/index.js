@@ -94,7 +94,7 @@ ${({ type, color }) => {
       left: 0;
     }
   }
-`;
+  `;
 
 export default Heading;
 

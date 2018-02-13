@@ -2,29 +2,72 @@
 // IMPORT DEPENDENCIES
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import 'babel-polyfill';
-
-// IMPORT SCENES
-// Import route scenes.
-import {
-  Advisor,
-  Campaign,
-  EditCampaign,
-  MngCampaigns,
-  CampaignsList,
-  Help,
-  Home,
-  References,
-  Register,
-  Login,
-  EditProfile,
-  ViewProfile,
-} from '../../scenes';
-
+import Loadable from 'react-loadable';
 
 // Import Google Analytics tracker.
 import { gaTracker } from '../../helpers';
 
+const Loading = () => <div>Loading...</div>;
+
+const Advisor = Loadable({
+  loader: () => import('../../scenes/advisor'),
+  loading: Loading,
+});
+
+const Campaign = Loadable({
+  loader: () => import('../../scenes/campaign'),
+  loading: Loading,
+});
+
+const EditCampaign = Loadable({
+  loader: () => import('../../scenes/editCampaign'),
+  loading: Loading,
+});
+
+const MngCampaigns = Loadable({
+  loader: () => import('../../scenes/mngCampaigns'),
+  loading: Loading,
+});
+
+const CampaignsList = Loadable({
+  loader: () => import('../../scenes/campaignsList'),
+  loading: Loading,
+});
+
+const Help = Loadable({
+  loader: () => import('../../scenes/help'),
+  loading: Loading,
+});
+
+const Home = Loadable({
+  loader: () => import('../../scenes/home'),
+  loading: Loading,
+});
+
+const References = Loadable({
+  loader: () => import('../../scenes/references'),
+  loading: Loading,
+});
+
+const Register = Loadable({
+  loader: () => import('../../scenes/sign/scenes/login'),
+  loading: Loading,
+});
+
+const Login = Loadable({
+  loader: () => import('../../scenes/sign/scenes/register'),
+  loading: Loading,
+});
+
+const EditProfile = Loadable({
+  loader: () => import('../../scenes/userProfile/scenes/edit'),
+  loading: Loading,
+});
+
+const ViewProfile = Loadable({
+  loader: () => import('../../scenes/userProfile/scenes/view'),
+  loading: Loading,
+});
 
 // ROUTE COMPONENT
 // Returns the a component depending on the url route.

@@ -9,7 +9,6 @@ import screenBreaks from '../../../../../consts/screen-breaks.scss';
 const MenuItem = styled(({ className, linkName, linkURL }) => (
   <Link to={linkURL} className={className}>{linkName}</Link>
 ))`
-vertical-align: middle;
 display: block;
 padding: 0.75rem 1.375rem;
 transition: background-color 0.5s, box-shadow 0.5s;

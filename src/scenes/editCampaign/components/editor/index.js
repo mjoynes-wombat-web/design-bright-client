@@ -2,8 +2,9 @@
 import { Editor, Block, Raw } from 'slate';
 import React from 'react';
 import isUrl from 'is-url';
-import ifIsImage from 'if-is-image';
 import axios from 'axios';
+
+import isImage from '../../../../helpers';
 
 import Images from './images';
 import Toolbar from './toolbar';
@@ -547,7 +548,7 @@ class CampaignEditor extends React.Component {
             newSrc={this.state.newSrc}
             newAlt={this.state.newAlt}
             newImageType={this.state.newImageType}
-            validate={src => ifIsImage(src)} />
+            validate={src => isImage(src)} />
           : null}
         <div className="grey-line"></div>
         <div className="editor">
