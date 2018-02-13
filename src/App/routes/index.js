@@ -50,12 +50,12 @@ const References = Loadable({
 });
 
 const Register = Loadable({
-  loader: () => import('../../scenes/sign/scenes/login'),
+  loader: () => import('../../scenes/sign/scenes/register'),
   loading: Loading,
 });
 
 const Login = Loadable({
-  loader: () => import('../../scenes/sign/scenes/register'),
+  loader: () => import('../../scenes/sign/scenes/login'),
   loading: Loading,
 });
 
