@@ -72,7 +72,7 @@ class DonateComponent extends React.Component {
       stripeStyle: {},
       token: null,
       valid: false,
-      stripeError: {
+      stripeErrors: {
         paymentCard: '',
         cardExpiration: '',
         CVC: '',
@@ -207,22 +207,18 @@ class DonateComponent extends React.Component {
   // Validate the inputs.
   validate(e, inputId) {
     if (inputId) {
+      const { stripeErrors } = this.state;
+      console.log(e);
       console.log(inputId);
+      if (e.error) {
+        stripeErrors[inputId] = e.error.message;
+      } else {
+        stripeErrors[inputId] = '';
+      }
+
+      this.setState({ stripeErrors });
     }
     const stripeValid = true;
-    // const stripeElements = document.getElementsByClassName('StripeElement');
-    // let stripeValid = true;
-    // for (let i = 0; i < stripeElements.length; i += 1) {
-    //   const label = stripeElements[i].previousSibling;
-    //   if (stripeElements[i].classList.contains('StripeElement--invalid')) {
-    //     label.classList.add('invalid');
-    //     stripeValid = false;
-    //   } else if (!stripeElements[i].classList.contains('StripeElement--complete')) {
-    //     stripeValid = false;
-    //   } else {
-    //     label.classList.remove('invalid');
-    //   }
-    // }
 
     if (
       (validEmail(this.state.inputs.email)
@@ -273,6 +269,7 @@ class DonateComponent extends React.Component {
               stripeStyle={this.state.stripeStyle}
               cancelDonation={this.props.cancelDonation}
               stripeValid={this.state.stripeValid}
+              stripeErrors={this.state.stripeErrors}
               valid={this.state.valid} />}
         </section>
       </OverlayModal>

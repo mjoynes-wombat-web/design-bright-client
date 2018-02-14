@@ -18,7 +18,7 @@ const DonationForm = ({
   onChangeInputs,
   stripeStyle,
   cancelDonation,
-  // stripeValid,
+  stripeErrors,
   valid,
 }) => (
   <div className="small-12 medium-10 large-8 columns">
@@ -47,36 +47,28 @@ const DonationForm = ({
           id="paymentCard"
           inputLabel="Payment Card"
           required
-          // error={ !stripeValid.paymentCard
-          //   ? 'Please enter a valid card number.'
-          //   : null }
+          error={ stripeErrors.paymentCard }
           stripeStyle={stripeStyle}
           onChange={onChangeInputs} />
         <CardExpiryInput
           id="cardExpiration"
           inputLabel="Card Expiration"
           required
-          // error={ !stripeValid.cardExpiration
-          //   ? 'Please enter a valid expiration'
-          //   : null }
+          error={ stripeErrors.cardExpiration }
           stripeStyle={stripeStyle}
           onChange={onChangeInputs} />
         <CardCVCInput
           id="CVC"
           inputLabel="Security Code (CVC)"
           required
-          // error={ !stripeValid.CVC
-          //   ? 'Please enter a valid security code (CVC).'
-          //   : null }
+          error={ stripeErrors.CVC }
           stripeStyle={stripeStyle}
           onChange={onChangeInputs} />
         <PostalCodeInput
           id="billingZip"
           inputLabel="Billing Zip"
           required
-          // error={ !stripeValid.billingZip
-          //   ? 'Please enter a valid zip code.'
-          //   : null }
+          error={ stripeErrors.billingZip }
           stripeStyle={stripeStyle}
           onChange={onChangeInputs} />
         <Input
