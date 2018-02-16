@@ -15,18 +15,15 @@ import CampaignHeader from '../../campaignHeader';
 import DonationForm from './donationForm';
 import DonationConfirmation from './donationConfirmation';
 
-// IMPORT STYLING
-import './scss/style.scss';
-
 // Returns the stripe styling based on the window's inner width.
 const stripeStyle = () => {
   if (window.innerWidth >= 640) {
     return {
       base: {
-        lineHeight: 'normal',
+        lineHeight: '1.15rem',
         fontFamily: '"Lato", sans-serif',
         fontSmoothing: 'antialiased',
-        fontSize: '1.5rem',
+        fontSize: '1.25rem',
         color: '#808080',
         '::placeholder': {
           color: '#cccccc',
@@ -40,14 +37,17 @@ const stripeStyle = () => {
   }
   return {
     base: {
-      lineHeight: '1.5rem',
+      lineHeight: '1.15rem',
       fontFamily: '"Lato", sans-serif',
       fontSmoothing: 'antialiased',
-      fontSize: '1.25rem',
+      fontSize: '1.125rem',
       color: '#808080',
       '::placeholder': {
         color: '#cccccc',
         fontWeight: '300',
+      },
+      ':hover': {
+        color: '#404040',
       },
     },
     invalid: {

@@ -109,6 +109,11 @@ input:not([type="radio"]):not([type="checkbox"]), select {
   }
 }
 
+input::placeholder {
+  color: #cccccc;
+  font-weight: 100;
+}
+
 @media screen and (min-width: ${screenBreaks.medium}) {
   input, select {
     font-size: 1.125rem;
@@ -129,12 +134,20 @@ export const Input = styled(({
   error,
   value,
   onChange,
+  placeholder,
 }) => (
   <div className={className}>
     {inputLabel
       ? <Label id={id} inputLabel={inputLabel} required={required} error={error} />
       : null}
-    <input onChange={onChange} id={id} required={required} value={value} name={id} type={type} />
+    <input
+      onChange={onChange}
+      id={id}
+      required={required}
+      value={value}
+      name={id}
+      type={type}
+      placeholder={placeholder} />
   </div>
 ))`
 ${generalInputStyling}

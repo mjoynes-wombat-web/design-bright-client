@@ -15,7 +15,9 @@
 
   div.background {
     padding: 1rem 1rem 1.625rem 1rem;
-    width: 100%;
+    min-width: 25rem;
+    width: 50%;
+    margin: 0 auto;
     position: relative;
     background-color: white;
     max-height: 100%;
