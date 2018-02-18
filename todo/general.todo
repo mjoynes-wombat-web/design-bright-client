@@ -12,7 +12,7 @@ Maintainabilty:
   ☐ Componetize better. @critical
 
   Forms: 
-    ☐ Componetize the forms. @low 
+    ✔ Componetize the forms. @low @done (2018-2-18 13:04:26)
 
   Header:
     ☐ Make click not work on padding. @critical 

@@ -2,9 +2,9 @@ Data Integrity:
   ☐ Create a delete non-profit fallback. Check creation date. @low
 
 Usability:
-  ☐ Move form to single column. @high
-  ☐ Add additional content to entice user to register. @high
-  ☐ Limit width of inputs. Possibly based on length of expected input. @high
+  ✔ Move form to single column. @high @done (2018-2-16 14:53:02)
+  ✔ Add additional content to entice user to register. @high @done (2018-2-16 14:53:04)
+  ✔ Limit width of inputs. Possibly based on length of expected input. @high @done (2018-2-16 14:53:07)
   ☐ Redirect after register. @low
 
 Security:

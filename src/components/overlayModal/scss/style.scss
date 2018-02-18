@@ -27,7 +27,7 @@
     @media screen and (min-width: $medium-break) {
       padding: 3rem;
     }
-    .closeIcon {
+    > .closeIcon {
       position: absolute;
       right: 1rem;
       top: 1rem;

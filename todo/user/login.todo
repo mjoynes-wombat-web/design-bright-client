@@ -1,5 +1,6 @@
 Usability:
   ☐ Create forgotten password functionality. @high
+  ☐ Fix design of login. @high
 
 Security:
   ☐ Require email verification. @low

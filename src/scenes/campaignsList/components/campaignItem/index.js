@@ -11,25 +11,7 @@ import screenBreaks from '../../../../consts/screen-breaks.scss';
 import Heading from '../../../../components/heading';
 import CampaignProgress from '../../../../components/campaignProgress';
 
-const determineTimeLeft = (campaignInfo) => {
-  const isEnded = endDate => ((new Date(Date.parse(endDate))).getTime()
-    <= (new Date()).getTime());
-  const campaign = campaignInfo;
-  campaign.timeRemaining = (
-    (new Date(Date.parse(campaign.endDate)) - Date.parse(new Date())) / 1000 / 60 / 60 / 24
-  );
-
-  if (isEnded(campaignInfo.endDate)) {
-    return 'This campaign has ended.';
-  } else if (campaignInfo.startDate === null) {
-    return 'This campaign hasn\'t started yet.';
-  } else if (campaignInfo.timeRemaining > 1) {
-    return `${Math.round(campaignInfo.timeRemaining)} Days Left`;
-  } else if ((campaignInfo.timeRemaining * 24) > 1) {
-    return `${Math.round(campaignInfo.timeRemaining * 24)} Hours Left`;
-  }
-  return 'Less than an Hour left';
-};
+import campaignTimeLeft from '../../../../helpers/campaignTimeLeft';
 
 const percentFunded = (fundingNeeded, donationsMade) =>
   Math.round((parseFloat(donationsMade, 2) / parseFloat(fundingNeeded)) * 100);
@@ -41,7 +23,7 @@ const CampaignItem = styled(({ campaign, className }) => (
         <Heading type='h2' text={campaign.name} />
         <p className="days">
           <span className="details">
-            {determineTimeLeft(campaign)}
+            {campaignTimeLeft(campaign)}
           </span>
         </p>
       </div>

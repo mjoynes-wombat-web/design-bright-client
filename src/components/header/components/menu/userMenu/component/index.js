@@ -13,6 +13,7 @@ import { UserIcon } from '../../../../../svgs/icons';
 // Takes a requireAuth function for checking login, a userType login to determine
 // which menu type to show and an onLogout function to log the user out.
 const UserMenuItems = ({ onRequireAuth, userType, onLogout }) => {
+  console.log(userType);
   if (onRequireAuth()) {
     if (userType === 'non-profit') {
       return (
@@ -47,7 +48,6 @@ const UserMenuItems = ({ onRequireAuth, userType, onLogout }) => {
 const UserMenu = styled(({
   className,
   onRequireAuth,
-  userType,
   onLogout,
   userInfo,
   mouseLeaveMenu,
@@ -69,7 +69,7 @@ const UserMenu = styled(({
       }
       <UserMenuItems
         onRequireAuth={onRequireAuth}
-        userType={userType}
+        userType={userInfo.userType}
         onLogout={onLogout} />
     </div>
 ))`

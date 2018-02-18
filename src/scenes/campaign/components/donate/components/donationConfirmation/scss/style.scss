@@ -1,11 +1,5 @@
-$medium-break: 40em;
-$large-break: 64em;
-$xlarge-break: 90em;
-$xxlarge-break: 120em;
-
-$blue-hydrangea: #4097ff;
-$light-hydrangea: lighten($blue-hydrangea,14.9%);
-$error-red: #ff5800;
+@import '../../../../../../../consts/colors.scss';
+@import '../../../../../../../consts/screen-breaks.scss';
 
 #donationConfirmation {
   p.title {
@@ -30,14 +24,28 @@ $error-red: #ff5800;
     @media screen and (min-width: $medium-break) {
       font-size: 1.375rem;
     }
+  }
 
-    span.cardIcon {
-      font-family: 'font-awesome-brands';
+  .cardInfo {
+    display: flex;
+    align-items: center;
+    margin: 0.125rem 0 1rem 0;
+
+    p {
+      margin: 0;
+    }
+    .cardIcon {
       padding: 0 0 0 0.75rem;
-      color: darken($blue-hydrangea, 30);
+      height: 1.25rem;
+      vertical-align: middle;
+
+      * {
+        fill: darken($blue-hydrangea, 30);
+      }
     }
   }
   .donationInfo {
+    margin-top: 1rem;
     position: relative;
 
     .actions {
@@ -52,65 +60,82 @@ $error-red: #ff5800;
         font-size: 1rem;
         display: block;
         font-weight: 300;
-
-        span, span.edit, span.cancel {
-          vertical-align: middle;
-          display: inline-block;
-          &.icon {
-            font-family: 'font-awesome-light';
-            padding-right: 0.375rem;
-            font-size: 1rem;
-            @media screen and (min-width: $medium-break) {
-              padding-bottom: 0.125rem;
-              font-size: 1.125rem;
-            }
-          }
-
-          &.text {
-            font-size: 0.875rem;
-            @media screen and (min-width: $medium-break) {
-              font-size: 1.0625rem;
-              padding-bottom: 0.125rem;
-            }
-          }
-        }
+        background: none;
+        border: none;
+        cursor: pointer;
 
         &.edit {
           color: $light-hydrangea;
+          transition: color 0.5s;
 
           span.text {
             border-bottom: 0.03125rem solid $light-hydrangea;
+            transition: border-color 0.5s;
+          }
+
+          .icon {
+            vertical-align: middle;
+            padding: 0 0.25rem 0.125rem 0.125rem;
+            height: 1.125rem;
+
+            * {
+              fill: $light-hydrangea;
+              transition: fill 0.5s;
+            }
           }
 
           &:hover {
-            color: darken($light-hydrangea, 10);
+            color: $blue-hydrangea;
+            transition: color 0.5s;
 
             span.text {
-              border-bottom: 0.03125rem solid darken($light-hydrangea, 10);
+              border-bottom: 0.03125rem solid $blue-hydrangea;
+              transition: border-color 0.5s;
+            }
+
+            .icon {
+              * {
+                fill: $blue-hydrangea;
+                transition: fill 0.5s;
+              }
             }
           }
         }
 
         &.cancel {
           color: $error-red;
+          transition: color 0.5s;
 
           span.text {
             border-bottom: 0.03125rem solid $error-red;
+            transition: border-color 0.5s;
           }
 
-          span.icon {
-            padding-right: 0.625rem;
-            @media screen and (min-width: $medium-break) {
-              width: 1.625rem;
-              padding-bottom: 0.0675rem;
+          .icon {
+            vertical-align: middle;
+            padding: 0 0.375rem 0.125rem 0;
+            height: 1.25rem;
+
+            * {
+              fill: $error-red;
+              transition: fill 0.5s;
             }
           }
     
           &:hover {
-            color: darken(saturate($error-red, 10%), 10%);
+            color: $dark-error-red;
+            transition: color 0.5s;
 
             span.text {
-              border-bottom: 0.03125rem solid darken(saturate($error-red, 10%), 10%);
+              border-bottom: 0.03125rem solid $dark-error-red;
+              transition: border-color 0.5s;
+            }
+
+            .icon {
+              * {
+                fill: $dark-error-red;
+                transition: fill 0.5s;
+              }
             }
           }
         }

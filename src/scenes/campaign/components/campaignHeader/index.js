@@ -10,7 +10,7 @@ import CampaignProgress from '../../../../components/campaignProgress';
 
 // CAMPAIGN HEADER COMPONENT
 // The header for the campaign page.
-const CampaignHeader = ({ campaignInfo, isEnded }) => (
+const CampaignHeader = ({ campaignInfo }) => (
   <section>
     <Heading type='h1' text={campaignInfo.name} />
     <CampaignProgress
@@ -19,7 +19,7 @@ const CampaignHeader = ({ campaignInfo, isEnded }) => (
       <div className="campaign-details">
           <p className="details">{Math.round(campaignInfo.donationPercentage)}% Funded</p>
           <p className="details">
-            {campaignTimeLeft(isEnded, campaignInfo)}
+            {campaignTimeLeft(campaignInfo)}
           </p>
           <p className="details">
             ${parseInt(campaignInfo.fundingNeeded, 10).toLocaleString()} Needed

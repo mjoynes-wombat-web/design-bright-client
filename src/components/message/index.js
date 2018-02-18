@@ -22,8 +22,9 @@ const Message = styled(({
   className,
 }) => {
   if (error.message !== '' || message.message !== '') {
+    console.log(message.message);
     return (
-      <section id="message" className={`${className}${error.message !== '' ? ' error' : null}`}>
+      <section id="message" className={`${className}${error.message !== '' ? ' error' : ''}`}>
       <CloseIcon onClick={error.message !== '' ? onClearError : onClearMessage}/>
         <p>
           {error.message !== '' ? error.message : message.message}</p>
@@ -32,6 +33,7 @@ const Message = styled(({
   }
   return null;
 })`
+&#message {
   position: absolute;
   background-image: url(${blueBrush});
   background-position-x: 50%;
@@ -54,7 +56,7 @@ const Message = styled(({
     background-size: 140% 110%;
   }
 
-  p {
+  > p {
     color: white;
     font-weight: normal;
     font-size: 1.125rem;
@@ -67,7 +69,7 @@ const Message = styled(({
     }
   }
 
-  svg {
+  > svg {
     width: 1.75rem;
     height: 1.75rem;
     padding-right: 0.375rem;
@@ -77,6 +79,7 @@ const Message = styled(({
       fill: white;
     }
   }
+}
 `;
 
 export default Message;
