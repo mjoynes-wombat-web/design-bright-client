@@ -6,6 +6,8 @@ import queryString from 'query-string';
 import axios from 'axios';
 
 import Message from '../../../../../components/message';
+import Heading from '../../../../../components/heading';
+import { UploadIcon, EditIcon } from '../../../../../components/svgs/icons';
 
 import './scss/style.scss';
 
@@ -137,14 +139,14 @@ class ViewProfile extends React.Component {
     if (this.props.onRequireAuth()) {
       if (Object.keys(this.props.userInfo).length > 0) {
         return (
-          <main id="profile" className="small-12 columns">
+          <main id="profile">
             <Message
               error={this.state.error}
               onClearMessage={() => this.setState({ message: { type: '', message: '' } })}
               message={this.state.message}
               onClearError={() => this.setState({ error: { type: '', message: '' } })} />
-            <section className="row align-center">
-              <div className="profile-img-wrapper small-3 columns">
+            <section className="main-content">
+              <div className="profile-img-wrapper">
                 <img
                   src={this.state.loadingProfilePhoto
                     ? '/assets/img/spinner.svg'
@@ -158,27 +160,21 @@ class ViewProfile extends React.Component {
                   e.preventDefault(e);
                   document.getElementById('newProfilePhoto').click();
                 }}>
-                  <span></span> Upload Profile Photo
+                  <UploadIcon /> Upload Profile Photo
                 </button>
                 <input id="newProfilePhoto" type="file" onChange={this.changeProfilePhoto} />
               </div>
-              <div className="small-12 medium-9 columns">
-                <div className="row align-middle profile-header">
-                  <div className="columns expand">
-                    <h1>
-                      <span className="underlined">
-                        {this.props.userInfo.userType === 'non-profit'
-                          ? this.props.userInfo.nonProfitName
-                          : `${this.props.userInfo.firstName} ${this.props.userInfo.lastName}`
-                        }'s Profile
-                      </span>
-                    </h1>
-                  </div>
-                  <div className="columns large-3 small-12">
-                    <Link to='/user/profile/edit' className="edit">
-                      <span className="text">Edit Profile</span> <span className="icon"></span>
-                    </Link>
-                  </div>
+              <div className="profile-details">
+                <div className="profile-header">
+                  <Heading
+                    type='h1'
+                    text={`${this.props.userInfo.userType === 'non-profit'
+                    ? this.props.userInfo.nonProfitName
+                    : `${this.props.userInfo.firstName} ${this.props.userInfo.lastName}`
+                  }'s Profile`} />
+                  <Link to='/user/profile/edit' className="edit">
+                    <span className="text">Edit Profile</span> <EditIcon className="icon"/>
+                  </Link>
                 </div>
                 <p className="title">Name:</p>
                 <p>{this.props.userInfo.firstName} {this.props.userInfo.lastName}</p>

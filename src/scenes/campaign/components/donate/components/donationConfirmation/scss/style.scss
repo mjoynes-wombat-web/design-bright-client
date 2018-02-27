@@ -85,17 +85,17 @@
           }
 
           &:hover {
-            color: $blue-hydrangea;
+            color: $dark-blue-hydrangea;
             transition: color 0.5s;
 
             span.text {
-              border-bottom: 0.03125rem solid $blue-hydrangea;
+              border-bottom: 0.03125rem solid $dark-blue-hydrangea;
               transition: border-color 0.5s;
             }
 
             .icon {
               * {
-                fill: $blue-hydrangea;
+                fill: $dark-blue-hydrangea;
                 transition: fill 0.5s;
               }
             }

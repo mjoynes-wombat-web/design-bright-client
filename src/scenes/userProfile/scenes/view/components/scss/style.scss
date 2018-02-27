@@ -2,135 +2,221 @@
 @import '../../../../../../consts/screen-breaks.scss';
 
 main#profile {
-  .profile-img-wrapper {
-    margin: 1rem 0;
-    text-align:center;
-    position: relative;
-    min-width: calc(144px + 0.75rem);
-    padding: 0;
-    margin-bottom:0;
-
+  .main-content {
     @media screen and (min-width: $medium-break) {
-      font-size: 1.75rem;
-      margin: 1.125rem 0;
-      padding: 0 0.9375rem;
+      display: flex;
     }
 
-    img.profile-img {
-      max-width:210px;
-      min-width: 144px;
-      width:90%;
-      margin: 0 0.375rem;
-      height: auto;
-      border-radius: 0.25rem;
-    }
-
-    button {
-      display: block;
-      border-bottom: none;
-      background-image: url('/assets/img/yellow-brush5.png');
-      background-size:100% 100%;
-      padding: 0.375rem 0.375rem;
-      font-size:0.75rem;
-      font-weight: normal;
-      color: darken($blue-hydrangea, 10);
-      text-shadow: 0 0 0.25rem #fff;
+    .profile-img-wrapper {
+      flex-grow: 1;
+      margin: 1rem 0;
+      text-align:center;
+      position: relative;
       min-width: calc(144px + 0.75rem);
-      position: absolute;
-      bottom: -0.375rem;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      line-height: 1.5rem;
+      padding: 0;
+      margin-bottom:0;
 
       @media screen and (min-width: $medium-break) {
+        font-size: 1.75rem;
+        margin: 1.125rem 0;
+        padding: 0 0.9375rem;
+      }
+
+      img.profile-img {
+        max-width:210px;
+        min-width: 144px;
+        width:41%;
+        margin: 0 0.375rem;
+        height: auto;
+        border-radius: 0.25rem;
+
+        @media screen and (min-width: $medium-break) {
+          width: 90%;
+        }
+      }
+
+      button {
+        display: block;
+        border: none;
+        background-color: transparent;
+        padding: 0.35rem 0.75rem 0.5rem 0.75rem;
+        font-size:0.75rem;
+        font-weight: normal;
+        color: $dark-blue-hydrangea;
+        text-shadow: 0 0 0.25rem #fff;
+        min-width: calc(144px + 0.75rem);
         position: relative;
         bottom: 1.5rem;
-      }
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        line-height: 1.75rem;
+        cursor: pointer;
+        z-index: 100;
+        transition: color 0.5s;
 
-      @media screen and (min-width: $large-break) {
-        font-size: 1.125rem;
-      }
-
-      &:hover{
-        border: none;
-        color: $blue-hydrangea;
-        background-image: url('../../../../../../assets/img/yellow-brush2.png');
-        background-size:100% 100%;
-      }
-
-      span {
-        font-family: 'font-awesome-light';
-        font-size: 0.875rem;
-        position: relative;
-        vertical-align:middle;
-        top: -0.125rem;
+        &::after {
+          content: "";
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          position: absolute;
+          background: url('../../../../../../assets/img/yellow-brush5.png');
+          background-size: 100% 100%;
+          z-index: -1;
+          transition: filter 0.5s;
+        }
 
         @media screen and (min-width: $large-break) {
           font-size: 1.125rem;
         }
+
+        @media screen and (min-width: $medium-break) {
+          font-size: 0.875rem;
+        }
+
+        &:hover {
+          color: $blue-hydrangea;
+          transition: color 0.5s;
+
+          svg * {
+            fill: $blue-hydrangea;
+            transition: fill 0.5s;
+          }
+        }
+
+        &:hover::after {
+          filter: saturate(70%);
+          transition: filter 0.5s;
+        }
+
+        svg {
+          width: 1rem;
+          vertical-align: middle;
+          padding-bottom: 0.0625rem;
+
+          @media screen and (min-width: $medium-break) {
+            width: 1.125rem;
+            padding-bottom: 0.125rem;
+          }
+          
+
+          @media screen and (min-width: $large-break) {
+            width: 1.25rem;
+            padding-bottom: 0.25rem;
+          }
+          * {
+            fill: $dark-blue-hydrangea;
+            transition: fill 0.5s;
+          }
+        }
+
+        span {
+          font-family: 'font-awesome-light';
+          font-size: 0.875rem;
+          position: relative;
+          vertical-align:middle;
+          top: -0.125rem;
+
+          @media screen and (min-width: $large-break) {
+            font-size: 1.125rem;
+          }
+        }
+      }
+
+      #newProfilePhoto {
+        display: none;
       }
     }
 
-    #newProfilePhoto {
-      display: none;
-    }
-  }
+    .profile-details {
+      flex-grow: 2;
+      div.profile-header {
 
-  div.profile-header {
-    a.edit {
-      display: block;
-      border: none;
-      margin-bottom: 1.125rem;
+        @media screen and (min-width: $large-break) {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
 
-      @media screen and (min-width: $medium-break) {
-        margin-top: 1.125rem;
+        a.edit {
+          display: block;
+          border: none;
+          margin-bottom: 1.125rem;
+          color: $light-hydrangea;
+          transition: color 0.5s;
+  
+          @media screen and (min-width: $medium-break) {
+            margin-top: 1.125rem;
+          }
+  
+          span {
+            vertical-align: middle;
+  
+            &.text {
+              border-bottom: 0.0625rem solid #8CC0FF;
+              font-size: 1rem;
+              border-bottom: 0.03125rem solid $light-hydrangea;
+              transition: border-color 0.5s;
+  
+              @media screen and (min-width: $medium-break) {
+                font-size: 1.25rem;
+              }
+            }
+          }
+
+          .icon {
+            vertical-align: middle;
+            padding: 0 0.25rem 0.125rem 0.125rem;
+            height: 1.125rem;
+
+            * {
+              fill: $light-hydrangea;
+              transition: fill 0.5s;
+            }
+          }
+
+          &:hover {
+            color: $dark-blue-hydrangea;
+            transition: color 0.5s;
+
+            span.text {
+              border-bottom: 0.03125rem solid $dark-blue-hydrangea;
+              transition: border-color 0.5s;
+            }
+
+            .icon {
+              * {
+                fill: $dark-blue-hydrangea;
+                transition: fill 0.5s;
+              }
+            }
+          }
+        }
       }
 
-      span {
-        vertical-align: middle;
-
-        &.text {
-          border-bottom: 0.0625rem solid #8CC0FF;
-          font-size: 1rem;
-
+      p {
+        font-size:1.25rem;
+        margin: 0.125rem 0 1rem 0;
+        line-height: initial;
+  
+        @media screen and (min-width: $medium-break) {
+          font-size: 1.375rem;
+        }
+  
+        &.title {
+          color: $light-graphite;
+          font-size: 1.125rem;
+          font-family: 'Lato', sans-serif;
+          line-height: initial;  
+          font-weight: 300;
+          margin-bottom: 0.125rem;
+      
           @media screen and (min-width: $medium-break) {
             font-size: 1.25rem;
           }
         }
-  
-        &.icon {
-          font-family: 'font-awesome-light';
-          font-size: 1.25rem;
-
-          @media screen and (min-width: $medium-break) {
-            font-size: 1.5rem;
-            size: shrink;
-          }
-        }
-      }
-    }
-  }
-
-  p {
-    font-size:1.25rem;
-    margin: 0.125rem 0 1rem 0;
-    line-height: initial;
-
-    @media screen and (min-width: $medium-break) {
-      font-size: 1.375rem;
-    }
-
-    &.title {
-      color: $light-graphite;
-      font-size: 1.125rem;
-      font-family: 'Lato', sans-serif;
-      line-height: initial;  
-      font-weight: 300;
-      margin-bottom: 0.125rem;
-  
-      @media screen and (min-width: $medium-break) {
-        font-size: 1.25rem;
       }
     }
   }
