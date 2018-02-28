@@ -5,6 +5,12 @@ import axios from 'axios';
 
 import { states, validEmail } from '../../../../../helpers';
 import Message from '../../../../../components/message';
+import Heading from '../../../../../components/heading';
+import Button from '../../../../../components/button';
+import { Input, Select } from '../../../../../components/inputs';
+import Line from '../../../../../components/svgs/line';
+
+import colors from '../../../../../consts/colors.scss';
 
 import './scss/style.scss';
 
@@ -205,154 +211,113 @@ class EditProfile extends React.Component {
               onClearMessage={() => this.setState({ message: { type: '', message: '' } })}
               message={this.state.message}
               onClearError={() => this.setState({ error: { type: '', message: '' } })} />
-            <section className="row align-center">
-              <form className="small-12 columns" onSubmit={this.onSubmit}>
-                <div className="row">
-                  <h1 className="small-12 columns">
-                    <span className="underlined">
-                      Edit Profile
-                    </span>
-                  </h1>
-                </div>
-                <div className="row align-center">
-                  <div className="small-12 large-4 columns">
+            <section className='main-content'>
+              <form onSubmit={this.onSubmit}>
+                  <Heading type='h1' text='Edit Profile' />
+                  <div className='inputs'>
                     <fieldset>
-                      <label htmlFor="first-name">
-                        First Name: <span className="required">*</span>
-                      </label>
-                      <input
+                      <Input
+                        onChange={this.onChange}
+                        type='text'
+                        inputLabel='First Name'
                         value={this.state.firstName}
-                        onChange={this.onChange}
-                        type="text"
-                        name="firstName"
-                        id="first-name"
+                        width='16rem'
+                        id='firstName'
                         required />
-                      <label htmlFor="last-name">
-                        Last Name: <span className="required">*</span>
-                      </label>
-                      <input
+                      <Input
+                        onChange={this.onChange}
+                        type='text'
+                        inputLabel='Last Name'
                         value={this.state.lastName}
-                        onChange={this.onChange}
-                        type="text"
-                        name="lastName"
-                        id="last-name"
+                        width='16rem'
+                        id='lastName'
                         required />
-                      <label htmlFor="email" className={`row${(validEmail(this.state.email) || this.state.email.length === 0) ? '' : ' invalid'}`}>
-                        <div className="small-12 columns">
-                          Email: <span className="required">*</span>
-                        </div>
-                        <div className=" small-12 columns">
-                          <span className='error'>Please enter a valid email address.</span>
-                        </div>
-                      </label>
-                      <input
+                      <Input
+                        onChange={this.onChange}
+                        type='email'
+                        inputLabel='Email'
                         value={this.state.email}
-                        onChange={this.onChange}
-                        type="email"
-                        name="email"
-                        required
-                        id="email" />
+                        width='20rem'
+                        id='email'
+                        error = {(validEmail(this.state.email) || this.state.email.length === 0) ? '' : 'Please enter a valid email address.'}
+                        required />
                     </fieldset>
+                    <Line color={colors.graphite} type='hr' />
+                    <fieldset>
+                      <p>Leave blank to keep your current password.</p>
+                      <Input
+                        onChange={this.onChange}
+                        type='password'
+                        inputLabel='Password'
+                        value={this.state.password}
+                        width='16rem'
+                        id='password'
+                        required />
+                      <Input
+                        onChange={this.onChange}
+                        type='password'
+                        inputLabel='Confirm Password'
+                        value={this.state.confirmPassword}
+                        width='16rem'
+                        id='confirmPassword'
+                        error={doPasswordsMatch(this.state.password, this.state.confirmPassword) ? null : 'Your passwords don\'t match.'}
+                        required />
+                    </fieldset>
+                    <Line color={colors.graphite} type='hr' />
+                    {this.state.userType === 'non-profit'
+                    ? (
+                        <fieldset>
+                          <Input
+                            onChange={this.onChange}
+                            type='text'
+                            inputLabel='Address'
+                            value={this.state.address}
+                            width='20rem'
+                            id='address'
+                            required />
+                          <Input
+                            onChange={this.onChange}
+                            type='text'
+                            inputLabel='City'
+                            value={this.state.city}
+                            width='16rem'
+                            id='city'
+                            required />
+
+                          <Select
+                            onChange={this.onChange}
+                            type='text'
+                            inputLabel='State'
+                            value={this.state.state}
+                            width='14rem'
+                            id='state'
+                            required
+                            options={states.map(state =>
+                              ({
+                                name: state.name,
+                                value: state.abbreviation,
+                              }))
+                            }
+                          />
+                          <Input
+                            onChange={this.onChange}
+                            type='text'
+                            inputLabel='Zip'
+                            value={this.state.zip}
+                            id='zip'
+                            error={(isNumber(this.state.zip) && numLength(this.state.zip, 5)) ? null : 'You entered an invalid Zip Code.'}
+                            required />
+                    </fieldset>
+                      )
+                    : null}
                   </div>
-                  <div className="small-12 large-4 columns">
-                    <hr className="hide-for-large" />
-                    <div className="small-12 columns"></div>
-                    <label htmlFor="password" className="row align-bottom align-justify">
-                      <div className="small-4 columns">
-                        Password:
-                      </div>
-                      <div className="columns shrink">
-                        <span className="detail">Leave blank to keep your current password.</span>
-                      </div>
-                    </label>
-                    <input
-                      value={this.state.password}
-                      onChange={this.onChange}
-                      type="password"
-                      name="password"
-                      id="password" />
-                    <label htmlFor="confirm-password" className={`row${doPasswordsMatch(this.state.password, this.state.confirmPassword) ? '' : ' invalid'}`}>
-                      <div className="small-12 columns">
-                        Confirm Password:
-                      </div>
-                      <div className=" small-12 columns">
-                        <span className='error'>Your passwords don't match.</span>
-                      </div>
-                    </label>
-                    <input
-                      value={this.state.confirmPassword}
-                      onChange={this.onChange}
-                      type="password"
-                      name="confirmPassword"
-                      id="confirm-password" />
-                  </div>
-                  <div className='small-12 large-4 columns'>
-                    <div className={this.state.userType === 'non-profit' ? '' : 'hide'}>
-                      <hr className="hide-for-large" />
-                      <label htmlFor="address">
-                        Address: <span className="required">*</span>
-                      </label>
-                      <input
-                        value={this.state.address}
-                        onChange={this.onChange}
-                        type="text"
-                        name="address"
-                        id="address"
-                        required={this.state.userType === 'non-profit'} />
-                      <label htmlFor="city">
-                        City: <span className="required">*</span>
-                      </label>
-                      <input
-                        value={this.state.city}
-                        onChange={this.onChange}
-                        type="text"
-                        name="city"
-                        id="city"
-                        required={this.state.userType === 'non-profit'} />
-                      <label htmlFor="state">
-                        State: <span className="required">*</span>
-                      </label>
-                      <select
-                        value={this.state.state}
-                        onChange={this.onChange}
-                        name="state"
-                        id="state"
-                        required={this.state.userType === 'non-profit'} >
-                        <option value="" disabled>Choose Your State</option>
-                        {states.map((state, i) =>
-                          <option value={state.abbreviation} key={i}>
-                            {state.name}
-                          </option>)}
-                      </select>
-                      <label htmlFor="zip" className={`row ${(isNumber(this.state.zip) && numLength(this.state.zip, 5)) ? '' : 'invalid'}${numLength(this.state.zip, 0) ? ' empty' : ''}`}>
-                        <div className="small-12 columns">
-                          Zip: <span className="required">*</span>
-                        </div>
-                        <div className="small-12 columns">
-                          <span className='error'>You entered an invalid Zip Code.</span>
-                        </div>
-                      </label>
-                      <input
-                        value={this.state.zip}
-                        onChange={this.onChange}
-                        type="text"
-                        name="zip"
-                        id="zip"
-                        required={this.state.userType === 'non-profit'} />
-                    </div>
-                  </div>
-                </div>
-                <div className="row align-center">
-                  <button
-                    className={`primary small-11 medium-10 large-8 columns${this.state.valid ? '' : ' disabled'}${this.state.profileSaved ? ' disabled' : ''}`}
+                  <Button
+                    primary
+                    type="submit"
                     disabled={!this.state.valid || this.state.profileSaved}
-                    type="submit">
-                    {this.state.profileSaved ? 'No Changes Made' : 'Save Changes'}
-                  </button>
-                  <span className='error small-12'>
-                    Please make sure you've entered all your information.
-                  </span>
-                </div>
+                    error={'Please make sure you\'ve entered all your information.'}>
+                      {this.state.profileSaved ? 'No Changes Made' : 'Save Changes'}
+                  </Button>
               </form>
             </section>
           </main>
