@@ -19,6 +19,20 @@ const buttonType = (props) => {
       padding: 1rem 1.25rem;
       width: 90%;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: initial;
+
+      .icon {
+        width: 1.5rem;
+        filter: drop-shadow( 0 0 0.25rem ${colors.blueHydrangea} );
+        padding-right: 0.5rem;
+
+        * {
+          fill: #fff;
+         }
+      }
 
       ::after {
         content: "";

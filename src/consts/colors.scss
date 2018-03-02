@@ -8,6 +8,8 @@ $dark-error-red: #cc4600;
 $blue-hydrangea: #3694ff;
 $dark-blue-hydrangea: #0063db;
 $light-hydrangea: #57a8ff;
+$action-green: #75CC00;
+$dark-action-green: #5ea300;
 
 :export {
   lightGraphite: $light-graphite;
@@ -20,4 +22,6 @@ $light-hydrangea: #57a8ff;
   blueHydrangea: $blue-hydrangea;
   darkBlueHydrangea: $dark-blue-hydrangea;
   lightHydrangea: $light-hydrangea;
+  actionGreen: $action-green;
+  darkActionGreen: $dark-action-green;
 }

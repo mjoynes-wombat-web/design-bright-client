@@ -7,6 +7,9 @@ import axios from 'axios';
 import CampaignActions from './campaignActions';
 import StopConfModal from './stopConfirmation';
 import Message from '../../../components/message';
+import Heading from '../../../components/heading';
+import Button from '../../../components/button';
+import { PlusIcon } from '../../../components/svgs/icons';
 
 import './scss/style.scss';
 
@@ -204,41 +207,28 @@ class MngCampaigns extends React.Component {
                     }
                   } />
                 : null}
-              <section className="row">
-                <div className="small-12 columns">
-                  <div className="row align-middle main-heading">
-                    <h1 className="expand columns">
-                      <span className="underlined">
-                        {this.state.nonprofitInfo.name}'s Campaigns
-                      </span>
-                    </h1>
-                    <div className="large-4 show-for-large columns button primary">
-                      <Link to="/campaign/create">
-                        <span className="icon"></span>
-                        <span className="text">Create Campaign</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                {this.state.campaigns.map((campaign, i) => <CampaignActions
-                    name={campaign.name}
-                    id={campaign.campaignId}
-                    key={i}
-                    launch={this.launchCampaign}
-                    stop={this.stopCampaign}
-                    startDate={campaign.startDate}
-                    endDate={campaign.endDate} />)}
-                <div className="small-12 columns">
-                  <div className="row  align-center">
-                    <div
-                      className="small-11 medium-10 large-8 hide-for-large columns button primary">
-                      <Link to="/campaign/create">
-                        <span className="icon"></span>
-                        <span className="text">Create Campaign</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+              <section className="main-content">
+                <section className="heading">
+                  <Heading type="h1" text="Campaigns" />
+                  <Link className="link-button" to="/campaign/create">
+                    <Button primary type="button"><PlusIcon className="icon"/> Create Campaign</Button>
+                  </Link>
+                </section>
+                <section className="campaigns">
+                  {this.state.campaigns.map((campaign, i) => <CampaignActions
+                      name={campaign.name}
+                      id={campaign.campaignId}
+                      key={i}
+                      launch={this.launchCampaign}
+                      stop={this.stopCampaign}
+                      startDate={campaign.startDate}
+                      endDate={campaign.endDate} />)}
+                </section>
+                <section className="create-button">
+                  <Link className="link-button" to="/campaign/create">
+                      <Button primary type="button"><PlusIcon className="icon"/> Create Campaign</Button>
+                  </Link>
+                </section>
               </section>
             </main >
           );

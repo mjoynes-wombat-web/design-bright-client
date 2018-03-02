@@ -8,7 +8,7 @@ import screenBreaks from '../../consts/screen-breaks.scss';
 
 import Line from '../../components/svgs/line';
 
-const Heading = styled(({
+const Heading = ({
   className,
   type,
   text,
@@ -35,7 +35,9 @@ const Heading = styled(({
         </h1>
       );
   }
-})`
+};
+
+export default styled(Heading)`
 font-size: 1.125rem;
 font-family: 'Lato', sans-serif;
 font-weight: normal;
@@ -44,13 +46,13 @@ ${({ type, color }) => {
     switch (type) {
       case 'h2':
         return `
-        font-size: 1.125rem;
+        font-size: 1.25rem;
         margin: 0.875rem 0 0.25rem 0;
         color: ${color || colors.mauiOrange};
 
         @media screen and (min-width: ${screenBreaks.medium}) {
           margin: 1.126rem 0 0.375rem 0;
-          font-size: 1.375rem;
+          font-size: 1.5rem;
         }
 
         span.underlined {
@@ -94,7 +96,5 @@ ${({ type, color }) => {
       left: 0;
     }
   }
-  `;
-
-export default Heading;
+`;
 
