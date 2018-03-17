@@ -9,6 +9,9 @@ import { validEmail } from '../../helpers';
 
 // IMPORT PARTIAL COMPONENTS
 import Message from '../../components/message';
+import Heading from '../../components/heading';
+import { Input, Checkbox } from '../../components/inputs';
+import Button from '../../components/button';
 
 // IMPORT STYLING
 import './scss/style.scss';
@@ -178,96 +181,60 @@ class Advisor extends React.Component {
           onClearMessage={() => this.setState({ message: { type: '', message: '' } })}
           message={this.state.message}
           onClearError={() => this.setState({ error: { type: '', message: '' } })} />
-        <section className="row align-center">
-          <form className="small-12 medium-10 large-8 columns" onSubmit={this.onSubmit}>
-            <div className="row">
-              <h1 className="small-12 columns">
-                <span className="underlined">
-                  Become an Advisor
-                </span>
-              </h1>
-            </div>
-            <div className="row align-center">
-              <div className="small-12 columns">
-                <label htmlFor="firstName">
-                  First Name: <span className="required">*</span>
-                </label>
-                <input
-                  value={this.state.inputs.firstName}
-                  onChange={this.onChangeInputs}
-                  type="text"
-                  name="firstName"
-                  id="firstName"
-                  required />
-                <label htmlFor="lastName">
-                  Last Name: <span className="required">*</span>
-                </label>
-                <input
-                  value={this.state.inputs.lastName}
-                  onChange={this.onChangeInputs}
-                  type="text"
-                  name="lastName"
-                  id="lastName"
-                  required />
-                <label htmlFor="email" className={`row${(this.currentInputValid('email') || this.state.inputs.email.length === 0) ? '' : ' invalid'}`}>
-                  <div className="small-12 columns">
-                    Email: <span className="required">*</span>
-                  </div>
-                  <div className=" small-12 columns">
-                    <span className='error'>Please enter a valid email address.</span>
-                  </div>
-                </label>
-                <input
-                  value={this.state.inputs.email}
-                  onChange={this.onChangeInputs}
-                  type="email"
-                  name="email"
-                  required
-                  id="email" />
-                <label htmlFor="position">
-                  Current Position: <span className="required">*</span>
-                </label>
-                <input
-                  value={this.state.inputs.position}
-                  onChange={this.onChangeInputs}
-                  type="text"
-                  name="position"
-                  id="position"
-                  required />
-                <label htmlFor="yearsExperience">
-                  Years of Experience: <span className="required">*</span>
-                </label>
-                <input
-                  value={this.state.inputs.yearsExperience}
-                  onChange={this.onChangeInputs}
-                  type="number"
-                  name="yearsExperience"
-                  id="yearsExperience"
-                  required />
-              </div>
-            </div>
-            <div className="row align-center">
-              <label htmlFor="terms" className="small-12 columns terms">
-                <input
-                  checked={this.state.inputs.agreed}
-                  onChange={this.onChangeInputs}
-                  type="checkbox"
-                  name="agreed"
-                  id="terms"
-                  required />
-                <span></span>I agree to the Design Bright <Link to="/help/terms">terms of
-            service.</Link> <span className='required'>*</span>
-              </label>
-              <button
-                className={`primary small-11 medium-10 large-8 columns${this.state.valid ? '' : ' disabled'}`}
-                disabled={!this.state.valid}
-                type="submit">
-                Submit Request
-              </button>
-              <span className='error small-12'>
-                Please make sure you've entered all your information.
-              </span>
-            </div>
+        <section className='main-content'>
+          <form onSubmit={this.onSubmit}>
+            <Heading type="h1" text="Become an Advisor" />
+            <Input
+              onChange={this.onChangeInputs}
+              type='text'
+              inputLabel='First Name'
+              value={this.state.inputs.firstName}
+              width='16rem'
+              id='firstName'
+              required />
+            <Input
+              onChange={this.onChangeInputs}
+              type='text'
+              inputLabel='Last Name'
+              value={this.state.inputs.lastName}
+              width='16rem'
+              id='lastName'
+              required />
+            <Input
+              onChange={this.onChangeInputs}
+              type='email'
+              inputLabel='Email'
+              value={this.state.inputs.email}
+              width='20rem'
+              id='email'
+              error={!(this.currentInputValid('email') || this.state.inputs.email.length === 0) ? 'Please enter a valid email address.' : null}
+              required />
+            <Input
+              onChange={this.onChangeInputs}
+              type='text'
+              inputLabel='Current Position'
+              value={this.state.inputs.position}
+              width='22rem'
+              id='position'
+              required />
+            <Input
+              onChange={this.onChangeInputs}
+              type='number'
+              inputLabel='Years of Experience:'
+              value={this.state.inputs.yearsExperience}
+              width='5rem'
+              id='yearsExperience'
+              required />
+
+            <Checkbox
+              id={'agreed'}
+              onChange={this.onChangeInputs}
+              className='agreed'
+              checked={this.state.inputs.agreed}
+              required>
+              I agree to the Design Bright <Link to="/help/terms">terms of service.</Link>
+            </Checkbox>
+            <Button primary type="submit" disabled={!this.state.valid} error={'Please make sure you\'ve entered all your information.'}>Submit Request</Button>
           </form>
         </section>
       </main>
