@@ -37,4 +37,21 @@
       }
     }
   }
+
+  #campaignInfo {
+    margin-top: 2rem;
+
+    @media screen and (min-width: $large-break) {
+      display: flex;
+
+      .campaign-details {
+        flex: 1;
+        padding-right: 2rem;
+      }
+  
+      .campaign-contents {
+        flex: 2;
+      }
+    }
+  }
 }

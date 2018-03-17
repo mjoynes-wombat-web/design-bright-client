@@ -13,7 +13,6 @@ import { UserIcon } from '../../../../../svgs/icons';
 // Takes a requireAuth function for checking login, a userType login to determine
 // which menu type to show and an onLogout function to log the user out.
 const UserMenuItems = ({ onRequireAuth, userType, onLogout }) => {
-  console.log(userType);
   if (onRequireAuth()) {
     if (userType === 'non-profit') {
       return (

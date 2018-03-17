@@ -11,6 +11,11 @@ import Toolbar from './toolbar';
 import CreateLink from './createLink';
 import CreateImage from './createImage';
 
+import Veteran from '../../../../assets/img/veteran.jpg';
+import FlagHome from '../../../../assets/img/flag-home.jpg';
+
+import Heading from '../../../../components/heading';
+
 import './scss/style.scss';
 
 const defaultBlock = {
@@ -19,20 +24,9 @@ const defaultBlock = {
   data: {},
 };
 
-/**
- * Define a schema.
- *
- * @type {Object}
- */
-
 const schema = {
   nodes: {
-    header: props =>
-      <h2 {...props.attributes}>
-        <span className="underlined">
-          {props.children}
-        </span>
-      </h2>,
+    header: props => <Heading type="h2" text={props.children} />,
     paragraph: props =>
       <p {...props.attributes}>
         {props.children}
@@ -139,7 +133,7 @@ class CampaignEditor extends React.Component {
             data: {
               alt: 'Senior veteran at a march.',
               imageType: 'main',
-              src: '/assets/img/veteran.jpg',
+              src: Veteran,
             },
           },
           {
@@ -169,7 +163,7 @@ class CampaignEditor extends React.Component {
             data: {
               alt: 'A flag on a home.',
               imageType: 'left',
-              src: '/assets/img/flag-home.jpg',
+              src: FlagHome,
             },
           },
           {

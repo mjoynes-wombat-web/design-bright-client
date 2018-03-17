@@ -22,7 +22,6 @@ const Message = styled(({
   className,
 }) => {
   if (error.message !== '' || message.message !== '') {
-    console.log(message.message);
     return (
       <section id="message" className={`${className}${error.message !== '' ? ' error' : ''}`}>
       <CloseIcon onClick={error.message !== '' ? onClearError : onClearMessage}/>

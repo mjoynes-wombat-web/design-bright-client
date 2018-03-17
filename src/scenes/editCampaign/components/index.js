@@ -6,6 +6,9 @@ import queryString from 'query-string';
 
 import CampaignEditor from './editor';
 import Message from '../../../components/message';
+import Heading from '../../../components/heading';
+import { Input, Label } from '../../../components/inputs';
+import Button from '../../../components/button';
 
 import './scss/style.scss';
 
@@ -27,9 +30,9 @@ class EditCampaign extends React.Component {
       nonprofitInfo: {},
       campaigns: {},
       campaignInfo: {
-        name: '',
+        campaignName: '',
         fundingNeeded: 100,
-        duration: 10,
+        campaignDuration: 10,
       },
       contentInfo: {},
       campaignContent: [],
@@ -245,9 +248,9 @@ class EditCampaign extends React.Component {
         return true;
       }
     } else if (
-      this.state.campaignInfo.name.length > 0
-      && (isNumber(this.state.campaignInfo.duration)
-        && numLength(this.state.campaignInfo.duration, 2, 2))
+      this.state.campaignInfo.campaignName.length > 0
+      && (isNumber(this.state.campaignInfo.campaignDuration)
+        && numLength(this.state.campaignInfo.campaignDuration, 2, 2))
       && (isNumber(this.state.campaignInfo.fundingNeeded)
         && numLength(this.state.campaignInfo.fundingNeeded, 3, 6))
       && this.state.editorData.document.nodes[0].nodes[0].ranges[0].text !== ''
@@ -277,21 +280,19 @@ class EditCampaign extends React.Component {
                   onClearMessage={() => this.setState({ message: { type: '', message: '' } })}
                   message={this.state.message}
                   onClearError={() => this.setState({ error: { type: '', message: '' } })} />
-                <section className="row align-center">
-                  <form className="small-12 columns" onSubmit={this.onSubmit}>
-                    <div className="row header">
-                      <h1 className="small-12 columns">
-                        <span className="underlined">
-                          {this.state.campaignContent.length > 0
-                            ? `Edit ${this.state.campaignInfo.name}'s Campaign`
-                            : `Create ${this.state.campaignInfo.name
-                              ? `${this.state.campaignInfo.name}'s`
-                              : ''} Campaign`}
-                        </span>
-                      </h1>
+                <section className="main-content">
+                  <form onSubmit={this.onSubmit}>
+                    <div>
+                      <Heading
+                        type="h1"
+                        text={this.state.campaignContent.length > 0
+                          ? `Edit ${this.state.campaignInfo.name}'s Campaign`
+                          : `Create ${this.state.campaignInfo.name
+                            ? `${this.state.campaignInfo.name}'s`
+                            : ''} Campaign`} />
                       {this.state.campaignInfo.startDate
                         ? (
-                          <p className="message small-12 columns">
+                          <p className="message">
                             {((new Date(Date.parse(this.state.campaignInfo.endDate))).getTime()
       <= (new Date()).getTime())
                               ? 'This campaign has already ended so only it\'s content can be modified.'
@@ -300,121 +301,87 @@ class EditCampaign extends React.Component {
                         )
                         : null}
                     </div>
-                    <div className="row">
-                      {this.state.campaignInfo.startDate
-                        ? (
-                          <div className="small-12 large-5 columns">
-                            <p className="title">Campaign Name:</p>
-                            <p className="info">{this.state.campaignInfo.name}</p>
-                            <p className="title">Campaign Duration:</p>
-                            <p className="info">{this.state.campaignInfo.duration} Days</p>
-                            <p className="title">Funding Needed:</p>
-                            <p className="info">${this.state.campaignInfo.fundingNeeded}</p>
-                            <p className="title">Start Date:</p>
-                            <p className="info">
-                              {(new Date(Date.parse(this.state.campaignInfo.startDate)))
-                                .toLocaleDateString()}
-                            </p>
-                            {this.state.campaignInfo.endDate
-                              ? (
-                                <div>
-                                  <p className="title">End Date:</p>
-                                  <p className="info">
-                                    {(new Date(Date.parse(this.state.campaignInfo.endDate)))
-                                      .toLocaleDateString()}
-                                  </p>
-                                </div>
-                              )
-                              : null}
-                          </div>
-                        )
-                        : (
-                          <div className="small-12 large-5 columns">
-                            <label htmlFor="name">
-                              Campaign Name: <span className="required">*</span>
-                            </label>
-                            <input
-                              value={this.state.campaignInfo.name}
-                              onChange={this.onChange}
-                              type="text"
-                              name="name"
-                              id="campaignName"
-                              required />
-                            <label
-                              htmlFor="duration"
-                              className={`row${(isNumber(this.state.campaignInfo.duration) && numLength(this.state.campaignInfo.duration, 2, 2)) ? '' : ' invalid'}`}>
-                              <div className="small-12 columns">
-                                Campaign Duration (Days): <span className="required">*</span>
+                    <section id="campaignInfo">
+                    {this.state.campaignInfo.startDate
+                      ? (
+                        <div className="campaign-details">
+                          <p className="title">Campaign Name:</p>
+                          <p className="info">{this.state.campaignInfo.name}</p>
+                          <p className="title">Campaign Duration:</p>
+                          <p className="info">{this.state.campaignInfo.campaignDuration} Days</p>
+                          <p className="title">Funding Needed:</p>
+                          <p className="info">${this.state.campaignInfo.fundingNeeded}</p>
+                          <p className="title">Start Date:</p>
+                          <p className="info">
+                            {(new Date(Date.parse(this.state.campaignInfo.startDate)))
+                              .toLocaleDateString()}
+                          </p>
+                          {this.state.campaignInfo.endDate
+                            ? (
+                              <div>
+                                <p className="title">End Date:</p>
+                                <p className="info">
+                                  {(new Date(Date.parse(this.state.campaignInfo.endDate)))
+                                    .toLocaleDateString()}
+                                </p>
                               </div>
-                              <div className="small-12 columns">
-                                <span className="error">
-                                  The campaign duration must be between 10 and 99 days.
-                                </span>
-                              </div>
-                            </label>
-                            <input
-                              value={this.state.campaignInfo.duration}
-                              onChange={this.onChange}
-                              type="number"
-                              name="duration"
-                              id="campaignDuration"
-                              required />
-                            <label
-                              htmlFor="fundingNeeded"
-                              className={`row${(isNumber(this.state.campaignInfo.fundingNeeded) && numLength(this.state.campaignInfo.fundingNeeded, 3, 6)) ? '' : ' invalid'}`}>
-                              <div className="small-12 columns">
-                                Funding Needed: <span className="required">*</span>
-                              </div>
-                              <div className="small-12 columns">
-                                <span className="error">
-                                  Funding must be more than $100 but less than $1,000,000.
-                                </span>
-                              </div>
-                            </label>
-                            <input
-                              value={`$${parseInt(this.state.campaignInfo.fundingNeeded, 10).toLocaleString()}`}
-                              onChange={this.onChange}
-                              type="text"
-                              name="fundingNeeded"
-                              id="campaignFunding"
-                              required />
-                          </div>
-                        )}
-                      <div className="small-12 large-7 columns">
-                        <label htmlFor="campaignEditor">
-                          Campaign Content: <span className="required">*</span>
-                        </label>
-                        <CampaignEditor
-                          content={this.state.campaignContent}
-                          campaignInfo={this.state.campaignInfo}
-                          nonprofitInfo={this.state.nonprofitInfo}
-                          campaignId={this.state.campaignId}
-                          onChangeEditorData={this.onChangeEditorData} />
-                      </div>
+                            )
+                            : null}
+                        </div>
+                      )
+                      : (
+                        <div className="campaign-details">
+                          <Input
+                            onChange={this.onChange}
+                            type='text'
+                            inputLabel='Campaign Name'
+                            value={this.state.campaignInfo.name}
+                            width='20rem'
+                            id='campaignName'
+                            required />
+                          <Input
+                            onChange={this.onChange}
+                            type='number'
+                            inputLabel='Campaign Duration (Days)'
+                            value={this.state.campaignInfo.campaignDuration}
+                            width='10rem'
+                            id='campaignDuration'
+                            error={!(isNumber(this.state.campaignInfo.campaignDuration) && numLength(this.state.campaignInfo.campaignDuration, 2, 2)) ? 'The campaign duration must be between 10 and 99 days.' : null}
+                            required />
+                          <Input
+                            onChange={this.onChange}
+                            type='text'
+                            inputLabel='Funding Needed'
+                            value={`$${parseInt(this.state.campaignInfo.fundingNeeded, 10).toLocaleString()}`}
+                            width='10rem'
+                            id='fundingNeeded'
+                            error={!(isNumber(this.state.campaignInfo.fundingNeeded) && numLength(this.state.campaignInfo.fundingNeeded, 3, 6)) ? 'Funding must be more than $100 but less than $1,000,000.' : null}
+                            required />
+                        </div>
+                      )}
+                    <div className="campaign-contents">
+                      <Label id={'campaignEditor'} inputLabel={'Campaign Contents'} required />
+                      <CampaignEditor
+                        content={this.state.campaignContent}
+                        campaignInfo={this.state.campaignInfo}
+                        nonprofitInfo={this.state.nonprofitInfo}
+                        campaignId={this.state.campaignId}
+                        onChangeEditorData={this.onChangeEditorData} />
                     </div>
-                    <div className="row align-center">
-                      <button
-                        className={`primary small-11 medium-10 large-8 columns${
-                          this.state.campaignContent.length > 0
-                            ? `${this.state.valid && !this.state.campaignSaved ? '' : ' disabled'}`
-                            : `${this.state.valid ? '' : ' disabled'}`}`}
-                        disabled={this.state.campaignContent.length > 0
-                          ? (!this.state.valid && this.state.campaignSaved)
-                          : !this.state.valid}
-                        type="submit"
-                        onClick={this.onSubmit}>
-                        {this.state.campaignContent.length > 0
+                  </section>
+                  <Button
+                    primary
+                    type="submit"
+                    disabled={(
+                      (this.state.campaignCreated && this.state.campaignContent.length === 0)
+                      || !this.state.valid
+                      || this.state.campaignSaved)}
+                    onClick={this.onSubmit}
+                    error={!this.state.valid ? 'Please make sure you\'ve entered all your information.' : null}>
+                      {this.state.campaignContent.length > 0
                           ? `${this.state.campaignSaved ? 'No Changes Made' : 'Save Changes'}`
                           : 'Create Campaign'}
-                      </button>
-                      {!this.state.valid
-                        ? (
-                          <span className='error small-12'>
-                            Please make sure you've entered all your information.
-                          </span>
-                        )
-                        : null}
-                    </div>
+                  </Button>
                   </form>
                 </section>
               </main >

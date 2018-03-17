@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from '../../../../components/button';
+
 const MainImg = props =>
   (
     <div className={props.className} { ...props.attributes }>
@@ -8,9 +10,9 @@ const MainImg = props =>
         <div className="main-image">
           <img src={props.src} alt={props.alt} className={`main ${props.className}`} />
         </div>
-        <button className="secondary" type="button" disabled>Make a Donation</button>
+        <Button secondary>Make a Donation</Button>
       </div>
-      <button className="primary mobile" type="button" disabled>Make a Donation</button>
+      <Button primary>Make a Donation</Button>
     </div>
   );
 

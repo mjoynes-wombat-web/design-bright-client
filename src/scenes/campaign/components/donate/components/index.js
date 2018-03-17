@@ -208,8 +208,6 @@ class DonateComponent extends React.Component {
   validate(e, inputId) {
     if (inputId) {
       const { stripeErrors } = this.state;
-      console.log(e);
-      console.log(inputId);
       if (e.error) {
         stripeErrors[inputId] = e.error.message;
       } else {
