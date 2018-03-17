@@ -30,9 +30,9 @@ class EditCampaign extends React.Component {
       nonprofitInfo: {},
       campaigns: {},
       campaignInfo: {
-        campaignName: '',
+        name: '',
         fundingNeeded: 100,
-        campaignDuration: 10,
+        duration: 10,
       },
       contentInfo: {},
       campaignContent: [],
@@ -243,14 +243,15 @@ class EditCampaign extends React.Component {
   }
 
   validate() {
+    console.dir(this.state.campaignInfo);
     if (this.state.campaignInfo.startDate) {
       if (this.state.editorData.document.nodes[0].nodes[0].ranges[0].text !== '') {
         return true;
       }
     } else if (
-      this.state.campaignInfo.campaignName.length > 0
-      && (isNumber(this.state.campaignInfo.campaignDuration)
-        && numLength(this.state.campaignInfo.campaignDuration, 2, 2))
+      this.state.campaignInfo.name.length > 0
+      && (isNumber(this.state.campaignInfo.duration)
+        && numLength(this.state.campaignInfo.duration, 2, 2))
       && (isNumber(this.state.campaignInfo.fundingNeeded)
         && numLength(this.state.campaignInfo.fundingNeeded, 3, 6))
       && this.state.editorData.document.nodes[0].nodes[0].ranges[0].text !== ''
@@ -308,7 +309,7 @@ class EditCampaign extends React.Component {
                           <p className="title">Campaign Name:</p>
                           <p className="info">{this.state.campaignInfo.name}</p>
                           <p className="title">Campaign Duration:</p>
-                          <p className="info">{this.state.campaignInfo.campaignDuration} Days</p>
+                          <p className="info">{this.state.campaignInfo.duration} Days</p>
                           <p className="title">Funding Needed:</p>
                           <p className="info">${this.state.campaignInfo.fundingNeeded}</p>
                           <p className="title">Start Date:</p>
@@ -337,16 +338,16 @@ class EditCampaign extends React.Component {
                             inputLabel='Campaign Name'
                             value={this.state.campaignInfo.name}
                             width='20rem'
-                            id='campaignName'
+                            id='name'
                             required />
                           <Input
                             onChange={this.onChange}
                             type='number'
                             inputLabel='Campaign Duration (Days)'
-                            value={this.state.campaignInfo.campaignDuration}
+                            value={this.state.campaignInfo.duration}
                             width='10rem'
-                            id='campaignDuration'
-                            error={!(isNumber(this.state.campaignInfo.campaignDuration) && numLength(this.state.campaignInfo.campaignDuration, 2, 2)) ? 'The campaign duration must be between 10 and 99 days.' : null}
+                            id='duration'
+                            error={!(isNumber(this.state.campaignInfo.duration) && numLength(this.state.campaignInfo.duration, 2, 2)) ? 'The campaign duration must be between 10 and 99 days.' : null}
                             required />
                           <Input
                             onChange={this.onChange}
