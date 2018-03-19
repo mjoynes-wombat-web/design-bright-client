@@ -30,6 +30,7 @@ const Footer = styled(({ className }) => (
   height: auto;
   background-repeat: none;
   position: absolute;
+  z-index: 100;
   bottom:0;
   width: 100%;
 

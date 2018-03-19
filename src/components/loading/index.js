@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import screenBreaks from '../../consts/screen-breaks.scss';
 import colors from '../../consts/colors.scss';
 
+import loadingBulb from '../../assets/img/loading-bulb.png';
+
 const fade = (animationName, opacityStart, opacityEnd) => `
 @keyframes ${animationName} {
   from {
@@ -49,28 +51,29 @@ const pulseText = (animationName, scaleTo) => `
 }
 `;
 
-const LoadingComponent = styled(
-  ({ className, text, component }) => (
-    <div id="loading" className={className}>
-      <div className="wrapper">
-        <div id="icon">
-          <div id="bulb"></div>
-          <div id="yellow-light-pulse">
-            <div id="yellow-light"></div>
-          </div>
-          <div id="orange-glow-pulse">
-            <div id="orange-glow"></div>
-          </div>
+const LoadingComponent = styled(({
+  className,
+  text,
+}) => (
+  <div id="loading" className={className}>
+    <div className="wrapper">
+      <div id="icon">
+        <div id="bulb"></div>
+        <div id="yellow-light-pulse">
+          <div id="yellow-light"></div>
         </div>
-        <div>
-          <h3 id="text">
-            {text}
-          </h3>
+        <div id="orange-glow-pulse">
+          <div id="orange-glow"></div>
         </div>
       </div>
+      <div>
+        <h3 id="text">
+          {text}
+        </h3>
+      </div>
     </div>
-  ),
-) `
+  </div>
+))`
 ${fade('fade-in', 0, 1)}
 ${fade('fade-out', 1, 0)}
 
@@ -85,10 +88,11 @@ ${pulseText('pulse-text', 0.9)}
   text-align: center;
   background-color: rgba(255, 255, 255, 0.85);
   width: 100%;
-  height: 100%;
+  height: ${props => (props.component ? '100%' : 'calc(100vh - 6rem - 9.75rem)')};
+  min-height: 20rem;
   ${props => (props.component ? null : 'max-height: 100vh;')}
-  position: ${props => (props.component ? 'relative' : 'fixed')};
-  z-index: 999;
+  position: ${props => props.position};
+  z-index: 90;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,6 +101,7 @@ ${pulseText('pulse-text', 0.9)}
   animation-duration: 1s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
+  cursor: wait;
 
 
   .wrapper {
@@ -117,15 +122,20 @@ ${pulseText('pulse-text', 0.9)}
       animation-iteration-count: infinite;
 
       @media screen and (min-width: ${screenBreaks.medium}) {
-        font-size: ${props => (props.component ? '1.75rem' : '2.25rem')};
+        font-size: ${props => (props.component ? '2rem' : '2.5rem')};
       }
     }
     
     #icon {
-      width: ${props => (props.component ? '75px' : '100px')};
-      height: ${props => (props.component ? '75px' : '100px')};
+      width: ${props => (props.component ? '100px' : '125px')};
+      height: ${props => (props.component ? '100px' : '125px')};
       position: relative;
       margin: 0 auto;
+
+      @media screen and (min-width: ${screenBreaks.medium}) {
+        width: ${props => (props.component ? '125px' : '150px')};
+        height: ${props => (props.component ? '125px' : '150px')};
+      }
     
       > div {
         width: 100%;
@@ -135,7 +145,7 @@ ${pulseText('pulse-text', 0.9)}
     }
     
     #bulb {
-      background-image: url(/assets/img/loading-bulb.png);
+      background-image: url(${loadingBulb});
       background-size: 100% 300%;
       z-index: 3;
     }
@@ -151,7 +161,7 @@ ${pulseText('pulse-text', 0.9)}
       #yellow-light {
         width: 100%;
         height: 100%;
-        background-image: url(/assets/img/loading-bulb.png);
+        background-image: url(${loadingBulb});
         background-size: 100% 300%;
         background-position-y: 50%;
         visibility: hidden;
@@ -174,7 +184,7 @@ ${pulseText('pulse-text', 0.9)}
       #orange-glow {
         width: 100%;
         height: 100%;
-        background-image: url(/assets/img/loading-bulb.png);
+        background-image: url(${loadingBulb});
         background-size: 100% 300%;
         background-position-y: 100%;
         visibility: hidden;
@@ -191,9 +201,6 @@ ${pulseText('pulse-text', 0.9)}
 class Loading extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      test: 'test',
-    };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.componentWillUnmount = this.componentWillUnmount.bind(this);
@@ -207,12 +214,12 @@ class Loading extends React.Component {
 
   componentWillUnmount() {
     if (!this.props.component) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = null;
     }
   }
 
   render() {
-    return <LoadingComponent text={this.props.text} component={this.props.component} />;
+    return <LoadingComponent text={this.props.text} component={this.props.component} position={this.props.position || 'relative'}/>;
   }
 }
 

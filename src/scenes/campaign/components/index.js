@@ -14,6 +14,8 @@ import CampaignBlocks from './campaignBlocks';
 import Donate from './donate';
 import CampaignHeader from './campaignHeader';
 
+import Loading from '../../../components/loading';
+
 // IMPORT STYLING
 import './scss/style.scss';
 
@@ -245,7 +247,7 @@ class Campaign extends React.Component {
       );
     }
     return (
-      <h1>Loading</h1>
+      <Loading text="Loading Campaign" component />
     );
   }
 }

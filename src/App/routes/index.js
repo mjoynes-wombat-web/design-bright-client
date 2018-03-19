@@ -7,66 +7,68 @@ import Loadable from 'react-loadable';
 // Import Google Analytics tracker.
 import { gaTracker } from '../../helpers';
 
-const Loading = () => <div>Loading...</div>;
+import Loading from '../../components/loading';
+
+const LoadingPage = () => <Loading text="Loading Page" />;
 
 const Advisor = Loadable({
   loader: () => import('../../scenes/advisor'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const Campaign = Loadable({
   loader: () => import('../../scenes/campaign'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const EditCampaign = Loadable({
   loader: () => import('../../scenes/editCampaign'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const MngCampaigns = Loadable({
   loader: () => import('../../scenes/mngCampaigns'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const CampaignsList = Loadable({
   loader: () => import('../../scenes/campaignsList'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const Help = Loadable({
   loader: () => import('../../scenes/help'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const Home = Loadable({
   loader: () => import('../../scenes/home'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const References = Loadable({
   loader: () => import('../../scenes/references'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const Register = Loadable({
   loader: () => import('../../scenes/sign/scenes/register'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const Login = Loadable({
   loader: () => import('../../scenes/sign/scenes/login'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const EditProfile = Loadable({
   loader: () => import('../../scenes/userProfile/scenes/edit'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const ViewProfile = Loadable({
   loader: () => import('../../scenes/userProfile/scenes/view'),
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 // ROUTE COMPONENT

@@ -6,7 +6,8 @@ Optimzation:
 Usability:
   ✔ Link underline and heading underline aren't different enough. @low @done (2018-3-18 17:50:10)
   ☐ Work on color and background contrast. @low
-  ☐ Add loading component. @critical
+  ✔ Add loading component. @critical @done (2018-3-18 20:30:25)
+  ☐ Preload loading image. @high
 
 Maintainabilty:
   ☐ Comment code. Continue at campaign list. @low

@@ -10,6 +10,8 @@ import Heading from '../../../components/heading';
 import { Input, Label } from '../../../components/inputs';
 import Button from '../../../components/button';
 
+import Loading from '../../../components/loading';
+
 import './scss/style.scss';
 
 const isNumber = (num) => {
@@ -396,7 +398,7 @@ class EditCampaign extends React.Component {
           );
         }
         return (
-          <h1>Loading</h1>
+          <Loading text="Loading Campaign" />
         );
       }
       return (

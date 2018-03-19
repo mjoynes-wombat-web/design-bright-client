@@ -5,6 +5,8 @@ import axios from 'axios';
 import CampaignItem from '../campaignItem';
 import Pagination from '../pagination';
 
+import Loading from '../../../../components/loading';
+
 import './scss/style.scss';
 
 class List extends React.Component {
@@ -94,7 +96,7 @@ class List extends React.Component {
     }
     return (
       <section id="campaignsList">
-        <h2 id="List">Loading</h2>
+        <Loading text="Loading Campaign Results" component />
       </section>
     );
   }

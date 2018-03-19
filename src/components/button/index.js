@@ -133,7 +133,7 @@ const Button = styled.button`
   display: block;
   outline: none;
   position: relative;
-  z-index: 100;
+  z-index: 80;
 
   :disabled {
     text-shadow: ${colors.graphite} 0 0 0.25rem;

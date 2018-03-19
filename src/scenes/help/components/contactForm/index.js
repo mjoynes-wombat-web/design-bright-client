@@ -7,6 +7,7 @@ import { validEmail } from '../../../../helpers';
 import { Input, Checkbox, TextArea } from '../../../../components/inputs';
 import Button from '../../../../components/button';
 import Heading from '../../../../components/heading';
+import Loading from '../../../../components/loading';
 
 import './scss/style.scss';
 
@@ -25,6 +26,7 @@ class ContactForm extends React.Component {
         agreed: false,
       },
       valid: false,
+      requestPending: true,
     };
 
     this.onChange = this.onChange.bind(this);
@@ -70,6 +72,7 @@ class ContactForm extends React.Component {
   }
 
   onSubmit(e) {
+    this.setState({ requestPending: true });
     e.preventDefault();
     if (this.state.valid) {
       const Message = ({
@@ -103,10 +106,11 @@ class ContactForm extends React.Component {
             message: '',
             agreed: false,
           };
-          this.setState({ inputs, valid: false });
+          this.setState({ inputs, valid: false, requestPending: false });
           window.scroll(0, 0);
         })
         .catch((error) => {
+          this.setState({ requestPending: false });
           const createAdvisorError = error.response.data;
           this.props.onNewError(createAdvisorError.message);
 
@@ -122,7 +126,8 @@ class ContactForm extends React.Component {
   render() {
     document.title = 'Help - Design Bright';
     return (
-      <section id="contact">
+      <section id="contact" style={this.state.requestPending ? { position: 'relative' } : null}>
+        {this.state.requestPending ? <Loading text="Sending Message" component position='absolute'/> : null}
         <form onSubmit={this.onSubmit}>
         <Heading type="h1" text="Contact Us" />
             <Input

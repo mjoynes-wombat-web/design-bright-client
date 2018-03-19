@@ -11,6 +11,8 @@ import Heading from '../../../components/heading';
 import Button from '../../../components/button';
 import { PlusIcon } from '../../../components/svgs/icons';
 
+import Loading from '../../../components/loading';
+
 import './scss/style.scss';
 
 class MngCampaigns extends React.Component {
@@ -234,7 +236,7 @@ class MngCampaigns extends React.Component {
           );
         }
         return (
-          <h1>Loading</h1>
+          <Loading text="Loading Campaigns" />
         );
       }
       return (

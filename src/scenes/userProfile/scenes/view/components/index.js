@@ -9,6 +9,8 @@ import Message from '../../../../../components/message';
 import Heading from '../../../../../components/heading';
 import { UploadIcon, EditIcon } from '../../../../../components/svgs/icons';
 
+import Loading from '../../../../../components/loading';
+
 import './scss/style.scss';
 
 class ViewProfile extends React.Component {
@@ -201,7 +203,7 @@ class ViewProfile extends React.Component {
         );
       }
       return (
-        <h1>Loading</h1>
+        <Loading text="Loading Profile" />
       );
     }
 

@@ -2,8 +2,6 @@
 
 #help {
   section {
-    margin-bottom: 0;
-
     &.main-content {
       @media screen and (min-width: $large-break) {
         display: flex;
