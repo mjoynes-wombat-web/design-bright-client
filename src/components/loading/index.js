@@ -102,6 +102,9 @@ ${pulseText('pulse-text', 0.9)}
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
   cursor: wait;
+  box-shadow: 0 0 2rem 1rem rgba(250, 250, 250, 0.8);
+  border-radius: 1.25rem;
+  background: rgba(250, 250, 250, 0.8);
 
 
   .wrapper {

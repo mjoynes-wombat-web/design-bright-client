@@ -26,7 +26,7 @@ class ContactForm extends React.Component {
         agreed: false,
       },
       valid: false,
-      requestPending: true,
+      requestPending: false,
     };
 
     this.onChange = this.onChange.bind(this);
