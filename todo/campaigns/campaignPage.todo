@@ -1,4 +1,4 @@
 Usability:
   ☐ Look into implementing symantic urls. @low
-  ☐ Fix back doesn't reenable scroll after donation modal open. @high 
-  ☐ Donation modal should close on first back on mobile. @high
+  ☐ Fix back doesn't reenable scroll after donation modal open. @critical
+  ☐ Donation modal should close on first back on mobile. @critical

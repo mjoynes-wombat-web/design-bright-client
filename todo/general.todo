@@ -6,17 +6,18 @@ Optimzation:
 Usability:
   ✔ Link underline and heading underline aren't different enough. @low @done (2018-3-18 17:50:10)
   ☐ Work on color and background contrast. @low
+  ☐ Add loading component. @critical
 
 Maintainabilty:
   ☐ Comment code. Continue at campaign list. @low
-  ☐ Componetize better. @critical
+  ☐ Componetize better. @high
 
   Forms: 
     ✔ Componetize the forms. @low @done (2018-2-18 13:04:26)
 
   Header:
     ☐ Make click not work on padding. @critical 
-    ☐ Remove user image on timed out logout. @critical 
+    ☐ Remove user image on timed out logout. @high
 
   Messages: 
     ✔ Fix messages component. @critical @done (2018-1-20 17:17:24)

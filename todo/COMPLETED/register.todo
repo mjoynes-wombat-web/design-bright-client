@@ -1,7 +1,14 @@
 Register:
-  ☐ Create a delete non-profit fallback. Check creation date. @high 
-  ☐ Move form to single column. @high
-  ☐ Add additional content to entice user to register. @high
-  ☐ Limit width of inputs. Possibly based on length of expected input. @high
+  ✔ Create a delete non-profit fallback. Check creation date. @high @done (2018-3-18 19:01:51)
+  ✔ Move form to single column. @high @done (2018-3-18 19:01:52)
+  ✔ Add additional content to entice user to register. @high @done (2018-3-18 19:01:54)
+  ✔ Limit width of inputs. Possibly based on length of expected input. @high @done (2018-3-18 19:01:55)
   ✔ Change user type to radio instead of checkbox to follow convention. @high @done (9/7/2017, 9:08:35 PM)
   ✔ Email validation messes up input change when trying to input in the middle. Fix and check other validated fields. @critical @done (2017-9-9 23:17:31)
+
+  Layout:
+    ✔ Fix issues from removing Foundation. @critical @done (2018-1-8 19:37:51)
+  
+  Interactivity: 
+    ✔ Implement Button component. @critical @done (2018-1-8 19:37:46)
+    ✔ Make email display error from Auth0 invalid/duplciate email. @critical @done (2018-3-18 17:50:48)

@@ -3,7 +3,7 @@ Added Features:
 
 Data Integrity:
   ☐ Create delete campaign fallback if error. @high
-  ☐ Require one paragraph and one main image. @high
+  ☐ Require one paragraph and one main image. @critical
 
 Usability:
   ☐ Make more robust errors from the database actions. @high
