@@ -1,5 +1,28 @@
+@import '../../../consts/screen-breaks.scss';
+
 #help {
   section {
     margin-bottom: 0;
+
+    &.main-content {
+      @media screen and (min-width: $large-break) {
+        display: flex;
+
+        section.faq {
+          flex: 3;
+        }
+
+        section#contact {
+          flex: 2;
+        }
+      }
+
+      div.intro {
+        @media screen and (min-width: $medium-break) {
+          padding-bottom: 2rem;
+        }
+        padding-bottom: 1rem;
+      }
+    }
   }
 }

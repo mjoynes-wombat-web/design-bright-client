@@ -3,4 +3,4 @@ Layout:
 
 Interactivity: 
   ✔ Implement Button component. @critical @done (2018-1-8 19:37:46)
-  ☐ Make email display error from Auth0 invalid/duplciate email. @critical
+  ✔ Make email display error from Auth0 invalid/duplciate email. @critical @done (2018-3-18 17:50:48)

@@ -4,7 +4,7 @@ Optimzation:
   ☐ Use Gatsby for prerendering and auth-caching. @low
 
 Usability:
-  ☐ Link underline and heading underline aren't different enough. @low
+  ✔ Link underline and heading underline aren't different enough. @low @done (2018-3-18 17:50:10)
   ☐ Work on color and background contrast. @low
 
 Maintainabilty:

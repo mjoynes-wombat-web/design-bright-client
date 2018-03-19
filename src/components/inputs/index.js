@@ -81,14 +81,14 @@ margin: 0.5rem 0;
   margin: 0.75rem 0;
 }
 
-input, select {
+input, select, textarea {
   color: ${colors.graphite};
   font-size: 1rem;
   font-weight: 300;
   margin-top: 0.125rem;
   box-sizing: border-box;
 }
-input:not([type="radio"]):not([type="checkbox"]), select {
+input:not([type="radio"]):not([type="checkbox"]), select, textarea {
   width: 12rem;
   max-width: 100%;
   border: 0.0625rem solid ${colors.lightGraphite};
@@ -109,16 +109,16 @@ input:not([type="radio"]):not([type="checkbox"]), select {
   }
 }
 
-input::placeholder {
+input::placeholder, textarea::placeholder {
   color: #cccccc;
   font-weight: 100;
 }
 
 @media screen and (min-width: ${screenBreaks.medium}) {
-  input, select {
+  input, select, textarea {
     font-size: 1.125rem;
   }
-  input:not(:[type="radio"], :[type="checkbox"]), select {
+  input:not(:[type="radio"], :[type="checkbox"]), select, textarea {
     min-width: 20rem;
     padding: 0.5rem;
   }
@@ -338,4 +338,40 @@ input[type='checkbox'] {
 }
 
 ${props => formLabelStyle(props)}
+`;
+
+export const TextArea = styled(({
+  className,
+  id,
+  type,
+  inputLabel,
+  required,
+  error,
+  value,
+  onChange,
+  placeholder,
+}) => (
+  <div className={className}>
+    {inputLabel
+      ? <Label id={id} inputLabel={inputLabel} required={required} error={error} />
+      : null}
+    <textarea
+      onChange={onChange}
+      id={id}
+      required={required}
+      value={value}
+      name={id}
+      type={type}
+      placeholder={placeholder} />
+  </div>
+))`
+${generalInputStyling}
+
+${props => (props.width || props.height ? `
+  textarea {
+    width: ${props.width};
+    min-height: ${props.height};
+    max-width: ${props.maxWidth};
+  }
+` : null)}
 `;
