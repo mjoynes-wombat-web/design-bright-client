@@ -75,29 +75,24 @@ class ContactForm extends React.Component {
     this.setState({ requestPending: true });
     e.preventDefault();
     if (this.state.valid) {
-      const Message = ({
-        email,
-        firstName,
-        lastName,
-        subject,
-        message,
-      }) =>
-        (
-          {
-            email,
-            firstName,
-            lastName,
-            subject,
-            message,
-          }
-        );
+      const messageDetails = {
+        firstName: this.state.inputs.firstName,
+        lastName: this.state.inputs.lastName,
+        senderEmail: this.state.inputs.email,
+        receiverEmail: 'ssmith@designbright.org',
+        subject: `${this.state.inputs.subject} - Design Bright`,
+        msg: this.state.inputs.message,
+        confirmation: 'Thank you for contacting us. We will get back to you in 24 hours.',
+        receptionMsg: 'This message was sent from www.designbright.org',
+        receiverName: 'Design Bright',
+      };
 
       axios.post(
-        `https://${window.location.hostname}:3000/api/help`,
-        Message(this.state.inputs),
+        'https://192.168.86.200:7777/api/v1/contact',
+        messageDetails,
       )
         .then((results) => {
-          this.props.onNewMessage(results.data.message);
+          this.props.onNewMessage(results.data.msg);
           const inputs = {
             firstName: '',
             lastName: '',
@@ -112,7 +107,7 @@ class ContactForm extends React.Component {
         .catch((error) => {
           this.setState({ requestPending: false });
           const createAdvisorError = error.response.data;
-          this.props.onNewError(createAdvisorError.message);
+          this.props.onNewError(createAdvisorError.msg);
 
           window.scroll(0, 0);
         });
