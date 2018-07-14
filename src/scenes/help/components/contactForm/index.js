@@ -74,13 +74,31 @@ class ContactForm extends React.Component {
   onSubmit(e) {
     this.setState({ requestPending: true });
     e.preventDefault();
+
+    const emailNum = (emailAddr) => {
+      const alpha = 'abcdefghijklmnopqrstuvwxyz@.ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&\'*+-/=?^_`{|}~"(),:;<>@[\\]'.split('');
+      let num = '';
+      const emailArr = emailAddr.split('');
+
+      for (let i = 0; i < emailArr.length; i += 1) {
+        if (emailArr.indexOf('@') > i) {
+          num += alpha.indexOf(emailArr[i]).toString();
+        } else {
+          return num;
+        }
+      }
+      return num;
+    };
+
+    const supportId = `${emailNum(this.state.inputs.email)}${(new Date().valueOf())}`;
+
     if (this.state.valid) {
       const messageDetails = {
         firstName: this.state.inputs.firstName,
         lastName: this.state.inputs.lastName,
         senderEmail: this.state.inputs.email,
         receiverEmail: 'ssmith@designbright.org',
-        subject: `${this.state.inputs.subject} - Design Bright`,
+        subject: `Support Request #${supportId} - ${this.state.inputs.subject} - Design Bright`,
         msg: this.state.inputs.message,
         confirmation: 'Thank you for contacting us. We will get back to you in 24 hours.',
         receptionMsg: 'This message was sent from www.designbright.org',
@@ -88,7 +106,7 @@ class ContactForm extends React.Component {
       };
 
       axios.post(
-        'https://192.168.86.200:7777/api/v1/contact',
+        'https://www.wombatweb.us:7777/api/v1/contact',
         messageDetails,
       )
         .then((results) => {
